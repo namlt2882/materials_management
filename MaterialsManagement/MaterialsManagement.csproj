@@ -45,6 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Dv.cs" />
+    <Compile Include="Model\Qk.cs" />
+    <Compile Include="UI\CustomControl\CustomButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UI\CustomControl\DvUC.cs">
       <SubType>UserControl</SubType>
     </Compile>

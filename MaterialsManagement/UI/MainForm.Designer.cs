@@ -35,11 +35,13 @@
             this.btnDv = new System.Windows.Forms.Button();
             this.icArrowDv = new System.Windows.Forms.PictureBox();
             this.icArrowQk = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnHome = new System.Windows.Forms.Button();
             this.mainLabel = new System.Windows.Forms.Label();
             this.mainPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.icArrowDv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.icArrowQk)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // iconList
@@ -54,7 +56,7 @@
             this.btnQk.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnQk.BackColor = System.Drawing.SystemColors.Info;
             this.btnQk.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQk.Location = new System.Drawing.Point(158, 42);
+            this.btnQk.Location = new System.Drawing.Point(139, 35);
             this.btnQk.Name = "btnQk";
             this.btnQk.Size = new System.Drawing.Size(92, 35);
             this.btnQk.TabIndex = 2;
@@ -67,7 +69,7 @@
             this.btnDv.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnDv.BackColor = System.Drawing.SystemColors.Info;
             this.btnDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDv.Location = new System.Drawing.Point(310, 42);
+            this.btnDv.Location = new System.Drawing.Point(271, 35);
             this.btnDv.Name = "btnDv";
             this.btnDv.Size = new System.Drawing.Size(114, 35);
             this.btnDv.TabIndex = 4;
@@ -79,7 +81,7 @@
             this.icArrowDv.BackColor = System.Drawing.Color.Transparent;
             this.icArrowDv.BackgroundImage = global::MaterialsManagement.Properties.Resources.greater_24;
             this.icArrowDv.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.icArrowDv.Location = new System.Drawing.Point(266, 42);
+            this.icArrowDv.Location = new System.Drawing.Point(237, 35);
             this.icArrowDv.Name = "icArrowDv";
             this.icArrowDv.Size = new System.Drawing.Size(28, 35);
             this.icArrowDv.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -91,25 +93,26 @@
             this.icArrowQk.BackColor = System.Drawing.Color.Transparent;
             this.icArrowQk.BackgroundImage = global::MaterialsManagement.Properties.Resources.greater_24;
             this.icArrowQk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.icArrowQk.Location = new System.Drawing.Point(111, 42);
+            this.icArrowQk.Location = new System.Drawing.Point(101, 35);
             this.icArrowQk.Name = "icArrowQk";
             this.icArrowQk.Size = new System.Drawing.Size(32, 35);
             this.icArrowQk.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.icArrowQk.TabIndex = 1;
             this.icArrowQk.TabStop = false;
             // 
-            // button1
+            // btnHome
             // 
-            this.button1.AutoSize = true;
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button1.Location = new System.Drawing.Point(50, 31);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(45, 46);
-            this.button1.TabIndex = 0;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnHome.AutoSize = true;
+            this.btnHome.BackColor = System.Drawing.Color.White;
+            this.btnHome.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHome.BackgroundImage")));
+            this.btnHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnHome.Location = new System.Drawing.Point(50, 31);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(45, 46);
+            this.btnHome.TabIndex = 0;
+            this.btnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnHome.UseVisualStyleBackColor = false;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // mainLabel
             // 
@@ -134,6 +137,18 @@
             this.mainPanel.Size = new System.Drawing.Size(1100, 700);
             this.mainPanel.TabIndex = 7;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnHome);
+            this.panel1.Controls.Add(this.icArrowQk);
+            this.panel1.Controls.Add(this.btnQk);
+            this.panel1.Controls.Add(this.btnDv);
+            this.panel1.Controls.Add(this.icArrowDv);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1352, 95);
+            this.panel1.TabIndex = 8;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -141,19 +156,17 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1378, 844);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.mainLabel);
-            this.Controls.Add(this.btnDv);
-            this.Controls.Add(this.icArrowDv);
-            this.Controls.Add(this.btnQk);
-            this.Controls.Add(this.icArrowQk);
-            this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hệ thống quản lí vật tư bộ quốc phòng";
             ((System.ComponentModel.ISupportInitialize)(this.icArrowDv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.icArrowQk)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,12 +175,13 @@
         #endregion
 
         private System.Windows.Forms.ImageList iconList;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.PictureBox icArrowQk;
         private System.Windows.Forms.Button btnQk;
         private System.Windows.Forms.Button btnDv;
         private System.Windows.Forms.PictureBox icArrowDv;
         private System.Windows.Forms.Label mainLabel;
         private System.Windows.Forms.TableLayoutPanel mainPanel;
+        private System.Windows.Forms.Panel panel1;
     }
 }
