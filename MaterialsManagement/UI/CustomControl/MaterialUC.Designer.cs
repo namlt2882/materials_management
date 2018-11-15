@@ -33,30 +33,31 @@
             this.leftPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.rightPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.MyToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.actionPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.tbSearch = new System.Windows.Forms.TextBox();
             this.btnSail = new System.Windows.Forms.Button();
             this.btnCar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.gridData = new System.Windows.Forms.DataGridView();
             this.sdk = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.model = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.parentPanel.SuspendLayout();
             this.leftPanel.SuspendLayout();
             this.rightPanel.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.actionPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridData)).BeginInit();
             this.SuspendLayout();
             // 
             // parentPanel
             // 
+            this.parentPanel.AutoSize = true;
             this.parentPanel.Controls.Add(this.leftPanel);
             this.parentPanel.Controls.Add(this.rightPanel);
             this.parentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.parentPanel.Location = new System.Drawing.Point(0, 0);
             this.parentPanel.Name = "parentPanel";
-            this.parentPanel.Size = new System.Drawing.Size(1250, 700);
+            this.parentPanel.Size = new System.Drawing.Size(1250, 750);
             this.parentPanel.TabIndex = 0;
             // 
             // leftPanel
@@ -73,8 +74,8 @@
             // 
             // rightPanel
             // 
-            this.rightPanel.Controls.Add(this.flowLayoutPanel1);
-            this.rightPanel.Controls.Add(this.dataGridView1);
+            this.rightPanel.Controls.Add(this.actionPanel);
+            this.rightPanel.Controls.Add(this.gridData);
             this.rightPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.rightPanel.Location = new System.Drawing.Point(209, 3);
             this.rightPanel.Name = "rightPanel";
@@ -82,25 +83,25 @@
             this.rightPanel.Size = new System.Drawing.Size(1038, 694);
             this.rightPanel.TabIndex = 1;
             // 
-            // flowLayoutPanel1
+            // actionPanel
             // 
-            this.flowLayoutPanel1.Controls.Add(this.button1);
-            this.flowLayoutPanel1.Controls.Add(this.textBox1);
-            this.flowLayoutPanel1.Controls.Add(this.button2);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(33, 3);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1005, 100);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.actionPanel.Controls.Add(this.btnAdd);
+            this.actionPanel.Controls.Add(this.tbSearch);
+            this.actionPanel.Controls.Add(this.btnSearch);
+            this.actionPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.actionPanel.Location = new System.Drawing.Point(33, 3);
+            this.actionPanel.Name = "actionPanel";
+            this.actionPanel.Size = new System.Drawing.Size(1005, 100);
+            this.actionPanel.TabIndex = 0;
             // 
-            // textBox1
+            // tbSearch
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(393, 40);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(300, 40, 3, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(291, 35);
-            this.textBox1.TabIndex = 1;
+            this.tbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSearch.Location = new System.Drawing.Point(393, 40);
+            this.tbSearch.Margin = new System.Windows.Forms.Padding(300, 40, 3, 3);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(291, 35);
+            this.tbSearch.TabIndex = 1;
             // 
             // btnSail
             // 
@@ -130,46 +131,46 @@
             this.btnCar.UseVisualStyleBackColor = false;
             this.btnCar.Click += new System.EventHandler(this.btnCar_Click);
             // 
-            // button1
+            // btnAdd
             // 
-            this.button1.AutoSize = true;
-            this.button1.BackgroundImage = global::MaterialsManagement.Properties.Resources.plus_24;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Location = new System.Drawing.Point(40, 30);
-            this.button1.Margin = new System.Windows.Forms.Padding(40, 30, 3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(50, 50);
-            this.button1.TabIndex = 0;
-            this.MyToolTip.SetToolTip(this.button1, "Thêm");
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAdd.AutoSize = true;
+            this.btnAdd.BackgroundImage = global::MaterialsManagement.Properties.Resources.plus_24;
+            this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAdd.Location = new System.Drawing.Point(40, 30);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(40, 30, 3, 3);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(50, 50);
+            this.btnAdd.TabIndex = 0;
+            this.MyToolTip.SetToolTip(this.btnAdd, "Thêm");
+            this.btnAdd.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnSearch
             // 
-            this.button2.AutoSize = true;
-            this.button2.BackgroundImage = global::MaterialsManagement.Properties.Resources.search_24;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Location = new System.Drawing.Point(697, 30);
-            this.button2.Margin = new System.Windows.Forms.Padding(10, 30, 3, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(53, 50);
-            this.button2.TabIndex = 2;
-            this.MyToolTip.SetToolTip(this.button2, "Tìm kiếm");
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnSearch.AutoSize = true;
+            this.btnSearch.BackgroundImage = global::MaterialsManagement.Properties.Resources.search_24;
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSearch.Location = new System.Drawing.Point(697, 30);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(10, 30, 3, 3);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(53, 50);
+            this.btnSearch.TabIndex = 2;
+            this.MyToolTip.SetToolTip(this.btnSearch, "Tìm kiếm");
+            this.btnSearch.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // gridData
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gridData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridData.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.gridData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.sdk,
             this.model});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView1.Location = new System.Drawing.Point(33, 109);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1005, 585);
-            this.dataGridView1.TabIndex = 1;
+            this.gridData.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gridData.Location = new System.Drawing.Point(33, 109);
+            this.gridData.Name = "gridData";
+            this.gridData.RowTemplate.Height = 28;
+            this.gridData.Size = new System.Drawing.Size(1005, 585);
+            this.gridData.TabIndex = 1;
             // 
             // sdk
             // 
@@ -187,17 +188,19 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.Controls.Add(this.parentPanel);
             this.Name = "MaterialUC";
-            this.Size = new System.Drawing.Size(1250, 700);
+            this.Size = new System.Drawing.Size(1250, 750);
             this.parentPanel.ResumeLayout(false);
             this.leftPanel.ResumeLayout(false);
             this.leftPanel.PerformLayout();
             this.rightPanel.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.actionPanel.ResumeLayout(false);
+            this.actionPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridData)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -209,11 +212,11 @@
         private System.Windows.Forms.Button btnCar;
         private System.Windows.Forms.FlowLayoutPanel rightPanel;
         private System.Windows.Forms.ToolTip MyToolTip;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.FlowLayoutPanel actionPanel;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.TextBox tbSearch;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.DataGridView gridData;
         private System.Windows.Forms.DataGridViewTextBoxColumn sdk;
         private System.Windows.Forms.DataGridViewTextBoxColumn model;
     }
