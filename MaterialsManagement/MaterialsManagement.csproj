@@ -56,6 +56,12 @@
     <Compile Include="UI\CustomControl\DvUC.Designer.cs">
       <DependentUpon>DvUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\CustomControl\MaterialUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CustomControl\MaterialUC.Designer.cs">
+      <DependentUpon>MaterialUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\CustomControl\QkUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     <EmbeddedResource Include="UI\CustomControl\DvUC.resx">
       <DependentUpon>DvUC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\CustomControl\MaterialUC.resx">
+      <DependentUpon>MaterialUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\CustomControl\QkUC.resx">
       <DependentUpon>QkUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -113,6 +122,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\home-page-24.png.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resource\icon\sail-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resource\icon\car-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resource\icon\plus-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resource\icon\search-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resource\icon\search-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resource\icon\plus-24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

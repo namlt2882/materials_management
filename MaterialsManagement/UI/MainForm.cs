@@ -67,7 +67,7 @@ namespace MaterialsManagement
         {
             btnDv.Text = dv.Name;
             //change text of main label
-            mainLabel.Text = "Danh sách vật tư của đơn vị " + dv.Name;
+            mainLabel.Text = "Danh sách trang bị của đơn vị " + dv.Name;
             if (dvOnClickEvent != null)
             {
                 btnDv.Click -= dvOnClickEvent;
@@ -78,7 +78,7 @@ namespace MaterialsManagement
             };
             btnDv.Click += dvOnClickEvent;
             ResetAddressBar(true, true);
-            InitMainPanel(null);
+            InitMainPanel(new MaterialUC());
         }
 
         private void ResetAddressBar(bool InQk, bool InDv)

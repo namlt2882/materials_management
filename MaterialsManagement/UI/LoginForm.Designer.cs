@@ -90,9 +90,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(199, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(400, 40);
+            this.label1.Size = new System.Drawing.Size(434, 40);
             this.label1.TabIndex = 9;
-            this.label1.Text = "Hệ thống quản lí vật tư";
+            this.label1.Text = "Hệ thống quản lí trang bị";
             // 
             // label2
             // 

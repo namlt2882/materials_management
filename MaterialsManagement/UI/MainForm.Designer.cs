@@ -130,11 +130,11 @@
             this.mainPanel.AutoSize = true;
             this.mainPanel.ColumnCount = 1;
             this.mainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.mainPanel.Location = new System.Drawing.Point(50, 193);
+            this.mainPanel.Location = new System.Drawing.Point(23, 181);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.RowCount = 1;
             this.mainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.mainPanel.Size = new System.Drawing.Size(1100, 700);
+            this.mainPanel.Size = new System.Drawing.Size(1302, 700);
             this.mainPanel.TabIndex = 7;
             // 
             // panel1
@@ -154,6 +154,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1378, 844);
             this.Controls.Add(this.panel1);
