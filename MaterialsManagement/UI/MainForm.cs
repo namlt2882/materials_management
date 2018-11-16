@@ -78,7 +78,7 @@ namespace MaterialsManagement
             };
             btnDv.Click += dvOnClickEvent;
             ResetAddressBar(true, true);
-            InitMainPanel(new MaterialUC());
+            InitMainPanel(new MaterialUC(dv));
         }
 
         private void ResetAddressBar(bool InQk, bool InDv)

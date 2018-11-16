@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,8 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Enum.cs" />
+    <Compile Include="Common\EnumExtensions.cs" />
     <Compile Include="Model\Dv.cs" />
+    <Compile Include="Model\MaterialType.cs" />
     <Compile Include="Model\Qk.cs" />
+    <Compile Include="UI\AddMaterialForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AddMaterialForm.Designer.cs">
+      <DependentUpon>AddMaterialForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\CustomControl\CustomButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -92,6 +102,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\AddMaterialForm.resx">
+      <DependentUpon>AddMaterialForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\CustomControl\DvUC.resx">
       <DependentUpon>DvUC.cs</DependentUpon>
     </EmbeddedResource>
