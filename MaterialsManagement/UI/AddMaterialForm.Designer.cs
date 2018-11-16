@@ -50,12 +50,15 @@
             this.dtpManufactureDate = new System.Windows.Forms.DateTimePicker();
             this.actionPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.nbCurrentKm = new System.Windows.Forms.NumericUpDown();
             this.flowLayoutPanel1.SuspendLayout();
             this.fixedInfoPanel.SuspendLayout();
             this.infoPanel.SuspendLayout();
             this.detailPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nbOilWarning)).BeginInit();
             this.actionPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nbCurrentKm)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -119,17 +122,17 @@
             this.infoPanel.Location = new System.Drawing.Point(53, 159);
             this.infoPanel.Name = "infoPanel";
             this.infoPanel.RowCount = 3;
-            this.infoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 53.5545F));
-            this.infoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46.4455F));
-            this.infoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 92F));
-            this.infoPanel.Size = new System.Drawing.Size(443, 266);
+            this.infoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.62963F));
+            this.infoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.37037F));
+            this.infoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.infoPanel.Size = new System.Drawing.Size(443, 183);
             this.infoPanel.TabIndex = 0;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 173);
+            this.label3.Location = new System.Drawing.Point(3, 125);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 26);
             this.label3.TabIndex = 5;
@@ -158,7 +161,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 93);
+            this.label2.Location = new System.Drawing.Point(3, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(121, 26);
             this.label2.TabIndex = 2;
@@ -167,7 +170,7 @@
             // tbRegisterName
             // 
             this.tbRegisterName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbRegisterName.Location = new System.Drawing.Point(165, 96);
+            this.tbRegisterName.Location = new System.Drawing.Point(165, 65);
             this.tbRegisterName.Name = "tbRegisterName";
             this.tbRegisterName.Size = new System.Drawing.Size(223, 32);
             this.tbRegisterName.TabIndex = 3;
@@ -175,7 +178,7 @@
             // tbModel
             // 
             this.tbModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbModel.Location = new System.Drawing.Point(165, 176);
+            this.tbModel.Location = new System.Drawing.Point(165, 128);
             this.tbModel.Name = "tbModel";
             this.tbModel.Size = new System.Drawing.Size(223, 32);
             this.tbModel.TabIndex = 4;
@@ -183,24 +186,28 @@
             // detailPanel
             // 
             this.detailPanel.ColumnCount = 2;
-            this.detailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.08134F));
-            this.detailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.91866F));
+            this.detailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.36364F));
+            this.detailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.63636F));
             this.detailPanel.Controls.Add(this.label4, 0, 0);
+            this.detailPanel.Controls.Add(this.nbCurrentKm, 1, 2);
+            this.detailPanel.Controls.Add(this.label8, 0, 2);
             this.detailPanel.Controls.Add(this.label5, 0, 1);
             this.detailPanel.Controls.Add(this.tbOrigin, 1, 0);
-            this.detailPanel.Controls.Add(this.label6, 0, 2);
-            this.detailPanel.Controls.Add(this.nbOilWarning, 1, 2);
-            this.detailPanel.Controls.Add(this.label7, 0, 3);
-            this.detailPanel.Controls.Add(this.tbNote, 1, 3);
             this.detailPanel.Controls.Add(this.dtpManufactureDate, 1, 1);
+            this.detailPanel.Controls.Add(this.label7, 0, 4);
+            this.detailPanel.Controls.Add(this.tbNote, 1, 4);
+            this.detailPanel.Controls.Add(this.label6, 0, 3);
+            this.detailPanel.Controls.Add(this.nbOilWarning, 1, 3);
             this.detailPanel.Location = new System.Drawing.Point(502, 159);
             this.detailPanel.Name = "detailPanel";
-            this.detailPanel.RowCount = 4;
-            this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 41.96429F));
-            this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 58.03571F));
+            this.detailPanel.RowCount = 5;
+            this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.19355F));
+            this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.80645F));
+            this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
             this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 90F));
-            this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 131F));
-            this.detailPanel.Size = new System.Drawing.Size(418, 396);
+            this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 146F));
+            this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.detailPanel.Size = new System.Drawing.Size(418, 418);
             this.detailPanel.TabIndex = 1;
             // 
             // label4
@@ -217,7 +224,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(3, 73);
+            this.label5.Location = new System.Drawing.Point(3, 61);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(106, 52);
             this.label5.TabIndex = 1;
@@ -226,7 +233,7 @@
             // tbOrigin
             // 
             this.tbOrigin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbOrigin.Location = new System.Drawing.Point(158, 3);
+            this.tbOrigin.Location = new System.Drawing.Point(154, 3);
             this.tbOrigin.Name = "tbOrigin";
             this.tbOrigin.Size = new System.Drawing.Size(200, 32);
             this.tbOrigin.TabIndex = 3;
@@ -235,7 +242,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 174);
+            this.label6.Location = new System.Drawing.Point(3, 181);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(145, 78);
             this.label6.TabIndex = 4;
@@ -243,7 +250,7 @@
             // 
             // nbOilWarning
             // 
-            this.nbOilWarning.Location = new System.Drawing.Point(158, 177);
+            this.nbOilWarning.Location = new System.Drawing.Point(154, 184);
             this.nbOilWarning.Name = "nbOilWarning";
             this.nbOilWarning.Size = new System.Drawing.Size(149, 26);
             this.nbOilWarning.TabIndex = 5;
@@ -252,7 +259,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(3, 264);
+            this.label7.Location = new System.Drawing.Point(3, 271);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(93, 26);
             this.label7.TabIndex = 6;
@@ -262,15 +269,15 @@
             // 
             this.tbNote.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbNote.Location = new System.Drawing.Point(158, 267);
+            this.tbNote.Location = new System.Drawing.Point(154, 274);
             this.tbNote.Name = "tbNote";
-            this.tbNote.Size = new System.Drawing.Size(257, 126);
+            this.tbNote.Size = new System.Drawing.Size(261, 141);
             this.tbNote.TabIndex = 7;
             this.tbNote.Text = "";
             // 
             // dtpManufactureDate
             // 
-            this.dtpManufactureDate.Location = new System.Drawing.Point(158, 76);
+            this.dtpManufactureDate.Location = new System.Drawing.Point(154, 64);
             this.dtpManufactureDate.Name = "dtpManufactureDate";
             this.dtpManufactureDate.Size = new System.Drawing.Size(200, 26);
             this.dtpManufactureDate.TabIndex = 8;
@@ -278,7 +285,7 @@
             // actionPanel
             // 
             this.actionPanel.Controls.Add(this.btnAdd);
-            this.actionPanel.Location = new System.Drawing.Point(53, 561);
+            this.actionPanel.Location = new System.Drawing.Point(53, 583);
             this.actionPanel.Name = "actionPanel";
             this.actionPanel.Size = new System.Drawing.Size(867, 100);
             this.actionPanel.TabIndex = 2;
@@ -296,6 +303,23 @@
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(3, 124);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(132, 52);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Số Km hiện tại";
+            // 
+            // nbCurrentKm
+            // 
+            this.nbCurrentKm.Location = new System.Drawing.Point(154, 127);
+            this.nbCurrentKm.Name = "nbCurrentKm";
+            this.nbCurrentKm.Size = new System.Drawing.Size(149, 26);
+            this.nbCurrentKm.TabIndex = 6;
             // 
             // AddMaterialForm
             // 
@@ -316,6 +340,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nbOilWarning)).EndInit();
             this.actionPanel.ResumeLayout(false);
             this.actionPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nbCurrentKm)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -344,5 +369,7 @@
         private System.Windows.Forms.Label lbDv;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DateTimePicker dtpManufactureDate;
+        private System.Windows.Forms.NumericUpDown nbCurrentKm;
+        private System.Windows.Forms.Label label8;
     }
 }
