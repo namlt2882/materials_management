@@ -53,7 +53,7 @@ namespace MaterialsManagement
             //reset address bar
             ResetAddressBar(true, false);
             //init main panel
-            InitMainPanel(new DvUC(OnItemDv_Click));
+            InitMainPanel(new DvUC(qk, OnItemDv_Click));
         }
 
         private void InitMainPanel(Control control)

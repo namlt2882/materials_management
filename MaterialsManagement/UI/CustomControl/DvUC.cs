@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialsManagement.Model;
+using MaterialsManagement.Service;
 
 namespace MaterialsManagement.UI.CustomControl
 {
@@ -16,30 +17,35 @@ namespace MaterialsManagement.UI.CustomControl
         private List<Component> gridComponents;
         public delegate void OnButtonClickEvent(Dv qk);
         public OnButtonClickEvent onButtonClick;
-        public DvUC(OnButtonClickEvent onButtonClick) : this()
+        private Qk qk;
+        private List<Dv> DvList;
+        public DvUC(Qk qk,OnButtonClickEvent onButtonClick) : this()
         {
+            this.qk = qk;
             this.onButtonClick = onButtonClick;
+            InitGridComponents();
         }
         public DvUC()
         {
             InitializeComponent();
-            InitGridComponents();
         }
 
         private void InitGridComponents()
         {
-
-            for (int i = 1; i < 4; i++)
+            DvList = new DvService().GetByQkId(qk.Id);
+            int Quantity = DvList.Count;
+            int RowNumber = (int)Math.Ceiling(Quantity * 1.0 / 4);
+            for (int i = 1; i < RowNumber; i++)
             {
                 tableLayoutQkList.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             }
             gridComponents = new List<Component> { };
-            for (int i = 0; i < 15; i++)
+            foreach (Dv dv in DvList)
             {
                 CustomButton<Dv> btn = new CustomButton<Dv>
                 {
-                    obj = new Dv(null, "BR-VT"),
-                    Text = "BR-VT",
+                    obj = dv,
+                    Text = dv.Name,
                     Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0))),
                     Height = 80,
                     Width = 180,

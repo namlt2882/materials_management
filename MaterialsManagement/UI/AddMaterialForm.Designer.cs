@@ -37,28 +37,28 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbType = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.tbRegisterName = new System.Windows.Forms.TextBox();
+            this.tbRegisterCode = new System.Windows.Forms.TextBox();
             this.tbModel = new System.Windows.Forms.TextBox();
             this.detailPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
+            this.nbCurrentKm = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.tbOrigin = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.nbOilWarning = new System.Windows.Forms.NumericUpDown();
+            this.dtpManufactureDate = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.tbNote = new System.Windows.Forms.RichTextBox();
-            this.dtpManufactureDate = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.nbOilWarning = new System.Windows.Forms.NumericUpDown();
             this.actionPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.nbCurrentKm = new System.Windows.Forms.NumericUpDown();
             this.flowLayoutPanel1.SuspendLayout();
             this.fixedInfoPanel.SuspendLayout();
             this.infoPanel.SuspendLayout();
             this.detailPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nbCurrentKm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nbOilWarning)).BeginInit();
             this.actionPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nbCurrentKm)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -117,7 +117,7 @@
             this.infoPanel.Controls.Add(this.label1, 0, 0);
             this.infoPanel.Controls.Add(this.cbType, 1, 0);
             this.infoPanel.Controls.Add(this.label2, 0, 1);
-            this.infoPanel.Controls.Add(this.tbRegisterName, 1, 1);
+            this.infoPanel.Controls.Add(this.tbRegisterCode, 1, 1);
             this.infoPanel.Controls.Add(this.tbModel, 1, 2);
             this.infoPanel.Location = new System.Drawing.Point(53, 159);
             this.infoPanel.Name = "infoPanel";
@@ -167,13 +167,13 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Số đăng kí:";
             // 
-            // tbRegisterName
+            // tbRegisterCode
             // 
-            this.tbRegisterName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbRegisterName.Location = new System.Drawing.Point(165, 65);
-            this.tbRegisterName.Name = "tbRegisterName";
-            this.tbRegisterName.Size = new System.Drawing.Size(223, 32);
-            this.tbRegisterName.TabIndex = 3;
+            this.tbRegisterCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbRegisterCode.Location = new System.Drawing.Point(165, 65);
+            this.tbRegisterCode.Name = "tbRegisterCode";
+            this.tbRegisterCode.Size = new System.Drawing.Size(223, 32);
+            this.tbRegisterCode.TabIndex = 3;
             // 
             // tbModel
             // 
@@ -220,6 +220,23 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Nơi sản xuất:";
             // 
+            // nbCurrentKm
+            // 
+            this.nbCurrentKm.Location = new System.Drawing.Point(155, 127);
+            this.nbCurrentKm.Name = "nbCurrentKm";
+            this.nbCurrentKm.Size = new System.Drawing.Size(149, 26);
+            this.nbCurrentKm.TabIndex = 6;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(3, 124);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(132, 52);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Số Km hiện tại";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -233,27 +250,17 @@
             // tbOrigin
             // 
             this.tbOrigin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbOrigin.Location = new System.Drawing.Point(154, 3);
+            this.tbOrigin.Location = new System.Drawing.Point(155, 3);
             this.tbOrigin.Name = "tbOrigin";
             this.tbOrigin.Size = new System.Drawing.Size(200, 32);
             this.tbOrigin.TabIndex = 3;
             // 
-            // label6
+            // dtpManufactureDate
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 181);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(145, 78);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Khoảng cách mỗi lần thay nhớt(km):";
-            // 
-            // nbOilWarning
-            // 
-            this.nbOilWarning.Location = new System.Drawing.Point(154, 184);
-            this.nbOilWarning.Name = "nbOilWarning";
-            this.nbOilWarning.Size = new System.Drawing.Size(149, 26);
-            this.nbOilWarning.TabIndex = 5;
+            this.dtpManufactureDate.Location = new System.Drawing.Point(155, 64);
+            this.dtpManufactureDate.Name = "dtpManufactureDate";
+            this.dtpManufactureDate.Size = new System.Drawing.Size(200, 26);
+            this.dtpManufactureDate.TabIndex = 8;
             // 
             // label7
             // 
@@ -269,18 +276,28 @@
             // 
             this.tbNote.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbNote.Location = new System.Drawing.Point(154, 274);
+            this.tbNote.Location = new System.Drawing.Point(155, 274);
             this.tbNote.Name = "tbNote";
-            this.tbNote.Size = new System.Drawing.Size(261, 141);
+            this.tbNote.Size = new System.Drawing.Size(260, 141);
             this.tbNote.TabIndex = 7;
             this.tbNote.Text = "";
             // 
-            // dtpManufactureDate
+            // label6
             // 
-            this.dtpManufactureDate.Location = new System.Drawing.Point(154, 64);
-            this.dtpManufactureDate.Name = "dtpManufactureDate";
-            this.dtpManufactureDate.Size = new System.Drawing.Size(200, 26);
-            this.dtpManufactureDate.TabIndex = 8;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(3, 181);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(145, 78);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Khoảng cách mỗi lần thay nhớt(km):";
+            // 
+            // nbOilWarning
+            // 
+            this.nbOilWarning.Location = new System.Drawing.Point(155, 184);
+            this.nbOilWarning.Name = "nbOilWarning";
+            this.nbOilWarning.Size = new System.Drawing.Size(149, 26);
+            this.nbOilWarning.TabIndex = 5;
             // 
             // actionPanel
             // 
@@ -304,23 +321,6 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(3, 124);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(132, 52);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "Số Km hiện tại";
-            // 
-            // nbCurrentKm
-            // 
-            this.nbCurrentKm.Location = new System.Drawing.Point(154, 127);
-            this.nbCurrentKm.Name = "nbCurrentKm";
-            this.nbCurrentKm.Size = new System.Drawing.Size(149, 26);
-            this.nbCurrentKm.TabIndex = 6;
-            // 
             // AddMaterialForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -337,10 +337,10 @@
             this.infoPanel.PerformLayout();
             this.detailPanel.ResumeLayout(false);
             this.detailPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nbCurrentKm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nbOilWarning)).EndInit();
             this.actionPanel.ResumeLayout(false);
             this.actionPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nbCurrentKm)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -353,7 +353,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbType;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tbRegisterName;
+        private System.Windows.Forms.TextBox tbRegisterCode;
         private System.Windows.Forms.TextBox tbModel;
         private System.Windows.Forms.TableLayoutPanel detailPanel;
         private System.Windows.Forms.Label label4;

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialsManagement.Model;
+using MaterialsManagement.Service;
 
 namespace MaterialsManagement.UI.CustomControl
 {
@@ -16,7 +17,7 @@ namespace MaterialsManagement.UI.CustomControl
         private List<Component> gridComponents;
         public delegate void OnButtonClickEvent(Qk qk);
         public OnButtonClickEvent onButtonClick;
-
+        public List<Qk> QkList;
         public QkUC(OnButtonClickEvent onButtonClick) : this()
         {
             this.onButtonClick = onButtonClick;
@@ -28,21 +29,23 @@ namespace MaterialsManagement.UI.CustomControl
             InitGridComponents();
         }
 
-
         private void InitGridComponents()
         {
+            QkList = new QkService().GetAll();
+            int Quantity = QkList.Count;
+            int RowNumber = (int)Math.Ceiling(Quantity * 1.0 / 4);
 
-            for (int i = 1; i < 4; i++)
+            for (int i = 1; i < RowNumber; i++)
             {
                 tableLayoutQkList.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             }
             gridComponents = new List<Component> { };
-            for (int i = 0; i < 15; i++)
+            foreach (Qk qk in QkList)
             {
                 CustomButton<Qk> btn = new CustomButton<Qk>
                 {
-                    obj = new Qk(null, "QK7"),
-                    Text = "QK7",
+                    obj = qk,
+                    Text = qk.Name,
                     Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0))),
                     Height = 80,
                     Width = 180,

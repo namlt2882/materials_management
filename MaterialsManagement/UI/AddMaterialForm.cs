@@ -1,5 +1,6 @@
 ﻿using MaterialsManagement.Common;
 using MaterialsManagement.Model;
+using MaterialsManagement.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +21,7 @@ namespace MaterialsManagement.UI
         public AddMaterialForm(Dv dv, int DefaultMaterialType) : this()
         {
             this.dv = dv;
+            qk = new QkService().Get(dv.QkId);
             InitFixedInfoPanel();
             SetSelectedMaterialType(DefaultMaterialType);
         }
@@ -32,11 +34,11 @@ namespace MaterialsManagement.UI
         {
             if (qk != null)
             {
-                lbQk.Text = "Quân khu: " + qk.Name + " (" + qk.Id + ")";
+                lbQk.Text = "Quân khu: " + qk.Name.Trim() + " (" + qk.Id.Trim() + ")";
             }
             if (dv != null)
             {
-                lbDv.Text = "Đơn vị: " + dv.Name + " (" + dv.Id + ")";
+                lbDv.Text = "Đơn vị: " + dv.Name.Trim() + " (" + dv.Id.Trim() + ")";
             }
         }
 
@@ -80,6 +82,25 @@ namespace MaterialsManagement.UI
         private void btnAdd_Click(object sender, EventArgs e)
         {
             MaterialType materialType = GetSelectedMaterialType();
+            Material material = new Material
+            {
+                Type = materialType.Id,
+                RegisterCode = tbRegisterCode.Text,
+                Model = tbModel.Text,
+                Origin = tbOrigin.Text,
+                ManufacturingDate = dtpManufactureDate.Value.Date,
+                CurrentKm = Convert.ToInt32(nbCurrentKm.Value),
+                OilWarning = Convert.ToInt32(nbOilWarning.Value),
+                Notes = tbNote.Text,
+                DvId = dv.Id
+            };
+            try
+            {
+                Material rs = new MaterialService().Add(material);
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Tác vụ không thành công, hãy thử lại sau!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
