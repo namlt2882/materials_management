@@ -10,11 +10,15 @@ namespace MaterialsManagement.Model
     {
         public string Id { get; set; }
         public string Name { get; set; }
-
+        public string QkId { get; set; }
         public Dv(string id, string name)
         {
             Id = id;
             Name = name;
+        }
+
+        public Dv()
+        {
         }
     }
 }

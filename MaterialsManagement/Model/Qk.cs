@@ -16,5 +16,9 @@ namespace MaterialsManagement.Model
             Id = id;
             Name = name;
         }
+
+        public Qk()
+        {
+        }
     }
 }
