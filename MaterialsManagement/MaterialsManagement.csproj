@@ -171,5 +171,11 @@
   <ItemGroup>
     <None Include="resource\icon\plus-24.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="resource\icon\qr-code-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resource\icon\download-26.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

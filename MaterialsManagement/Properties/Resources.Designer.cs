@@ -73,6 +73,16 @@ namespace MaterialsManagement.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap download_26 {
+            get {
+                object obj = ResourceManager.GetObject("download_26", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap greater_24 {
             get {
                 object obj = ResourceManager.GetObject("greater_24", resourceCulture);
@@ -126,6 +136,16 @@ namespace MaterialsManagement.Properties {
         public static System.Drawing.Bitmap plus_50 {
             get {
                 object obj = ResourceManager.GetObject("plus_50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap qr_code_48 {
+            get {
+                object obj = ResourceManager.GetObject("qr_code_48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

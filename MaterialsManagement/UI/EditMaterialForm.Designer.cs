@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.fixedInfoPanel = new System.Windows.Forms.TableLayoutPanel();
             this.lbQk = new System.Windows.Forms.Label();
@@ -52,12 +53,19 @@
             this.label4 = new System.Windows.Forms.Label();
             this.actionPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnGetQrCode = new System.Windows.Forms.Button();
+            this.MyToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.fixedInfoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nbOilWarning)).BeginInit();
             this.infoPanel.SuspendLayout();
             this.detailPanel.SuspendLayout();
             this.actionPanel.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnUpdate
@@ -138,15 +146,17 @@
             this.infoPanel.Controls.Add(this.tbModel, 1, 3);
             this.infoPanel.Controls.Add(this.tbId, 1, 0);
             this.infoPanel.Controls.Add(this.tbType, 1, 1);
+            this.infoPanel.Controls.Add(this.label9, 0, 4);
+            this.infoPanel.Controls.Add(this.flowLayoutPanel2, 1, 4);
             this.infoPanel.Location = new System.Drawing.Point(53, 149);
             this.infoPanel.Name = "infoPanel";
-            this.infoPanel.RowCount = 4;
+            this.infoPanel.RowCount = 5;
             this.infoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.infoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.infoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.infoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.infoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.infoPanel.Size = new System.Drawing.Size(443, 241);
+            this.infoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.infoPanel.Size = new System.Drawing.Size(443, 305);
             this.infoPanel.TabIndex = 0;
             // 
             // label8
@@ -325,6 +335,51 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(978, 744);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(3, 200);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(87, 26);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Mã QR:";
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.pictureBox1);
+            this.flowLayoutPanel2.Controls.Add(this.btnGetQrCode);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(154, 203);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(30, 10, 10, 10);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(286, 99);
+            this.flowLayoutPanel2.TabIndex = 10;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::MaterialsManagement.Properties.Resources.qr_code_48;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(33, 13);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(90, 86);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnGetQrCode
+            // 
+            this.btnGetQrCode.AutoSize = true;
+            this.btnGetQrCode.BackgroundImage = global::MaterialsManagement.Properties.Resources.download_26;
+            this.btnGetQrCode.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnGetQrCode.Location = new System.Drawing.Point(129, 30);
+            this.btnGetQrCode.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.btnGetQrCode.Name = "btnGetQrCode";
+            this.btnGetQrCode.Size = new System.Drawing.Size(56, 58);
+            this.btnGetQrCode.TabIndex = 1;
+            this.MyToolTip.SetToolTip(this.btnGetQrCode, "Tải xuống");
+            this.btnGetQrCode.UseVisualStyleBackColor = true;
+            // 
             // EditMaterialForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -344,6 +399,9 @@
             this.actionPanel.ResumeLayout(false);
             this.actionPanel.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -374,5 +432,10 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tbId;
         private System.Windows.Forms.TextBox tbType;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnGetQrCode;
+        private System.Windows.Forms.ToolTip MyToolTip;
     }
 }
