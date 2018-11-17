@@ -39,8 +39,6 @@
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.gridData = new System.Windows.Forms.DataGridView();
-            this.sdk = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.model = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MyToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.parentPanel.SuspendLayout();
             this.leftPanel.SuspendLayout();
@@ -163,27 +161,13 @@
             this.gridData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridData.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.gridData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.sdk,
-            this.model});
             this.gridData.Dock = System.Windows.Forms.DockStyle.Top;
             this.gridData.Location = new System.Drawing.Point(33, 109);
             this.gridData.Name = "gridData";
+            this.gridData.ReadOnly = true;
             this.gridData.RowTemplate.Height = 28;
             this.gridData.Size = new System.Drawing.Size(1005, 585);
             this.gridData.TabIndex = 1;
-            // 
-            // sdk
-            // 
-            this.sdk.HeaderText = "SDK";
-            this.sdk.Name = "sdk";
-            this.sdk.ReadOnly = true;
-            // 
-            // model
-            // 
-            this.model.HeaderText = "Model";
-            this.model.Name = "model";
-            this.model.ReadOnly = true;
             // 
             // MaterialUC
             // 
@@ -218,7 +202,5 @@
         private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.DataGridView gridData;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sdk;
-        private System.Windows.Forms.DataGridViewTextBoxColumn model;
     }
 }

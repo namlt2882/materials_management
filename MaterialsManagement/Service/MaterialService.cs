@@ -3,6 +3,7 @@ using MaterialsManagement.Model;
 using MaterialsManagement.Repository;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,14 @@ namespace MaterialsManagement.Service
             material.Id = newId;
             material.Status = (int)MaterialStatus.ACTIVE;
             Material rs = new MaterialRepository().Insert(material);
+            return rs;
+        }
+
+        public DataTable GetByTypeAsDataTable(int type)
+        {
+            MaterialRepository repository = new MaterialRepository(true);
+            repository.GetByType(type);
+            DataTable rs = repository.dataTable;
             return rs;
         }
     }

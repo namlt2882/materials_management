@@ -16,6 +16,7 @@ namespace MaterialsManagement.Repository
         protected SqlCommand sqlCommand;
         protected SqlDataAdapter sqlDataAdapter;
         protected SqlDataReader sqlDataReader;
+        public DataTable dataTable { get; set; }
         protected SqlConnection GetSqlConnection()
         {
             if (connection == null)

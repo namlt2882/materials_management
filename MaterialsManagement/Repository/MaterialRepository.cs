@@ -1,6 +1,8 @@
-﻿using MaterialsManagement.Model;
+﻿using MaterialsManagement.Common;
+using MaterialsManagement.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -10,6 +12,7 @@ namespace MaterialsManagement.Repository
 {
     public class MaterialRepository : BaseRepository<string, Material>
     {
+        public bool ReturnDataTable = false;
         private static readonly string INSERT_QUERY = "INSERT INTO " +
             "Material(Id, Type, RegisterCode, Model, Origin," +
             "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
@@ -17,6 +20,19 @@ namespace MaterialsManagement.Repository
             "VALUES(@Id, @Type, @RegisterCode, @Model, @Origin," +
             "@ManufacturingDate, @CurrentKm, @OilWarning, @Notes, @Status," +
             "@DvId, @InsertDate)";
+        private static readonly string QUERY_GET_BY_TYPE = "SELECT " +
+            "Id, Type, RegisterCode, Model, Origin," +
+            "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
+            "DvId, InsertDate " +
+            "FROM Material WHERE Type=@Type AND Status=" + (int)MaterialStatus.ACTIVE+
+            " ORDER BY InsertDate DESC";
+        public MaterialRepository(bool ReturnDataTable) : this()
+        {
+            this.ReturnDataTable = ReturnDataTable;
+        }
+        public MaterialRepository()
+        {
+        }
         public override Material Get(string id)
         {
             throw new NotImplementedException();
@@ -26,7 +42,28 @@ namespace MaterialsManagement.Repository
         {
             throw new NotImplementedException();
         }
-
+        public List<Material> GetByType(int Type)
+        {
+            try
+            {
+                sqlCommand = new SqlCommand(QUERY_GET_BY_TYPE, GetSqlConnection());
+                sqlCommand.Parameters.AddWithValue("@Type", Type);
+                sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                connection.Open();
+                if (ReturnDataTable)
+                {
+                    dataTable = new DataTable();
+                    sqlDataAdapter.Fill(dataTable);
+                }
+                sqlDataReader = sqlCommand.ExecuteReader();
+                List<Material> rs = ReadValueFromReader();
+                return rs;
+            }
+            finally
+            {
+                CloseResources();
+            }
+        }
         public override Material Insert(Material t)
         {
             try
@@ -63,7 +100,28 @@ namespace MaterialsManagement.Repository
 
         public override List<Material> ReadValueFromReader()
         {
-            throw new NotImplementedException();
+            List<Material> rs = new List<Material>();
+            Material material;
+            while (sqlDataReader.Read())
+            {
+                material = new Material
+                {
+                    Id = sqlDataReader["Id"].ToString(),
+                    Type = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("Type")),
+                    RegisterCode = sqlDataReader["RegisterCode"].ToString(),
+                    Model = sqlDataReader["Model"].ToString(),
+                    Origin = sqlDataReader["Origin"].ToString(),
+                    ManufacturingDate = sqlDataReader.GetDateTime(sqlDataReader.GetOrdinal("ManufacturingDate")),
+                    CurrentKm = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("CurrentKm")),
+                    OilWarning = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("OilWarning")),
+                    Notes = sqlDataReader["Notes"].ToString(),
+                    Status = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("Status")),
+                    DvId = sqlDataReader["DvId"].ToString(),
+                    InsertDate = sqlDataReader.GetDateTime(sqlDataReader.GetOrdinal("InsertDate")),
+                };
+                rs.Add(material);
+            }
+            return rs;
         }
     }
 }
