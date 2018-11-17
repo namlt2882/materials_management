@@ -27,12 +27,16 @@ namespace MaterialsManagement.Service
             return rs;
         }
 
-        public DataTable GetByTypeAsDataTable(int type)
+        public DataTable GetByTypeAsDataTable(string DvId, int Type)
         {
             MaterialRepository repository = new MaterialRepository(true);
-            repository.GetByType(type);
+            repository.GetByType(DvId, Type);
             DataTable rs = repository.dataTable;
             return rs;
+        }
+        public Material Get(string Id)
+        {
+            return new MaterialRepository().Get(Id);
         }
     }
 }

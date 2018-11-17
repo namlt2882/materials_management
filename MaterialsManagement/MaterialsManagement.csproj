@@ -86,6 +86,12 @@
     <Compile Include="UI\CustomControl\QkUC.Designer.cs">
       <DependentUpon>QkUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\EditMaterialForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EditMaterialForm.Designer.cs">
+      <DependentUpon>EditMaterialForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\CustomControl\QkUC.resx">
       <DependentUpon>QkUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EditMaterialForm.resx">
+      <DependentUpon>EditMaterialForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

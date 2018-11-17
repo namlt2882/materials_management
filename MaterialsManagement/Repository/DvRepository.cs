@@ -13,14 +13,27 @@ namespace MaterialsManagement.Repository
     {
         private static readonly string QUERY_GET_ALL = "SELECT Id,Name,QkId FROM Dv";
         private static readonly string QUERY_BY_QK_ID = "SELECT Id,Name,QkId FROM Dv WHERE QkId=@QkId";
-
+        private static readonly string QUERY_BY_ID = "SELECT Id,Name,QkId FROM Dv WHERE Id=@Id";
         public DvRepository()
         {
         }
 
-        public override Dv Get(string id)
+        public override Dv Get(string Id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                sqlCommand = new SqlCommand(QUERY_BY_ID, GetSqlConnection());
+                sqlCommand.Parameters.AddWithValue("@Id", Id);
+                sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                connection.Open();
+                sqlDataReader = sqlCommand.ExecuteReader();
+                List<Dv> rs = ReadValueFromReader();
+                return rs.DefaultIfEmpty(null).First();
+            }
+            finally
+            {
+                CloseResources();
+            }
         }
 
         public override List<Dv> GetAll()

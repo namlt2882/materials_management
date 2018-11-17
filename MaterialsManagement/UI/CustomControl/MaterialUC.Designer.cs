@@ -163,11 +163,14 @@
             this.gridData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridData.Dock = System.Windows.Forms.DockStyle.Top;
             this.gridData.Location = new System.Drawing.Point(33, 109);
+            this.gridData.MultiSelect = false;
             this.gridData.Name = "gridData";
             this.gridData.ReadOnly = true;
             this.gridData.RowTemplate.Height = 28;
+            this.gridData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridData.Size = new System.Drawing.Size(1005, 585);
             this.gridData.TabIndex = 1;
+            this.gridData.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridData_CellClick);
             // 
             // MaterialUC
             // 

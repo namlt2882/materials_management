@@ -21,14 +21,14 @@ namespace MaterialsManagement.UI.CustomControl
         public MaterialUC(Dv dv) : this()
         {
             this.dv = dv;
+            InitGridView((int)MaterialEnum.Sail);
+            var topLeftHeaderCell = gridData.TopLeftHeaderCell;
         }
 
         public MaterialUC()
         {
             InitializeComponent();
             ResetMaterialButtonColor(btnSail);
-            InitGridView((int)MaterialEnum.Sail);
-            var topLeftHeaderCell = gridData.TopLeftHeaderCell;
         }
 
         private void ResetMaterialButtonColor(Button component)
@@ -72,10 +72,10 @@ namespace MaterialsManagement.UI.CustomControl
         {
             try
             {
-                dataTable = new MaterialService().GetByTypeAsDataTable(type);
+                dataTable = new MaterialService().GetByTypeAsDataTable(dv.Id, type);
                 SetDataTable(dataTable);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Đã xảy ra lỗi, không thể tải dữ liệu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -94,6 +94,21 @@ namespace MaterialsManagement.UI.CustomControl
             gridData.Columns[2].HeaderText = "Model";
             gridData.Columns[3].HeaderText = "Xuất xứ";
             gridData.Columns[4].HeaderText = "Ngày sản xuất";
+        }
+
+        private void gridData_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = gridData.SelectedRows[0];
+            string materialId = row.Cells["Id"].Value.ToString();
+            Material material = new MaterialService().Get(materialId);
+            EditMaterialForm form = new EditMaterialForm(material);
+            form.afterEditedCallBack = AfterEditedAction;
+            form.Show();
+        }
+
+        private void AfterEditedAction(Material material)
+        {
+
         }
     }
 }

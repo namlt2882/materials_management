@@ -20,12 +20,17 @@ namespace MaterialsManagement.Repository
             "VALUES(@Id, @Type, @RegisterCode, @Model, @Origin," +
             "@ManufacturingDate, @CurrentKm, @OilWarning, @Notes, @Status," +
             "@DvId, @InsertDate)";
-        private static readonly string QUERY_GET_BY_TYPE = "SELECT " +
+        private static readonly string QUERY_BY_TYPE_AND_DVID = "SELECT " +
             "Id, Type, RegisterCode, Model, Origin," +
             "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
             "DvId, InsertDate " +
-            "FROM Material WHERE Type=@Type AND Status=" + (int)MaterialStatus.ACTIVE+
+            "FROM Material WHERE Type=@Type AND DvId=@DvId AND Status=" + (int)MaterialStatus.ACTIVE+
             " ORDER BY InsertDate DESC";
+        private static readonly string QUERY_BY_ID = "SELECT " +
+            "Id, Type, RegisterCode, Model, Origin," +
+            "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
+            "DvId, InsertDate " +
+            "FROM Material WHERE Id=@Id";
         public MaterialRepository(bool ReturnDataTable) : this()
         {
             this.ReturnDataTable = ReturnDataTable;
@@ -33,21 +38,40 @@ namespace MaterialsManagement.Repository
         public MaterialRepository()
         {
         }
-        public override Material Get(string id)
+        public override Material Get(string Id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                sqlCommand = new SqlCommand(QUERY_BY_ID, GetSqlConnection());
+                sqlCommand.Parameters.AddWithValue("@Id", Id);
+                sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                connection.Open();
+                if (ReturnDataTable)
+                {
+                    dataTable = new DataTable();
+                    sqlDataAdapter.Fill(dataTable);
+                }
+                sqlDataReader = sqlCommand.ExecuteReader();
+                List<Material> rs = ReadValueFromReader();
+                return rs.DefaultIfEmpty(null).First();
+            }
+            finally
+            {
+                CloseResources();
+            }
         }
 
         public override List<Material> GetAll()
         {
             throw new NotImplementedException();
         }
-        public List<Material> GetByType(int Type)
+        public List<Material> GetByType(string DvId,int Type)
         {
             try
             {
-                sqlCommand = new SqlCommand(QUERY_GET_BY_TYPE, GetSqlConnection());
+                sqlCommand = new SqlCommand(QUERY_BY_TYPE_AND_DVID, GetSqlConnection());
                 sqlCommand.Parameters.AddWithValue("@Type", Type);
+                sqlCommand.Parameters.AddWithValue("@DvId", DvId);
                 sqlDataAdapter = new SqlDataAdapter(sqlCommand);
                 connection.Open();
                 if (ReturnDataTable)

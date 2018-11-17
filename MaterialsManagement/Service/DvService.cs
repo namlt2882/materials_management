@@ -19,5 +19,10 @@ namespace MaterialsManagement.Service
         {
             return new DvRepository().GetByQkId(QkId);
         }
+
+        public Dv Get(string DvId)
+        {
+            return new DvRepository().Get(DvId);
+        }
     }
 }
