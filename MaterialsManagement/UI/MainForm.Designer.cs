@@ -198,7 +198,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Hệ thống quản lí vật tư bộ quốc phòng";
+            this.Text = "Hệ thống quản lí trang bị bộ quốc phòng";
             ((System.ComponentModel.ISupportInitialize)(this.icArrowDv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.icArrowQk)).EndInit();
             this.addressPanel.ResumeLayout(false);

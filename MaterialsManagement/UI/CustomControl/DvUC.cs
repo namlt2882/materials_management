@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialsManagement.Model;
 using MaterialsManagement.Service;
+using MaterialsManagement.Common;
 
 namespace MaterialsManagement.UI.CustomControl
 {
@@ -19,7 +20,7 @@ namespace MaterialsManagement.UI.CustomControl
         public OnButtonClickEvent onButtonClick;
         private Qk qk;
         private List<Dv> DvList;
-        public DvUC(Qk qk,OnButtonClickEvent onButtonClick) : this()
+        public DvUC(Qk qk, OnButtonClickEvent onButtonClick) : this()
         {
             this.qk = qk;
             this.onButtonClick = onButtonClick;
@@ -51,10 +52,24 @@ namespace MaterialsManagement.UI.CustomControl
                     Width = 180,
                     Margin = new Padding(10),
                     AutoSizeMode = AutoSizeMode.GrowOnly,
-                    BackColor = Color.Green,
                     ForeColor = Color.White,
                     AutoSize = false
                 };
+                switch (dv.Priority)
+                {
+                    case (int)DvPriority.OFFICE:
+                        btn.BackColor = Color.Red;
+                        break;
+                    case (int)DvPriority.TP:
+                        btn.BackColor = Color.Blue;
+                        break;
+                    case (int)DvPriority.CTY:
+                        btn.BackColor = Color.BlueViolet;
+                        break;
+                    default:
+                        btn.BackColor = Color.Green;
+                        break;
+                }
                 btn.Click += new EventHandler(btn_Click);
                 gridComponents.Add(btn);
                 tableLayoutQkList.Controls.Add(btn);

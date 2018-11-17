@@ -12,7 +12,8 @@ namespace MaterialsManagement.Repository
     public class DvRepository : BaseRepository<string, Dv>
     {
         private static readonly string QUERY_GET_ALL = "SELECT Id,Name,QkId FROM Dv";
-        private static readonly string QUERY_BY_QK_ID = "SELECT Id,Name,QkId FROM Dv WHERE QkId=@QkId";
+        private static readonly string QUERY_BY_QK_ID = "SELECT Id,Name,QkId,Priority FROM Dv WHERE QkId=@QkId " +
+            "ORDER BY Priority ASC";
         private static readonly string QUERY_BY_ID = "SELECT Id,Name,QkId FROM Dv WHERE Id=@Id";
         public DvRepository()
         {
@@ -86,7 +87,8 @@ namespace MaterialsManagement.Repository
                 {
                     Id = sqlDataReader[0].ToString(),
                     Name = sqlDataReader[1].ToString(),
-                    QkId = sqlDataReader[2].ToString()
+                    QkId = sqlDataReader[2].ToString(),
+                    Priority = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("Priority"))
                 };
                 rs.Add(dv);
             }
