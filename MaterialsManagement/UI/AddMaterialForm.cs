@@ -15,6 +15,8 @@ namespace MaterialsManagement.UI
 {
     public partial class AddMaterialForm : Form
     {
+        public delegate void AfterAddCallBack(Material material);
+        public AfterAddCallBack afterAddCallBack { get; set; }
         public Qk qk { get; set; }
         public Dv dv { get; set; }
         public int materialType;
@@ -92,11 +94,18 @@ namespace MaterialsManagement.UI
                 CurrentKm = Convert.ToInt32(nbCurrentKm.Value),
                 OilWarning = Convert.ToInt32(nbOilWarning.Value),
                 Notes = tbNote.Text,
-                DvId = dv.Id
+                DvId = dv.Id,
+                qk = this.qk,
+                dv = this.dv
             };
             try
             {
                 Material rs = new MaterialService().Add(material);
+                if (afterAddCallBack != null)
+                {
+                    afterAddCallBack(rs);
+                }
+                this.Close();
             }catch(Exception ex)
             {
                 MessageBox.Show("Tác vụ không thành công, hãy thử lại sau!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);

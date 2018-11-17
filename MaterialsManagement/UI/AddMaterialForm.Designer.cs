@@ -171,6 +171,7 @@
             // 
             this.tbRegisterCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbRegisterCode.Location = new System.Drawing.Point(165, 65);
+            this.tbRegisterCode.MaxLength = 30;
             this.tbRegisterCode.Name = "tbRegisterCode";
             this.tbRegisterCode.Size = new System.Drawing.Size(223, 32);
             this.tbRegisterCode.TabIndex = 3;
@@ -179,6 +180,7 @@
             // 
             this.tbModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbModel.Location = new System.Drawing.Point(165, 128);
+            this.tbModel.MaxLength = 50;
             this.tbModel.Name = "tbModel";
             this.tbModel.Size = new System.Drawing.Size(223, 32);
             this.tbModel.TabIndex = 4;
@@ -251,6 +253,7 @@
             // 
             this.tbOrigin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbOrigin.Location = new System.Drawing.Point(155, 3);
+            this.tbOrigin.MaxLength = 100;
             this.tbOrigin.Name = "tbOrigin";
             this.tbOrigin.Size = new System.Drawing.Size(200, 32);
             this.tbOrigin.TabIndex = 3;
@@ -277,6 +280,7 @@
             this.tbNote.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbNote.Location = new System.Drawing.Point(155, 274);
+            this.tbNote.MaxLength = 200;
             this.tbNote.Name = "tbNote";
             this.tbNote.Size = new System.Drawing.Size(260, 141);
             this.tbNote.TabIndex = 7;

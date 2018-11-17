@@ -49,8 +49,16 @@
     <Compile Include="Common\Enum.cs" />
     <Compile Include="Common\EnumExtensions.cs" />
     <Compile Include="Model\Dv.cs" />
+    <Compile Include="Model\Material.cs" />
     <Compile Include="Model\MaterialType.cs" />
     <Compile Include="Model\Qk.cs" />
+    <Compile Include="Repository\BaseRepository.cs" />
+    <Compile Include="Repository\MaterialRepository.cs" />
+    <Compile Include="Repository\DvRepository.cs" />
+    <Compile Include="Repository\QkRepository.cs" />
+    <Compile Include="Service\MaterialService.cs" />
+    <Compile Include="Service\DvService.cs" />
+    <Compile Include="Service\QkService.cs" />
     <Compile Include="UI\AddMaterialForm.cs">
       <SubType>Form</SubType>
     </Compile>

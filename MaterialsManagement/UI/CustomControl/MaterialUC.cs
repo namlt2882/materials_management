@@ -53,7 +53,13 @@ namespace MaterialsManagement.UI.CustomControl
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddMaterialForm form = new AddMaterialForm(dv, CurrentMaterialType);
+            form.afterAddCallBack = AfterAddedAction;
             form.Show();
+        }
+
+        private void AfterAddedAction(Material material)
+        {
+
         }
     }
 }

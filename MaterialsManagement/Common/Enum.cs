@@ -16,4 +16,9 @@ namespace MaterialsManagement.Common
         [Display(Name = "Vũ khí")]
         Weapon = 3
     }
+    public enum MaterialStatus
+    {
+        DISABLE = 0,
+        ACTIVE = 1
+    }
 }
