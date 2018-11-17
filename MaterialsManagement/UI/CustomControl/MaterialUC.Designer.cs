@@ -158,6 +158,8 @@
             // 
             // gridData
             // 
+            this.gridData.AllowUserToAddRows = false;
+            this.gridData.AllowUserToDeleteRows = false;
             this.gridData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridData.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.gridData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
