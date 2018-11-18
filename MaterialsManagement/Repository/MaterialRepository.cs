@@ -16,20 +16,20 @@ namespace MaterialsManagement.Repository
         private static readonly string INSERT_QUERY = "INSERT INTO " +
             "Material(Id, Type, RegisterCode, Model, Origin," +
             "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
-            "DvId, InsertDate) " +
+            "DvId, InsertDate, Controller) " +
             "VALUES(@Id, @Type, @RegisterCode, @Model, @Origin," +
             "@ManufacturingDate, @CurrentKm, @OilWarning, @Notes, @Status," +
-            "@DvId, @InsertDate)";
+            "@DvId, @InsertDate, @Controller)";
         private static readonly string QUERY_BY_TYPE_AND_DVID = "SELECT " +
             "Id, Type, RegisterCode, Model, Origin," +
             "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
-            "DvId, InsertDate " +
+            "DvId, InsertDate, Controller " +
             "FROM Material WHERE Type=@Type AND DvId=@DvId AND Status=" + (int)MaterialStatus.ACTIVE+
             " ORDER BY InsertDate DESC";
         private static readonly string QUERY_BY_ID = "SELECT " +
             "Id, Type, RegisterCode, Model, Origin," +
             "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
-            "DvId, InsertDate " +
+            "DvId, InsertDate, Controller " +
             "FROM Material WHERE Id=@Id";
         public MaterialRepository(bool ReturnDataTable) : this()
         {
@@ -98,6 +98,7 @@ namespace MaterialsManagement.Repository
                 sqlCommand.Parameters.AddWithValue("@RegisterCode", t.RegisterCode);
                 sqlCommand.Parameters.AddWithValue("@Model", t.Model);
                 sqlCommand.Parameters.AddWithValue("@Origin", t.Origin);
+                sqlCommand.Parameters.AddWithValue("@Controller", t.Controller);
                 sqlCommand.Parameters.AddWithValue("@ManufacturingDate", t.ManufacturingDate);
                 sqlCommand.Parameters.AddWithValue("@CurrentKm", t.CurrentKm);
                 sqlCommand.Parameters.AddWithValue("@OilWarning", t.OilWarning);
@@ -135,6 +136,7 @@ namespace MaterialsManagement.Repository
                     RegisterCode = sqlDataReader["RegisterCode"].ToString(),
                     Model = sqlDataReader["Model"].ToString(),
                     Origin = sqlDataReader["Origin"].ToString(),
+                    Controller = sqlDataReader["Controller"].ToString(),
                     ManufacturingDate = sqlDataReader.GetDateTime(sqlDataReader.GetOrdinal("ManufacturingDate")),
                     CurrentKm = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("CurrentKm")),
                     OilWarning = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("OilWarning")),

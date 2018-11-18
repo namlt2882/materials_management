@@ -1,6 +1,7 @@
 ﻿using MaterialsManagement.Common;
 using MaterialsManagement.Model;
 using MaterialsManagement.Service;
+using MaterialsManagement.Utility;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,12 +56,13 @@ namespace MaterialsManagement.UI
             }
             //material attribute
             tbId.Text = material.Id;
-            tbRegisterCode.Text = material.RegisterCode.Trim();
-            tbModel.Text = material.Model.Trim();
-            tbOrigin.Text = material.Origin.Trim();
+            tbRegisterCode.Text = StringUtility.TrimIfPresent(material.RegisterCode);
+            tbModel.Text = StringUtility.TrimIfPresent(material.Model);
+            tbOrigin.Text = StringUtility.TrimIfPresent(material.Origin);
             dtpManufactureDate.Value = material.ManufacturingDate;
             nbOilWarning.Value = material.OilWarning;
-            tbNote.Text = material.Notes.Trim();
+            tbNote.Text = StringUtility.TrimIfPresent(material.Notes);
+            tbController.Text = StringUtility.TrimIfPresent(material.Controller);
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {

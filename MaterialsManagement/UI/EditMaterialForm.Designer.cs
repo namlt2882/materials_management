@@ -44,6 +44,10 @@
             this.tbModel = new System.Windows.Forms.TextBox();
             this.tbId = new System.Windows.Forms.TextBox();
             this.tbType = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnGetQrCode = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.tbOrigin = new System.Windows.Forms.TextBox();
             this.dtpManufactureDate = new System.Windows.Forms.DateTimePicker();
@@ -53,19 +57,17 @@
             this.label4 = new System.Windows.Forms.Label();
             this.actionPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnGetQrCode = new System.Windows.Forms.Button();
             this.MyToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.label10 = new System.Windows.Forms.Label();
+            this.tbController = new System.Windows.Forms.TextBox();
             this.fixedInfoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nbOilWarning)).BeginInit();
             this.infoPanel.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.detailPanel.SuspendLayout();
             this.actionPanel.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnUpdate
@@ -120,7 +122,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 110);
+            this.label6.Location = new System.Drawing.Point(3, 170);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(145, 78);
             this.label6.TabIndex = 4;
@@ -128,7 +130,7 @@
             // 
             // nbOilWarning
             // 
-            this.nbOilWarning.Location = new System.Drawing.Point(155, 113);
+            this.nbOilWarning.Location = new System.Drawing.Point(155, 173);
             this.nbOilWarning.Name = "nbOilWarning";
             this.nbOilWarning.Size = new System.Drawing.Size(149, 26);
             this.nbOilWarning.TabIndex = 5;
@@ -235,106 +237,6 @@
             this.tbType.Size = new System.Drawing.Size(223, 32);
             this.tbType.TabIndex = 8;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(3, 50);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(106, 52);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Năm sản xuất:";
-            // 
-            // tbOrigin
-            // 
-            this.tbOrigin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbOrigin.Location = new System.Drawing.Point(155, 3);
-            this.tbOrigin.MaxLength = 100;
-            this.tbOrigin.Name = "tbOrigin";
-            this.tbOrigin.Size = new System.Drawing.Size(200, 32);
-            this.tbOrigin.TabIndex = 3;
-            // 
-            // dtpManufactureDate
-            // 
-            this.dtpManufactureDate.Location = new System.Drawing.Point(155, 53);
-            this.dtpManufactureDate.Name = "dtpManufactureDate";
-            this.dtpManufactureDate.Size = new System.Drawing.Size(200, 26);
-            this.dtpManufactureDate.TabIndex = 8;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(3, 190);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(93, 26);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Ghi chú:";
-            // 
-            // tbNote
-            // 
-            this.tbNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbNote.Location = new System.Drawing.Point(155, 193);
-            this.tbNote.MaxLength = 200;
-            this.tbNote.Name = "tbNote";
-            this.tbNote.Size = new System.Drawing.Size(260, 141);
-            this.tbNote.TabIndex = 7;
-            this.tbNote.Text = "";
-            // 
-            // detailPanel
-            // 
-            this.detailPanel.ColumnCount = 2;
-            this.detailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.36364F));
-            this.detailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.63636F));
-            this.detailPanel.Controls.Add(this.label4, 0, 0);
-            this.detailPanel.Controls.Add(this.label5, 0, 1);
-            this.detailPanel.Controls.Add(this.tbOrigin, 1, 0);
-            this.detailPanel.Controls.Add(this.dtpManufactureDate, 1, 1);
-            this.detailPanel.Controls.Add(this.nbOilWarning, 1, 2);
-            this.detailPanel.Controls.Add(this.label6, 0, 2);
-            this.detailPanel.Controls.Add(this.label7, 0, 3);
-            this.detailPanel.Controls.Add(this.tbNote, 1, 3);
-            this.detailPanel.Location = new System.Drawing.Point(502, 149);
-            this.detailPanel.Name = "detailPanel";
-            this.detailPanel.RowCount = 4;
-            this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.detailPanel.Size = new System.Drawing.Size(418, 305);
-            this.detailPanel.TabIndex = 1;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(139, 26);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Nơi sản xuất:";
-            // 
-            // actionPanel
-            // 
-            this.actionPanel.Controls.Add(this.btnUpdate);
-            this.actionPanel.Location = new System.Drawing.Point(53, 460);
-            this.actionPanel.Name = "actionPanel";
-            this.actionPanel.Size = new System.Drawing.Size(867, 100);
-            this.actionPanel.TabIndex = 2;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.fixedInfoPanel);
-            this.flowLayoutPanel1.Controls.Add(this.infoPanel);
-            this.flowLayoutPanel1.Controls.Add(this.detailPanel);
-            this.flowLayoutPanel1.Controls.Add(this.actionPanel);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(50);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(978, 744);
-            this.flowLayoutPanel1.TabIndex = 1;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -380,6 +282,129 @@
             this.MyToolTip.SetToolTip(this.btnGetQrCode, "Tải xuống");
             this.btnGetQrCode.UseVisualStyleBackColor = true;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(3, 110);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(106, 52);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Năm sản xuất:";
+            // 
+            // tbOrigin
+            // 
+            this.tbOrigin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbOrigin.Location = new System.Drawing.Point(155, 63);
+            this.tbOrigin.MaxLength = 100;
+            this.tbOrigin.Name = "tbOrigin";
+            this.tbOrigin.Size = new System.Drawing.Size(200, 32);
+            this.tbOrigin.TabIndex = 3;
+            // 
+            // dtpManufactureDate
+            // 
+            this.dtpManufactureDate.Location = new System.Drawing.Point(155, 113);
+            this.dtpManufactureDate.Name = "dtpManufactureDate";
+            this.dtpManufactureDate.Size = new System.Drawing.Size(200, 26);
+            this.dtpManufactureDate.TabIndex = 8;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(3, 250);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(93, 26);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Ghi chú:";
+            // 
+            // tbNote
+            // 
+            this.tbNote.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbNote.Location = new System.Drawing.Point(155, 253);
+            this.tbNote.MaxLength = 200;
+            this.tbNote.Name = "tbNote";
+            this.tbNote.Size = new System.Drawing.Size(260, 154);
+            this.tbNote.TabIndex = 7;
+            this.tbNote.Text = "";
+            // 
+            // detailPanel
+            // 
+            this.detailPanel.ColumnCount = 2;
+            this.detailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.36364F));
+            this.detailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.63636F));
+            this.detailPanel.Controls.Add(this.label4, 0, 1);
+            this.detailPanel.Controls.Add(this.label5, 0, 2);
+            this.detailPanel.Controls.Add(this.tbOrigin, 1, 1);
+            this.detailPanel.Controls.Add(this.dtpManufactureDate, 1, 2);
+            this.detailPanel.Controls.Add(this.nbOilWarning, 1, 3);
+            this.detailPanel.Controls.Add(this.label6, 0, 3);
+            this.detailPanel.Controls.Add(this.label7, 0, 4);
+            this.detailPanel.Controls.Add(this.tbNote, 1, 4);
+            this.detailPanel.Controls.Add(this.label10, 0, 0);
+            this.detailPanel.Controls.Add(this.tbController, 1, 0);
+            this.detailPanel.Location = new System.Drawing.Point(502, 149);
+            this.detailPanel.Name = "detailPanel";
+            this.detailPanel.RowCount = 5;
+            this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.detailPanel.Size = new System.Drawing.Size(418, 410);
+            this.detailPanel.TabIndex = 1;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(3, 60);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(139, 26);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Nơi sản xuất:";
+            // 
+            // actionPanel
+            // 
+            this.actionPanel.Controls.Add(this.btnUpdate);
+            this.actionPanel.Location = new System.Drawing.Point(53, 565);
+            this.actionPanel.Name = "actionPanel";
+            this.actionPanel.Size = new System.Drawing.Size(867, 120);
+            this.actionPanel.TabIndex = 2;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.fixedInfoPanel);
+            this.flowLayoutPanel1.Controls.Add(this.infoPanel);
+            this.flowLayoutPanel1.Controls.Add(this.detailPanel);
+            this.flowLayoutPanel1.Controls.Add(this.actionPanel);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(50);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(978, 744);
+            this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(3, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(122, 52);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "Người điều khiển:";
+            // 
+            // tbController
+            // 
+            this.tbController.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbController.Location = new System.Drawing.Point(155, 3);
+            this.tbController.MaxLength = 100;
+            this.tbController.Name = "tbController";
+            this.tbController.Size = new System.Drawing.Size(200, 32);
+            this.tbController.TabIndex = 10;
+            // 
             // EditMaterialForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -394,14 +419,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.nbOilWarning)).EndInit();
             this.infoPanel.ResumeLayout(false);
             this.infoPanel.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.detailPanel.ResumeLayout(false);
             this.detailPanel.PerformLayout();
             this.actionPanel.ResumeLayout(false);
             this.actionPanel.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -437,5 +462,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnGetQrCode;
         private System.Windows.Forms.ToolTip MyToolTip;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox tbController;
     }
 }

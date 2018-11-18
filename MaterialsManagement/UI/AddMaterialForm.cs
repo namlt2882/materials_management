@@ -90,6 +90,7 @@ namespace MaterialsManagement.UI
                 RegisterCode = tbRegisterCode.Text,
                 Model = tbModel.Text,
                 Origin = tbOrigin.Text,
+                Controller = tbController.Text,
                 ManufacturingDate = dtpManufactureDate.Value.Date,
                 CurrentKm = Convert.ToInt32(nbCurrentKm.Value),
                 OilWarning = Convert.ToInt32(nbOilWarning.Value),

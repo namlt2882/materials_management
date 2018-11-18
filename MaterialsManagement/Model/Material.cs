@@ -22,7 +22,7 @@ namespace MaterialsManagement.Model
         public DateTime InsertDate { get; set; }
         public Dv dv { get; set; }
         public Qk qk { get; set; }
-
+        public string Controller { get; set; }
         public Material()
         {
             InsertDate = DateTime.Now;

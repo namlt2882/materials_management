@@ -94,6 +94,7 @@ namespace MaterialsManagement.UI.CustomControl
             gridData.Columns[2].HeaderText = "Model";
             gridData.Columns[3].HeaderText = "Xuất xứ";
             gridData.Columns[4].HeaderText = "Ngày sản xuất";
+            gridData.Columns[5].HeaderText = "Người điều khiển";
         }
 
         private void gridData_CellClick(object sender, DataGridViewCellEventArgs e)
