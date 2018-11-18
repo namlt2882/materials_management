@@ -32,6 +32,7 @@ namespace MaterialsManagement.UI
         public EditMaterialForm()
         {
             InitializeComponent();
+            btnUpdate.Visible = false;
         }
         private void InitOriginInfo()
         {
@@ -87,6 +88,20 @@ namespace MaterialsManagement.UI
                 MessageBox.Show("Đã xảy ra lỗi. Thao tác thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void btnUpdateEnable_Click(object sender, EventArgs e)
+        {
+            tbRegisterCode.ReadOnly = false;
+            tbModel.ReadOnly = false;
+            tbController.ReadOnly = false;
+            tbOrigin.ReadOnly = false;
+            dtpManufactureDate.Enabled = true;
+            nbOilWarning.ReadOnly = false;
+            tbNote.ReadOnly = false;
+            btnUpdate.Visible = true;
+            btnUpdateEnable.Visible = false;
+            
         }
     }
 }
