@@ -178,5 +178,17 @@
   <ItemGroup>
     <None Include="resource\icon\download-26.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="resource\icon\report-26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resource\icon\export-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resource\icon\import-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resource\icon\synchronize-24.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

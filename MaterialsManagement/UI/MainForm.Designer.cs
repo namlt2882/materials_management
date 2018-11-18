@@ -33,19 +33,26 @@
             this.iconList = new System.Windows.Forms.ImageList(this.components);
             this.btnQk = new System.Windows.Forms.Button();
             this.btnDv = new System.Windows.Forms.Button();
-            this.icArrowDv = new System.Windows.Forms.PictureBox();
-            this.icArrowQk = new System.Windows.Forms.PictureBox();
-            this.btnHome = new System.Windows.Forms.Button();
             this.mainLabel = new System.Windows.Forms.Label();
             this.mainPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.addressPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.headerPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.titlePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.parentPanel = new System.Windows.Forms.FlowLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.icArrowDv)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.icArrowQk)).BeginInit();
-            this.addressPanel.SuspendLayout();
+            this.MyToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.actionPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.addressPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnHome = new System.Windows.Forms.Button();
+            this.icArrowQk = new System.Windows.Forms.PictureBox();
+            this.icArrowDv = new System.Windows.Forms.PictureBox();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.headerPanel.SuspendLayout();
             this.titlePanel.SuspendLayout();
             this.parentPanel.SuspendLayout();
+            this.actionPanel.SuspendLayout();
+            this.addressPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.icArrowQk)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.icArrowDv)).BeginInit();
             this.SuspendLayout();
             // 
             // iconList
@@ -60,7 +67,7 @@
             this.btnQk.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnQk.BackColor = System.Drawing.SystemColors.Info;
             this.btnQk.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQk.Location = new System.Drawing.Point(107, 13);
+            this.btnQk.Location = new System.Drawing.Point(97, 3);
             this.btnQk.Name = "btnQk";
             this.btnQk.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.btnQk.Size = new System.Drawing.Size(92, 40);
@@ -75,7 +82,7 @@
             this.btnDv.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnDv.BackColor = System.Drawing.SystemColors.Info;
             this.btnDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDv.Location = new System.Drawing.Point(250, 13);
+            this.btnDv.Location = new System.Drawing.Point(240, 3);
             this.btnDv.Name = "btnDv";
             this.btnDv.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.btnDv.Size = new System.Drawing.Size(114, 40);
@@ -83,46 +90,6 @@
             this.btnDv.Text = "Tên đơn vị";
             this.btnDv.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnDv.UseVisualStyleBackColor = false;
-            // 
-            // icArrowDv
-            // 
-            this.icArrowDv.BackColor = System.Drawing.Color.Transparent;
-            this.icArrowDv.BackgroundImage = global::MaterialsManagement.Properties.Resources.greater_24;
-            this.icArrowDv.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.icArrowDv.Location = new System.Drawing.Point(205, 13);
-            this.icArrowDv.Name = "icArrowDv";
-            this.icArrowDv.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.icArrowDv.Size = new System.Drawing.Size(39, 35);
-            this.icArrowDv.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.icArrowDv.TabIndex = 3;
-            this.icArrowDv.TabStop = false;
-            // 
-            // icArrowQk
-            // 
-            this.icArrowQk.BackColor = System.Drawing.Color.Transparent;
-            this.icArrowQk.BackgroundImage = global::MaterialsManagement.Properties.Resources.greater_24;
-            this.icArrowQk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.icArrowQk.Location = new System.Drawing.Point(64, 13);
-            this.icArrowQk.Name = "icArrowQk";
-            this.icArrowQk.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.icArrowQk.Size = new System.Drawing.Size(37, 35);
-            this.icArrowQk.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.icArrowQk.TabIndex = 1;
-            this.icArrowQk.TabStop = false;
-            // 
-            // btnHome
-            // 
-            this.btnHome.AutoSize = true;
-            this.btnHome.BackColor = System.Drawing.Color.White;
-            this.btnHome.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHome.BackgroundImage")));
-            this.btnHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnHome.Location = new System.Drawing.Point(13, 13);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(45, 46);
-            this.btnHome.TabIndex = 0;
-            this.btnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnHome.UseVisualStyleBackColor = false;
-            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // mainLabel
             // 
@@ -151,19 +118,16 @@
             this.mainPanel.Size = new System.Drawing.Size(1300, 500);
             this.mainPanel.TabIndex = 7;
             // 
-            // addressPanel
+            // headerPanel
             // 
-            this.addressPanel.Controls.Add(this.btnHome);
-            this.addressPanel.Controls.Add(this.icArrowQk);
-            this.addressPanel.Controls.Add(this.btnQk);
-            this.addressPanel.Controls.Add(this.icArrowDv);
-            this.addressPanel.Controls.Add(this.btnDv);
-            this.addressPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.addressPanel.Location = new System.Drawing.Point(3, 3);
-            this.addressPanel.Name = "addressPanel";
-            this.addressPanel.Padding = new System.Windows.Forms.Padding(10, 10, 0, 0);
-            this.addressPanel.Size = new System.Drawing.Size(1349, 100);
-            this.addressPanel.TabIndex = 9;
+            this.headerPanel.Controls.Add(this.addressPanel);
+            this.headerPanel.Controls.Add(this.actionPanel);
+            this.headerPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.headerPanel.Location = new System.Drawing.Point(3, 3);
+            this.headerPanel.Name = "headerPanel";
+            this.headerPanel.Padding = new System.Windows.Forms.Padding(10, 10, 0, 0);
+            this.headerPanel.Size = new System.Drawing.Size(1349, 100);
+            this.headerPanel.TabIndex = 9;
             // 
             // titlePanel
             // 
@@ -177,7 +141,7 @@
             // parentPanel
             // 
             this.parentPanel.AutoScroll = true;
-            this.parentPanel.Controls.Add(this.addressPanel);
+            this.parentPanel.Controls.Add(this.headerPanel);
             this.parentPanel.Controls.Add(this.titlePanel);
             this.parentPanel.Controls.Add(this.mainPanel);
             this.parentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -185,6 +149,91 @@
             this.parentPanel.Name = "parentPanel";
             this.parentPanel.Size = new System.Drawing.Size(1378, 844);
             this.parentPanel.TabIndex = 8;
+            // 
+            // actionPanel
+            // 
+            this.actionPanel.Controls.Add(this.btnImport);
+            this.actionPanel.Controls.Add(this.btnExport);
+            this.actionPanel.Location = new System.Drawing.Point(963, 13);
+            this.actionPanel.Name = "actionPanel";
+            this.actionPanel.Size = new System.Drawing.Size(189, 74);
+            this.actionPanel.TabIndex = 7;
+            // 
+            // addressPanel
+            // 
+            this.addressPanel.Controls.Add(this.btnHome);
+            this.addressPanel.Controls.Add(this.icArrowQk);
+            this.addressPanel.Controls.Add(this.btnQk);
+            this.addressPanel.Controls.Add(this.icArrowDv);
+            this.addressPanel.Controls.Add(this.btnDv);
+            this.addressPanel.Location = new System.Drawing.Point(13, 13);
+            this.addressPanel.Name = "addressPanel";
+            this.addressPanel.Size = new System.Drawing.Size(944, 74);
+            this.addressPanel.TabIndex = 8;
+            // 
+            // btnHome
+            // 
+            this.btnHome.AutoSize = true;
+            this.btnHome.BackColor = System.Drawing.Color.White;
+            this.btnHome.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHome.BackgroundImage")));
+            this.btnHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnHome.Location = new System.Drawing.Point(3, 3);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(45, 46);
+            this.btnHome.TabIndex = 0;
+            this.btnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnHome.UseVisualStyleBackColor = false;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
+            // 
+            // icArrowQk
+            // 
+            this.icArrowQk.BackColor = System.Drawing.Color.Transparent;
+            this.icArrowQk.BackgroundImage = global::MaterialsManagement.Properties.Resources.greater_24;
+            this.icArrowQk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.icArrowQk.Location = new System.Drawing.Point(54, 3);
+            this.icArrowQk.Name = "icArrowQk";
+            this.icArrowQk.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.icArrowQk.Size = new System.Drawing.Size(37, 35);
+            this.icArrowQk.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.icArrowQk.TabIndex = 1;
+            this.icArrowQk.TabStop = false;
+            // 
+            // icArrowDv
+            // 
+            this.icArrowDv.BackColor = System.Drawing.Color.Transparent;
+            this.icArrowDv.BackgroundImage = global::MaterialsManagement.Properties.Resources.greater_24;
+            this.icArrowDv.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.icArrowDv.Location = new System.Drawing.Point(195, 3);
+            this.icArrowDv.Name = "icArrowDv";
+            this.icArrowDv.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.icArrowDv.Size = new System.Drawing.Size(39, 35);
+            this.icArrowDv.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.icArrowDv.TabIndex = 3;
+            this.icArrowDv.TabStop = false;
+            // 
+            // btnImport
+            // 
+            this.btnImport.BackgroundImage = global::MaterialsManagement.Properties.Resources.synchronize_24;
+            this.btnImport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnImport.Location = new System.Drawing.Point(3, 3);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(47, 46);
+            this.btnImport.TabIndex = 5;
+            this.MyToolTip.SetToolTip(this.btnImport, "Đồng bộ dữ liệu từ file");
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
+            // btnExport
+            // 
+            this.btnExport.BackgroundImage = global::MaterialsManagement.Properties.Resources.export_24;
+            this.btnExport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnExport.Location = new System.Drawing.Point(56, 3);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(50, 46);
+            this.btnExport.TabIndex = 6;
+            this.MyToolTip.SetToolTip(this.btnExport, "Xuất dữ liệu");
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // MainForm
             // 
@@ -199,14 +248,16 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hệ thống quản lí trang bị bộ quốc phòng";
-            ((System.ComponentModel.ISupportInitialize)(this.icArrowDv)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.icArrowQk)).EndInit();
-            this.addressPanel.ResumeLayout(false);
-            this.addressPanel.PerformLayout();
+            this.headerPanel.ResumeLayout(false);
             this.titlePanel.ResumeLayout(false);
             this.titlePanel.PerformLayout();
             this.parentPanel.ResumeLayout(false);
             this.parentPanel.PerformLayout();
+            this.actionPanel.ResumeLayout(false);
+            this.addressPanel.ResumeLayout(false);
+            this.addressPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.icArrowQk)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.icArrowDv)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -221,8 +272,13 @@
         private System.Windows.Forms.PictureBox icArrowDv;
         private System.Windows.Forms.Label mainLabel;
         private System.Windows.Forms.TableLayoutPanel mainPanel;
-        private System.Windows.Forms.FlowLayoutPanel addressPanel;
+        private System.Windows.Forms.FlowLayoutPanel headerPanel;
         private System.Windows.Forms.FlowLayoutPanel titlePanel;
         private System.Windows.Forms.FlowLayoutPanel parentPanel;
+        private System.Windows.Forms.Button btnImport;
+        private System.Windows.Forms.ToolTip MyToolTip;
+        private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.FlowLayoutPanel actionPanel;
+        private System.Windows.Forms.FlowLayoutPanel addressPanel;
     }
 }

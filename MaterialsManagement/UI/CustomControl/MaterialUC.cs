@@ -90,7 +90,7 @@ namespace MaterialsManagement.UI.CustomControl
             dataTable.Columns.Remove("DvId");
             dataTable.Columns.Remove("InsertDate");
             gridData.DataSource = dataTable;
-            gridData.Columns[1].HeaderText = "SĐk";
+            gridData.Columns[1].HeaderText = "SĐK";
             gridData.Columns[2].HeaderText = "Model";
             gridData.Columns[3].HeaderText = "Xuất xứ";
             gridData.Columns[4].HeaderText = "Ngày sản xuất";
@@ -108,6 +108,11 @@ namespace MaterialsManagement.UI.CustomControl
         }
 
         private void AfterEditedAction(Material material)
+        {
+
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
         {
 
         }
