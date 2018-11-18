@@ -31,16 +31,16 @@
             this.components = new System.ComponentModel.Container();
             this.parentPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.leftPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.rightPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.actionPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.tbSearch = new System.Windows.Forms.TextBox();
-            this.gridData = new System.Windows.Forms.DataGridView();
-            this.MyToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.btnSail = new System.Windows.Forms.Button();
             this.btnCar = new System.Windows.Forms.Button();
+            this.rightPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.actionPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.tbSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnReport = new System.Windows.Forms.Button();
+            this.gridData = new System.Windows.Forms.DataGridView();
+            this.MyToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.parentPanel.SuspendLayout();
             this.leftPanel.SuspendLayout();
             this.rightPanel.SuspendLayout();
@@ -71,56 +71,6 @@
             this.leftPanel.Size = new System.Drawing.Size(200, 694);
             this.leftPanel.TabIndex = 0;
             // 
-            // rightPanel
-            // 
-            this.rightPanel.Controls.Add(this.actionPanel);
-            this.rightPanel.Controls.Add(this.gridData);
-            this.rightPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.rightPanel.Location = new System.Drawing.Point(209, 3);
-            this.rightPanel.Name = "rightPanel";
-            this.rightPanel.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.rightPanel.Size = new System.Drawing.Size(1038, 694);
-            this.rightPanel.TabIndex = 1;
-            // 
-            // actionPanel
-            // 
-            this.actionPanel.Controls.Add(this.btnAdd);
-            this.actionPanel.Controls.Add(this.tbSearch);
-            this.actionPanel.Controls.Add(this.btnSearch);
-            this.actionPanel.Controls.Add(this.btnReport);
-            this.actionPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.actionPanel.Location = new System.Drawing.Point(33, 3);
-            this.actionPanel.Name = "actionPanel";
-            this.actionPanel.Size = new System.Drawing.Size(1005, 100);
-            this.actionPanel.TabIndex = 0;
-            // 
-            // tbSearch
-            // 
-            this.tbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSearch.Location = new System.Drawing.Point(393, 40);
-            this.tbSearch.Margin = new System.Windows.Forms.Padding(300, 40, 3, 3);
-            this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(291, 35);
-            this.tbSearch.TabIndex = 1;
-            // 
-            // gridData
-            // 
-            this.gridData.AllowUserToAddRows = false;
-            this.gridData.AllowUserToDeleteRows = false;
-            this.gridData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridData.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.gridData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridData.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gridData.Location = new System.Drawing.Point(33, 109);
-            this.gridData.MultiSelect = false;
-            this.gridData.Name = "gridData";
-            this.gridData.ReadOnly = true;
-            this.gridData.RowTemplate.Height = 28;
-            this.gridData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridData.Size = new System.Drawing.Size(1005, 585);
-            this.gridData.TabIndex = 1;
-            this.gridData.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridData_CellClick);
-            // 
             // btnSail
             // 
             this.btnSail.AutoSize = true;
@@ -149,6 +99,29 @@
             this.btnCar.UseVisualStyleBackColor = false;
             this.btnCar.Click += new System.EventHandler(this.btnCar_Click);
             // 
+            // rightPanel
+            // 
+            this.rightPanel.Controls.Add(this.actionPanel);
+            this.rightPanel.Controls.Add(this.gridData);
+            this.rightPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rightPanel.Location = new System.Drawing.Point(209, 3);
+            this.rightPanel.Name = "rightPanel";
+            this.rightPanel.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.rightPanel.Size = new System.Drawing.Size(1038, 694);
+            this.rightPanel.TabIndex = 1;
+            // 
+            // actionPanel
+            // 
+            this.actionPanel.Controls.Add(this.btnAdd);
+            this.actionPanel.Controls.Add(this.tbSearch);
+            this.actionPanel.Controls.Add(this.btnSearch);
+            this.actionPanel.Controls.Add(this.btnReport);
+            this.actionPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.actionPanel.Location = new System.Drawing.Point(33, 3);
+            this.actionPanel.Name = "actionPanel";
+            this.actionPanel.Size = new System.Drawing.Size(1005, 100);
+            this.actionPanel.TabIndex = 0;
+            // 
             // btnAdd
             // 
             this.btnAdd.AutoSize = true;
@@ -162,6 +135,15 @@
             this.MyToolTip.SetToolTip(this.btnAdd, "Thêm");
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // tbSearch
+            // 
+            this.tbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSearch.Location = new System.Drawing.Point(393, 40);
+            this.tbSearch.Margin = new System.Windows.Forms.Padding(300, 40, 3, 3);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(291, 35);
+            this.tbSearch.TabIndex = 1;
             // 
             // btnSearch
             // 
@@ -188,6 +170,24 @@
             this.MyToolTip.SetToolTip(this.btnReport, "Xuất báo cáo");
             this.btnReport.UseVisualStyleBackColor = true;
             this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
+            // 
+            // gridData
+            // 
+            this.gridData.AllowUserToAddRows = false;
+            this.gridData.AllowUserToDeleteRows = false;
+            this.gridData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridData.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.gridData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridData.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gridData.Location = new System.Drawing.Point(33, 109);
+            this.gridData.MultiSelect = false;
+            this.gridData.Name = "gridData";
+            this.gridData.ReadOnly = true;
+            this.gridData.RowTemplate.Height = 28;
+            this.gridData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridData.Size = new System.Drawing.Size(1005, 585);
+            this.gridData.TabIndex = 1;
+            this.gridData.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.gridData_CellContextMenuStripNeeded);
             // 
             // MaterialUC
             // 

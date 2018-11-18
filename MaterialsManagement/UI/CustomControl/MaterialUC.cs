@@ -99,16 +99,6 @@ namespace MaterialsManagement.UI.CustomControl
             gridData.Columns[5].HeaderText = "Người điều khiển";
         }
 
-        private void gridData_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridViewRow row = gridData.SelectedRows[0];
-            string materialId = row.Cells["Id"].Value.ToString();
-            Material material = new MaterialService().Get(materialId);
-            EditMaterialForm form = new EditMaterialForm(material);
-            form.afterEditedCallBack = AfterEditedAction;
-            form.Show();
-        }
-
         private void AfterEditedAction(Material material)
         {
 
@@ -117,6 +107,36 @@ namespace MaterialsManagement.UI.CustomControl
         private void btnReport_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ViewDetail_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = gridData.SelectedRows[0];
+            string materialId = row.Cells["Id"].Value.ToString();
+            Material material = new MaterialService().Get(materialId);
+            EditMaterialForm form = new EditMaterialForm(material);
+            form.afterEditedCallBack = AfterEditedAction;
+            form.Show();
+        }
+        private void UpdateCurrentKm_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private ContextMenuStrip cms;
+        private void gridData_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.ColumnIndex > -1)
+            {
+                if (cms == null)
+                {
+                    cms = new ContextMenuStrip();
+                    cms.Items.Add("Xem chi tiết", null, new EventHandler(ViewDetail_Click));
+                    cms.Items.Add("Cập nhật công-tơ-mét", null, new EventHandler(UpdateCurrentKm_Click));
+                }
+                gridData.CurrentCell = gridData.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                e.ContextMenuStrip = this.cms;
+            }
         }
     }
 }
