@@ -15,6 +15,7 @@ namespace MaterialsManagement.Model
         public string Origin { get; set; }
         public DateTime ManufacturingDate { get; set; }
         public int CurrentKm { get; set; }
+        public int LastChangeOil { get; set; }
         public int OilWarning { get; set; }
         public string Notes { get; set; }
         public int Status { get; set; }

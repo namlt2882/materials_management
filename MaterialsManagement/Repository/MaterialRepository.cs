@@ -16,27 +16,27 @@ namespace MaterialsManagement.Repository
         private static readonly string INSERT_QUERY = "INSERT INTO " +
             "Material(Id, Type, RegisterCode, Model, Origin," +
             "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
-            "DvId, InsertDate, Controller, LastUpdate) " +
+            "DvId, InsertDate, Controller, LastUpdate, LastChangeOil) " +
             "VALUES(@Id, @Type, @RegisterCode, @Model, @Origin," +
             "@ManufacturingDate, @CurrentKm, @OilWarning, @Notes, @Status," +
-            "@DvId, @InsertDate, @Controller, @LastUpdate)";
+            "@DvId, @InsertDate, @Controller, @LastUpdate, @LastChangeOil)";
         private static readonly string UPDATE_QUERY = "UPDATE Material " +
             "SET Type=@Type, RegisterCode=@RegisterCode, Model=@Model," +
             "Origin=@Origin, ManufacturingDate=@ManufacturingDate," +
             "CurrentKm=@CurrentKm, OilWarning=@OilWarning, Notes=@Notes," +
             "Status=@Status, DvId=@DvId, Controller=@Controller ," +
-            "LastUpdate=@LastUpdate " +
+            "LastUpdate=@LastUpdate, LastChangeOil=@LastChangeOil " +
             "WHERE Id=@Id";
         private static readonly string QUERY_BY_TYPE_AND_DVID = "SELECT " +
             "Id, Type, RegisterCode, Model, Origin," +
             "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
-            "DvId, InsertDate, Controller, LastUpdate " +
+            "DvId, InsertDate, Controller, LastUpdate, LastChangeOil " +
             "FROM Material WHERE Type=@Type AND DvId=@DvId AND Status=" + (int)MaterialStatus.ACTIVE+
             " ORDER BY InsertDate DESC";
         private static readonly string QUERY_BY_ID = "SELECT " +
             "Id, Type, RegisterCode, Model, Origin," +
             "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
-            "DvId, InsertDate, Controller, LastUpdate " +
+            "DvId, InsertDate, Controller, LastUpdate, LastChangeOil " +
             "FROM Material WHERE Id=@Id";
         public MaterialRepository(bool ReturnDataTable) : this()
         {
@@ -108,6 +108,7 @@ namespace MaterialsManagement.Repository
                 sqlCommand.Parameters.AddWithValue("@Controller", t.Controller);
                 sqlCommand.Parameters.AddWithValue("@ManufacturingDate", t.ManufacturingDate);
                 sqlCommand.Parameters.AddWithValue("@CurrentKm", t.CurrentKm);
+                sqlCommand.Parameters.AddWithValue("@LastChangeOil", t.LastChangeOil);
                 sqlCommand.Parameters.AddWithValue("@OilWarning", t.OilWarning);
                 sqlCommand.Parameters.AddWithValue("@Notes", t.Notes);
                 sqlCommand.Parameters.AddWithValue("@Status", t.Status);
@@ -147,6 +148,7 @@ namespace MaterialsManagement.Repository
                     Controller = sqlDataReader["Controller"].ToString(),
                     ManufacturingDate = sqlDataReader.GetDateTime(sqlDataReader.GetOrdinal("ManufacturingDate")),
                     CurrentKm = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("CurrentKm")),
+                    LastChangeOil = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("LastChangeOil")),
                     OilWarning = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("OilWarning")),
                     Notes = sqlDataReader["Notes"].ToString(),
                     Status = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("Status")),
@@ -172,6 +174,7 @@ namespace MaterialsManagement.Repository
                 sqlCommand.Parameters.AddWithValue("@Controller", t.Controller);
                 sqlCommand.Parameters.AddWithValue("@ManufacturingDate", t.ManufacturingDate);
                 sqlCommand.Parameters.AddWithValue("@CurrentKm", t.CurrentKm);
+                sqlCommand.Parameters.AddWithValue("@LastChangeOil", t.LastChangeOil);
                 sqlCommand.Parameters.AddWithValue("@OilWarning", t.OilWarning);
                 sqlCommand.Parameters.AddWithValue("@Notes", t.Notes);
                 sqlCommand.Parameters.AddWithValue("@Status", t.Status);

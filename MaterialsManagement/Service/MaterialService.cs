@@ -26,6 +26,7 @@ namespace MaterialsManagement.Service
             DateTime now = DateTime.Now;
             material.InsertDate = now;
             material.LastUpdate = now;
+            material.LastChangeOil = material.CurrentKm;
             Material rs = new MaterialRepository().Insert(material);
             return rs;
         }

@@ -113,12 +113,24 @@ namespace MaterialsManagement.UI.CustomControl
         {
             DataGridViewRow row = gridData.SelectedRows[0];
             string materialId = row.Cells["Id"].Value.ToString();
-            Material material = new MaterialService().Get(materialId);
-            EditMaterialForm form = new EditMaterialForm(material);
-            form.afterEditedCallBack = AfterEditedAction;
-            form.Show();
+            try
+            {
+                Material material = new MaterialService().Get(materialId);
+                EditMaterialForm form = new EditMaterialForm(material);
+                form.afterEditedCallBack = AfterEditedAction;
+                form.Show();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Đã xảy ra lỗi. Thao tác thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void UpdateCurrentKm_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UpdateLastChangeOil_Click(object sender, EventArgs e)
         {
 
         }
@@ -133,6 +145,7 @@ namespace MaterialsManagement.UI.CustomControl
                     cms = new ContextMenuStrip();
                     cms.Items.Add("Xem chi tiết", null, new EventHandler(ViewDetail_Click));
                     cms.Items.Add("Cập nhật công-tơ-mét", null, new EventHandler(UpdateCurrentKm_Click));
+                    cms.Items.Add("Đánh dấu đã thay nhớt", null, new EventHandler(UpdateLastChangeOil_Click));
                 }
                 gridData.CurrentCell = gridData.Rows[e.RowIndex].Cells[e.ColumnIndex];
                 e.ContextMenuStrip = this.cms;
