@@ -65,7 +65,9 @@ namespace MaterialsManagement.UI.CustomControl
 
         private void AfterAddedAction(Material material)
         {
-
+            EditMaterialForm form = new EditMaterialForm(material);
+            form.afterEditedCallBack = AfterEditedAction;
+            form.Show();
         }
 
         private void InitGridView(int type)

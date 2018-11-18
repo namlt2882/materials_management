@@ -39,6 +39,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbRegisterCode = new System.Windows.Forms.TextBox();
             this.tbModel = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbController = new System.Windows.Forms.TextBox();
             this.detailPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.nbCurrentKm = new System.Windows.Forms.NumericUpDown();
@@ -52,8 +54,6 @@
             this.nbOilWarning = new System.Windows.Forms.NumericUpDown();
             this.actionPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.tbController = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.fixedInfoPanel.SuspendLayout();
             this.infoPanel.SuspendLayout();
@@ -191,6 +191,25 @@
             this.tbModel.Size = new System.Drawing.Size(223, 32);
             this.tbModel.TabIndex = 4;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(3, 150);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(122, 52);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "Người điều khiển:";
+            // 
+            // tbController
+            // 
+            this.tbController.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbController.Location = new System.Drawing.Point(165, 153);
+            this.tbController.MaxLength = 100;
+            this.tbController.Name = "tbController";
+            this.tbController.Size = new System.Drawing.Size(223, 32);
+            this.tbController.TabIndex = 7;
+            // 
             // detailPanel
             // 
             this.detailPanel.ColumnCount = 2;
@@ -232,7 +251,7 @@
             this.nbCurrentKm.Location = new System.Drawing.Point(155, 131);
             this.nbCurrentKm.Name = "nbCurrentKm";
             this.nbCurrentKm.Size = new System.Drawing.Size(149, 26);
-            this.nbCurrentKm.TabIndex = 6;
+            this.nbCurrentKm.TabIndex = 5;
             // 
             // label8
             // 
@@ -306,7 +325,7 @@
             this.nbOilWarning.Location = new System.Drawing.Point(155, 181);
             this.nbOilWarning.Name = "nbOilWarning";
             this.nbOilWarning.Size = new System.Drawing.Size(149, 26);
-            this.nbOilWarning.TabIndex = 5;
+            this.nbOilWarning.TabIndex = 6;
             // 
             // actionPanel
             // 
@@ -329,25 +348,6 @@
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(3, 150);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(122, 52);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "Người điều khiển:";
-            // 
-            // tbController
-            // 
-            this.tbController.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbController.Location = new System.Drawing.Point(165, 153);
-            this.tbController.MaxLength = 100;
-            this.tbController.Name = "tbController";
-            this.tbController.Size = new System.Drawing.Size(223, 32);
-            this.tbController.TabIndex = 7;
             // 
             // AddMaterialForm
             // 
