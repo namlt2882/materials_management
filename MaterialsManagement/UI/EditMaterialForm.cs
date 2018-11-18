@@ -66,6 +66,26 @@ namespace MaterialsManagement.UI
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            material.RegisterCode = tbRegisterCode.Text;
+            material.Model = tbModel.Text;
+            material.Controller = tbController.Text;
+            material.Origin = tbOrigin.Text;
+            material.ManufacturingDate = dtpManufactureDate.Value;
+            material.OilWarning = Convert.ToInt32(nbOilWarning.Value);
+            material.Notes = tbNote.Text;
+            try
+            {
+                new MaterialService().Update(material);
+                if (afterEditedCallBack != null)
+                {
+                    afterEditedCallBack(material);
+                }
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Đã xảy ra lỗi. Thao tác thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
     }

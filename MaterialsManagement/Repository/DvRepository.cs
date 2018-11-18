@@ -94,5 +94,10 @@ namespace MaterialsManagement.Repository
             }
             return rs;
         }
+
+        public override void Update(Dv t)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

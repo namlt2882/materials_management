@@ -23,8 +23,31 @@ namespace MaterialsManagement.Service
                 random.Next(0, 9999).ToString("D4");
             material.Id = newId;
             material.Status = (int)MaterialStatus.ACTIVE;
+            DateTime now = DateTime.Now;
+            material.InsertDate = now;
+            material.LastUpdate = now;
             Material rs = new MaterialRepository().Insert(material);
             return rs;
+        }
+
+        public void Update(Material material)
+        {
+            MaterialRepository repository = new MaterialRepository();
+            Material origin = repository.Get(material.Id.Trim());
+            Copy(material, origin);
+            origin.LastUpdate = DateTime.Now;
+            repository.Update(origin);
+        }
+
+        public void Copy(Material origin, Material des)
+        {
+            des.RegisterCode = origin.RegisterCode;
+            des.Model = origin.Model;
+            des.Controller = origin.Controller;
+            des.Origin = origin.Origin;
+            des.ManufacturingDate = origin.ManufacturingDate;
+            des.OilWarning = origin.OilWarning;
+            des.Notes = origin.Notes;
         }
 
         public DataTable GetByTypeAsDataTable(string DvId, int Type)

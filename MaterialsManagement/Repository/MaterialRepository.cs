@@ -16,20 +16,27 @@ namespace MaterialsManagement.Repository
         private static readonly string INSERT_QUERY = "INSERT INTO " +
             "Material(Id, Type, RegisterCode, Model, Origin," +
             "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
-            "DvId, InsertDate, Controller) " +
+            "DvId, InsertDate, Controller, LastUpdate) " +
             "VALUES(@Id, @Type, @RegisterCode, @Model, @Origin," +
             "@ManufacturingDate, @CurrentKm, @OilWarning, @Notes, @Status," +
-            "@DvId, @InsertDate, @Controller)";
+            "@DvId, @InsertDate, @Controller, @LastUpdate)";
+        private static readonly string UPDATE_QUERY = "UPDATE Material " +
+            "SET Type=@Type, RegisterCode=@RegisterCode, Model=@Model," +
+            "Origin=@Origin, ManufacturingDate=@ManufacturingDate," +
+            "CurrentKm=@CurrentKm, OilWarning=@OilWarning, Notes=@Notes," +
+            "Status=@Status, DvId=@DvId, Controller=@Controller ," +
+            "LastUpdate=@LastUpdate " +
+            "WHERE Id=@Id";
         private static readonly string QUERY_BY_TYPE_AND_DVID = "SELECT " +
             "Id, Type, RegisterCode, Model, Origin," +
             "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
-            "DvId, InsertDate, Controller " +
+            "DvId, InsertDate, Controller, LastUpdate " +
             "FROM Material WHERE Type=@Type AND DvId=@DvId AND Status=" + (int)MaterialStatus.ACTIVE+
             " ORDER BY InsertDate DESC";
         private static readonly string QUERY_BY_ID = "SELECT " +
             "Id, Type, RegisterCode, Model, Origin," +
             "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
-            "DvId, InsertDate, Controller " +
+            "DvId, InsertDate, Controller, LastUpdate " +
             "FROM Material WHERE Id=@Id";
         public MaterialRepository(bool ReturnDataTable) : this()
         {
@@ -106,6 +113,7 @@ namespace MaterialsManagement.Repository
                 sqlCommand.Parameters.AddWithValue("@Status", t.Status);
                 sqlCommand.Parameters.AddWithValue("@DvId", t.DvId);
                 sqlCommand.Parameters.AddWithValue("@InsertDate", t.InsertDate);
+                sqlCommand.Parameters.AddWithValue("@LastUpdate", t.LastUpdate);
                 connection.Open();
                 int status = sqlCommand.ExecuteNonQuery();
                 if (status <= 0)
@@ -144,10 +152,42 @@ namespace MaterialsManagement.Repository
                     Status = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("Status")),
                     DvId = sqlDataReader["DvId"].ToString(),
                     InsertDate = sqlDataReader.GetDateTime(sqlDataReader.GetOrdinal("InsertDate")),
+                    LastUpdate = sqlDataReader.GetDateTime(sqlDataReader.GetOrdinal("LastUpdate")),
                 };
                 rs.Add(material);
             }
             return rs;
+        }
+
+        public override void Update(Material t)
+        {
+            try
+            {
+                sqlCommand = new SqlCommand(UPDATE_QUERY, GetSqlConnection());
+                sqlCommand.Parameters.AddWithValue("@Id", t.Id);
+                sqlCommand.Parameters.AddWithValue("@Type", t.Type);
+                sqlCommand.Parameters.AddWithValue("@RegisterCode", t.RegisterCode);
+                sqlCommand.Parameters.AddWithValue("@Model", t.Model);
+                sqlCommand.Parameters.AddWithValue("@Origin", t.Origin);
+                sqlCommand.Parameters.AddWithValue("@Controller", t.Controller);
+                sqlCommand.Parameters.AddWithValue("@ManufacturingDate", t.ManufacturingDate);
+                sqlCommand.Parameters.AddWithValue("@CurrentKm", t.CurrentKm);
+                sqlCommand.Parameters.AddWithValue("@OilWarning", t.OilWarning);
+                sqlCommand.Parameters.AddWithValue("@Notes", t.Notes);
+                sqlCommand.Parameters.AddWithValue("@Status", t.Status);
+                sqlCommand.Parameters.AddWithValue("@DvId", t.DvId);
+                sqlCommand.Parameters.AddWithValue("@LastUpdate", t.LastUpdate);
+                connection.Open();
+                int status = sqlCommand.ExecuteNonQuery();
+                if (status <= 0)
+                {
+                    throw new Exception("Fail to update Material with id=" + t.Id);
+                }
+            }
+            finally
+            {
+                CloseResources();
+            }
         }
     }
 }

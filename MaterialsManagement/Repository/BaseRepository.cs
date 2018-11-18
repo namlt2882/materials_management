@@ -38,6 +38,7 @@ namespace MaterialsManagement.Repository
 
         public abstract T Get(ID id);
         public abstract T Insert(T t);
+        public abstract void Update(T t);
         public abstract List<T> GetAll();
         public abstract List<T> ReadValueFromReader();
     }

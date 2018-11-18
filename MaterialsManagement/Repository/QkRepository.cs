@@ -72,5 +72,10 @@ namespace MaterialsManagement.Repository
             }
             return rs;
         }
+
+        public override void Update(Qk t)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
