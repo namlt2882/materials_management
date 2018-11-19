@@ -58,11 +58,14 @@
             this.label10 = new System.Windows.Forms.Label();
             this.tbController = new System.Windows.Forms.TextBox();
             this.actionPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.leftActionPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnUpdateEnable = new System.Windows.Forms.Button();
+            this.rightActionPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.MyToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.btnUpdateEnable = new System.Windows.Forms.Button();
-            this.leftActionPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.rightActionPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lbLastChangeOil = new System.Windows.Forms.Label();
+            this.scrollPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.fixedInfoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nbOilWarning)).BeginInit();
             this.infoPanel.SuspendLayout();
@@ -70,9 +73,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.detailPanel.SuspendLayout();
             this.actionPanel.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             this.leftActionPanel.SuspendLayout();
             this.rightActionPanel.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.scrollPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnUpdate
@@ -94,12 +98,12 @@
             this.fixedInfoPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.fixedInfoPanel.Controls.Add(this.lbQk, 0, 0);
             this.fixedInfoPanel.Controls.Add(this.lbDv, 0, 1);
-            this.fixedInfoPanel.Location = new System.Drawing.Point(53, 53);
+            this.fixedInfoPanel.Location = new System.Drawing.Point(23, 53);
             this.fixedInfoPanel.Name = "fixedInfoPanel";
             this.fixedInfoPanel.RowCount = 2;
             this.fixedInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.77778F));
             this.fixedInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.22222F));
-            this.fixedInfoPanel.Size = new System.Drawing.Size(867, 90);
+            this.fixedInfoPanel.Size = new System.Drawing.Size(1108, 90);
             this.fixedInfoPanel.TabIndex = 3;
             // 
             // lbQk
@@ -126,18 +130,18 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 170);
+            this.label6.Location = new System.Drawing.Point(3, 160);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(145, 78);
+            this.label6.Size = new System.Drawing.Size(222, 52);
             this.label6.TabIndex = 4;
             this.label6.Text = "Khoảng cách mỗi lần thay nhớt(km):";
             // 
             // nbOilWarning
             // 
-            this.nbOilWarning.Location = new System.Drawing.Point(155, 173);
+            this.nbOilWarning.Location = new System.Drawing.Point(242, 163);
             this.nbOilWarning.Name = "nbOilWarning";
             this.nbOilWarning.ReadOnly = true;
-            this.nbOilWarning.Size = new System.Drawing.Size(149, 26);
+            this.nbOilWarning.Size = new System.Drawing.Size(113, 26);
             this.nbOilWarning.TabIndex = 13;
             // 
             // infoPanel
@@ -155,7 +159,7 @@
             this.infoPanel.Controls.Add(this.tbType, 1, 1);
             this.infoPanel.Controls.Add(this.label9, 0, 4);
             this.infoPanel.Controls.Add(this.flowLayoutPanel2, 1, 4);
-            this.infoPanel.Location = new System.Drawing.Point(53, 149);
+            this.infoPanel.Location = new System.Drawing.Point(23, 149);
             this.infoPanel.Name = "infoPanel";
             this.infoPanel.RowCount = 5;
             this.infoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
@@ -295,33 +299,33 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(3, 110);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(106, 52);
+            this.label5.Size = new System.Drawing.Size(153, 26);
             this.label5.TabIndex = 1;
             this.label5.Text = "Năm sản xuất:";
             // 
             // tbOrigin
             // 
             this.tbOrigin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbOrigin.Location = new System.Drawing.Point(155, 63);
+            this.tbOrigin.Location = new System.Drawing.Point(242, 63);
             this.tbOrigin.MaxLength = 100;
             this.tbOrigin.Name = "tbOrigin";
             this.tbOrigin.ReadOnly = true;
-            this.tbOrigin.Size = new System.Drawing.Size(200, 32);
+            this.tbOrigin.Size = new System.Drawing.Size(291, 32);
             this.tbOrigin.TabIndex = 12;
             // 
             // dtpManufactureDate
             // 
             this.dtpManufactureDate.Enabled = false;
-            this.dtpManufactureDate.Location = new System.Drawing.Point(155, 113);
+            this.dtpManufactureDate.Location = new System.Drawing.Point(242, 113);
             this.dtpManufactureDate.Name = "dtpManufactureDate";
-            this.dtpManufactureDate.Size = new System.Drawing.Size(200, 26);
+            this.dtpManufactureDate.Size = new System.Drawing.Size(291, 26);
             this.dtpManufactureDate.TabIndex = 15;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(3, 250);
+            this.label7.Location = new System.Drawing.Point(3, 290);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(93, 26);
             this.label7.TabIndex = 6;
@@ -331,11 +335,11 @@
             // 
             this.tbNote.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbNote.Location = new System.Drawing.Point(155, 253);
+            this.tbNote.Location = new System.Drawing.Point(242, 293);
             this.tbNote.MaxLength = 200;
             this.tbNote.Name = "tbNote";
             this.tbNote.ReadOnly = true;
-            this.tbNote.Size = new System.Drawing.Size(260, 154);
+            this.tbNote.Size = new System.Drawing.Size(414, 223);
             this.tbNote.TabIndex = 14;
             this.tbNote.Text = "";
             // 
@@ -350,19 +354,22 @@
             this.detailPanel.Controls.Add(this.dtpManufactureDate, 1, 2);
             this.detailPanel.Controls.Add(this.nbOilWarning, 1, 3);
             this.detailPanel.Controls.Add(this.label6, 0, 3);
-            this.detailPanel.Controls.Add(this.label7, 0, 4);
-            this.detailPanel.Controls.Add(this.tbNote, 1, 4);
+            this.detailPanel.Controls.Add(this.label7, 0, 5);
+            this.detailPanel.Controls.Add(this.tbNote, 1, 5);
             this.detailPanel.Controls.Add(this.label10, 0, 0);
             this.detailPanel.Controls.Add(this.tbController, 1, 0);
-            this.detailPanel.Location = new System.Drawing.Point(502, 149);
+            this.detailPanel.Controls.Add(this.label11, 0, 4);
+            this.detailPanel.Controls.Add(this.lbLastChangeOil, 1, 4);
+            this.detailPanel.Location = new System.Drawing.Point(472, 149);
             this.detailPanel.Name = "detailPanel";
-            this.detailPanel.RowCount = 5;
+            this.detailPanel.RowCount = 6;
             this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.detailPanel.Size = new System.Drawing.Size(418, 410);
+            this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.detailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.detailPanel.Size = new System.Drawing.Size(659, 519);
             this.detailPanel.TabIndex = 1;
             // 
             // label4
@@ -381,41 +388,36 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(3, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(122, 52);
+            this.label10.Size = new System.Drawing.Size(180, 26);
             this.label10.TabIndex = 9;
             this.label10.Text = "Người điều khiển:";
             // 
             // tbController
             // 
             this.tbController.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbController.Location = new System.Drawing.Point(155, 3);
+            this.tbController.Location = new System.Drawing.Point(242, 3);
             this.tbController.MaxLength = 100;
             this.tbController.Name = "tbController";
             this.tbController.ReadOnly = true;
-            this.tbController.Size = new System.Drawing.Size(200, 32);
+            this.tbController.Size = new System.Drawing.Size(291, 32);
             this.tbController.TabIndex = 11;
             // 
             // actionPanel
             // 
             this.actionPanel.Controls.Add(this.leftActionPanel);
             this.actionPanel.Controls.Add(this.rightActionPanel);
-            this.actionPanel.Location = new System.Drawing.Point(53, 565);
+            this.actionPanel.Location = new System.Drawing.Point(23, 674);
             this.actionPanel.Name = "actionPanel";
-            this.actionPanel.Size = new System.Drawing.Size(867, 120);
+            this.actionPanel.Size = new System.Drawing.Size(1108, 129);
             this.actionPanel.TabIndex = 2;
             // 
-            // flowLayoutPanel1
+            // leftActionPanel
             // 
-            this.flowLayoutPanel1.Controls.Add(this.fixedInfoPanel);
-            this.flowLayoutPanel1.Controls.Add(this.infoPanel);
-            this.flowLayoutPanel1.Controls.Add(this.detailPanel);
-            this.flowLayoutPanel1.Controls.Add(this.actionPanel);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(50);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(978, 744);
-            this.flowLayoutPanel1.TabIndex = 1;
+            this.leftActionPanel.Controls.Add(this.btnUpdateEnable);
+            this.leftActionPanel.Location = new System.Drawing.Point(3, 3);
+            this.leftActionPanel.Name = "leftActionPanel";
+            this.leftActionPanel.Size = new System.Drawing.Size(440, 117);
+            this.leftActionPanel.TabIndex = 18;
             // 
             // btnUpdateEnable
             // 
@@ -429,14 +431,6 @@
             this.btnUpdateEnable.UseVisualStyleBackColor = true;
             this.btnUpdateEnable.Click += new System.EventHandler(this.btnUpdateEnable_Click);
             // 
-            // leftActionPanel
-            // 
-            this.leftActionPanel.Controls.Add(this.btnUpdateEnable);
-            this.leftActionPanel.Location = new System.Drawing.Point(3, 3);
-            this.leftActionPanel.Name = "leftActionPanel";
-            this.leftActionPanel.Size = new System.Drawing.Size(440, 117);
-            this.leftActionPanel.TabIndex = 18;
-            // 
             // rightActionPanel
             // 
             this.rightActionPanel.Controls.Add(this.btnUpdate);
@@ -445,11 +439,54 @@
             this.rightActionPanel.Size = new System.Drawing.Size(405, 117);
             this.rightActionPanel.TabIndex = 19;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Controls.Add(this.scrollPanel);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1178, 844);
+            this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(3, 240);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(195, 26);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "Lần cuối thay nhớt:";
+            // 
+            // lbLastChangeOil
+            // 
+            this.lbLastChangeOil.AutoSize = true;
+            this.lbLastChangeOil.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLastChangeOil.Location = new System.Drawing.Point(242, 240);
+            this.lbLastChangeOil.Name = "lbLastChangeOil";
+            this.lbLastChangeOil.Size = new System.Drawing.Size(64, 26);
+            this.lbLastChangeOil.TabIndex = 17;
+            this.lbLastChangeOil.Text = "0 km";
+            // 
+            // scrollPanel
+            // 
+            this.scrollPanel.AutoSize = true;
+            this.scrollPanel.Controls.Add(this.fixedInfoPanel);
+            this.scrollPanel.Controls.Add(this.infoPanel);
+            this.scrollPanel.Controls.Add(this.detailPanel);
+            this.scrollPanel.Controls.Add(this.actionPanel);
+            this.scrollPanel.Location = new System.Drawing.Point(3, 3);
+            this.scrollPanel.Name = "scrollPanel";
+            this.scrollPanel.Padding = new System.Windows.Forms.Padding(20, 50, 20, 50);
+            this.scrollPanel.Size = new System.Drawing.Size(1154, 856);
+            this.scrollPanel.TabIndex = 4;
+            // 
             // EditMaterialForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(978, 744);
+            this.ClientSize = new System.Drawing.Size(1178, 844);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "EditMaterialForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -465,10 +502,12 @@
             this.detailPanel.ResumeLayout(false);
             this.detailPanel.PerformLayout();
             this.actionPanel.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.leftActionPanel.ResumeLayout(false);
             this.rightActionPanel.ResumeLayout(false);
             this.rightActionPanel.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            this.scrollPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -509,5 +548,8 @@
         private System.Windows.Forms.Button btnUpdateEnable;
         private System.Windows.Forms.FlowLayoutPanel leftActionPanel;
         private System.Windows.Forms.FlowLayoutPanel rightActionPanel;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lbLastChangeOil;
+        private System.Windows.Forms.FlowLayoutPanel scrollPanel;
     }
 }

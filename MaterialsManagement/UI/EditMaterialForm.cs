@@ -64,6 +64,7 @@ namespace MaterialsManagement.UI
             nbOilWarning.Value = material.OilWarning;
             tbNote.Text = StringUtility.TrimIfPresent(material.Notes);
             tbController.Text = StringUtility.TrimIfPresent(material.Controller);
+            lbLastChangeOil.Text = material.LastChangeOil + " Km";
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {

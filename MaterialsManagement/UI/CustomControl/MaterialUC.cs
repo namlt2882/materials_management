@@ -91,12 +91,14 @@ namespace MaterialsManagement.UI.CustomControl
             dataTable.Columns.Remove("Status");
             dataTable.Columns.Remove("DvId");
             dataTable.Columns.Remove("InsertDate");
+            dataTable.Columns.Remove("LastUpdate");
             gridData.DataSource = dataTable;
             gridData.Columns[1].HeaderText = "SĐK";
             gridData.Columns[2].HeaderText = "Model";
             gridData.Columns[3].HeaderText = "Xuất xứ";
             gridData.Columns[4].HeaderText = "Ngày sản xuất";
             gridData.Columns[5].HeaderText = "Người điều khiển";
+            gridData.Columns[6].HeaderText = "Lần cuối thay nhớt (km)";
         }
 
         private void AfterEditedAction(Material material)
