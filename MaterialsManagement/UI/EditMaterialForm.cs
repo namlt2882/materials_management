@@ -66,13 +66,14 @@ namespace MaterialsManagement.UI
             nbOilWarning.Value = material.OilWarning;
             tbNote.Text = StringUtility.TrimIfPresent(material.Notes);
             tbController.Text = StringUtility.TrimIfPresent(material.Controller);
+            lbLastChangeOil.Text = material.LastChangeOil + " Km";
             //Huy QRCode: 11/19/2018 Add Start
             QRCodeService qr = new QRCodeService();
             if(qr != null) {
                 Bitmap img = qr.GenerateQRCode(material.ToString(),10, pbQRCode.Height, pbQRCode.Width);
                 pbQRCode.Image = img;
             }
-            
+
             //Huy QRCode: 11/19/2018 Add End
         }
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -111,7 +112,7 @@ namespace MaterialsManagement.UI
             tbNote.ReadOnly = false;
             btnUpdate.Visible = true;
             btnUpdateEnable.Visible = false;
-            
+
         }
 
         private void btnGetQrCode_Click(object sender, EventArgs e)

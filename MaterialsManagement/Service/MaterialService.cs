@@ -40,6 +40,16 @@ namespace MaterialsManagement.Service
             repository.Update(origin);
         }
 
+        public void UpdateCurrentKm(Material material)
+        {
+            MaterialRepository repository = new MaterialRepository();
+            Material origin = repository.Get(material.Id.Trim());
+            origin.CurrentKm = material.CurrentKm;
+            origin.LastChangeOil = material.LastChangeOil;
+            origin.LastUpdate = DateTime.Now;
+            repository.Update(origin);
+        }
+
         public void Copy(Material origin, Material des)
         {
             des.RegisterCode = origin.RegisterCode;
