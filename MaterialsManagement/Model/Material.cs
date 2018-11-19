@@ -28,5 +28,19 @@ namespace MaterialsManagement.Model
         public Material()
         {
         }
+        //Huy QRCode: 11/20/2018 Add Start
+        public override string ToString()
+        {
+            StringBuilder data = new StringBuilder();
+            data.AppendFormat("ID: {0}{1}",Id, Environment.NewLine);
+            data.AppendFormat("Type: {0}{1}", Type, Environment.NewLine);
+            data.AppendFormat("RegisterCode: {0}{1}", RegisterCode, Environment.NewLine);
+            data.AppendFormat("Model: {0}{1}", Model, Environment.NewLine);
+            data.AppendFormat("Origin: {0}{1}", Origin, Environment.NewLine);
+            data.AppendFormat("CurrentKm: {0}{1}", CurrentKm, Environment.NewLine);
+            data.AppendFormat("LastChangeOil: {0}{1}", LastChangeOil, Environment.NewLine);
+            return data.ToString();
+        }
+        //Huy QRCode: 11/20/2018 Add End
     }
 }
