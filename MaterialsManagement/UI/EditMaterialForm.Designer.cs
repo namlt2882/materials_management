@@ -57,15 +57,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.tbController = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lbLastChangeOil = new System.Windows.Forms.Label();
             this.actionPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.leftActionPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.btnUpdateEnable = new System.Windows.Forms.Button();
             this.rightActionPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.MyToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.label11 = new System.Windows.Forms.Label();
-            this.lbLastChangeOil = new System.Windows.Forms.Label();
             this.scrollPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.MyToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.fixedInfoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nbOilWarning)).BeginInit();
             this.infoPanel.SuspendLayout();
@@ -139,6 +139,11 @@
             // nbOilWarning
             // 
             this.nbOilWarning.Location = new System.Drawing.Point(242, 163);
+            this.nbOilWarning.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
             this.nbOilWarning.Name = "nbOilWarning";
             this.nbOilWarning.ReadOnly = true;
             this.nbOilWarning.Size = new System.Drawing.Size(113, 26);
@@ -402,6 +407,26 @@
             this.tbController.Size = new System.Drawing.Size(291, 32);
             this.tbController.TabIndex = 11;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(3, 240);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(195, 26);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "Lần cuối thay nhớt:";
+            // 
+            // lbLastChangeOil
+            // 
+            this.lbLastChangeOil.AutoSize = true;
+            this.lbLastChangeOil.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLastChangeOil.Location = new System.Drawing.Point(242, 240);
+            this.lbLastChangeOil.Name = "lbLastChangeOil";
+            this.lbLastChangeOil.Size = new System.Drawing.Size(64, 26);
+            this.lbLastChangeOil.TabIndex = 17;
+            this.lbLastChangeOil.Text = "0 km";
+            // 
             // actionPanel
             // 
             this.actionPanel.Controls.Add(this.leftActionPanel);
@@ -448,26 +473,6 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1178, 844);
             this.flowLayoutPanel1.TabIndex = 1;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(3, 240);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(195, 26);
-            this.label11.TabIndex = 16;
-            this.label11.Text = "Lần cuối thay nhớt:";
-            // 
-            // lbLastChangeOil
-            // 
-            this.lbLastChangeOil.AutoSize = true;
-            this.lbLastChangeOil.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLastChangeOil.Location = new System.Drawing.Point(242, 240);
-            this.lbLastChangeOil.Name = "lbLastChangeOil";
-            this.lbLastChangeOil.Size = new System.Drawing.Size(64, 26);
-            this.lbLastChangeOil.TabIndex = 17;
-            this.lbLastChangeOil.Text = "0 km";
             // 
             // scrollPanel
             // 
