@@ -25,6 +25,20 @@ namespace MaterialsManagement.Model
         public Dv dv { get; set; }
         public Qk qk { get; set; }
         public string Controller { get; set; }
+        public DateTime RegisterYear { get; set; }
+        public int Label { get; set; }
+        public string FrameNumber { get; set; }
+        public string EIN { get; set; }
+        public string OriginalExplanation { get; set; }
+        public DateTime StartUsingYear { get; set; }
+        public int ClLevel { get; set; }
+        public int SclTime{ get; set; }
+        public DateTime RecentSclYear { get; set; }
+        public int GroupLabel { get; set; }
+        public int UseStatus { get; set; }
+        public int GndkNumber { get; set; }
+        public string AcceptCode { get; set; }
+        public string TypeDescription { get; set; }
         public Material()
         {
         }
