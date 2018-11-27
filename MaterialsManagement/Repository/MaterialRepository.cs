@@ -38,6 +38,22 @@ namespace MaterialsManagement.Repository
             "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
             "DvId, InsertDate, Controller, LastUpdate, LastChangeOil " +
             "FROM Material WHERE Id=@Id";
+        private static readonly string QUERY_GET_ALL_BY_DV = "SELECT " +
+        "Id, Type, RegisterCode, Model, Origin," +
+        "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
+        "DvId, InsertDate, Controller, LastUpdate, LastChangeOil " +
+        "FROM Material WHERE DvId=@DvId AND Status=" + (int)MaterialStatus.ACTIVE;
+        private static readonly string QUERY_GET_ALL = "SELECT " +
+          "Id, Type, RegisterCode, Model, Origin," +
+          "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
+          "DvId, InsertDate, Controller, LastUpdate, LastChangeOil " +
+          "FROM Material";
+        private static readonly string QUERY_SEARCH_BY_TYPE_AND_DVID = "SELECT " +
+          "Id, Type, RegisterCode, Model, Origin," +
+          "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
+          "DvId, InsertDate, Controller, LastUpdate, LastChangeOil " +
+          "FROM Material WHERE Type=@Type AND DvId=@DvId AND (Id=@Id OR Model like @Model) AND Status=" + (int)MaterialStatus.ACTIVE +
+          " ORDER BY InsertDate DESC";
         public MaterialRepository(bool ReturnDataTable) : this()
         {
             this.ReturnDataTable = ReturnDataTable;
@@ -70,7 +86,46 @@ namespace MaterialsManagement.Repository
 
         public override List<Material> GetAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                sqlCommand = new SqlCommand(QUERY_GET_ALL, GetSqlConnection());
+                sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                connection.Open();
+                if (ReturnDataTable)
+                {
+                    dataTable = new DataTable();
+                    sqlDataAdapter.Fill(dataTable);
+                }
+                sqlDataReader = sqlCommand.ExecuteReader();
+                List<Material> rs = ReadValueFromReader();
+                return rs;
+            }
+            finally
+            {
+                CloseResources();
+            }
+        }
+        public List<Material> GetAllByQkDv(String dv)
+        {
+            try
+            {
+                sqlCommand = new SqlCommand(QUERY_GET_ALL_BY_DV, GetSqlConnection());
+                sqlCommand.Parameters.AddWithValue("@dvId", dv.Trim());
+                sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                connection.Open();
+                if (ReturnDataTable)
+                {
+                    dataTable = new DataTable();
+                    sqlDataAdapter.Fill(dataTable);
+                }
+                sqlDataReader = sqlCommand.ExecuteReader();
+                List<Material> rs = ReadValueFromReader();
+                return rs;
+            }
+            finally
+            {
+                CloseResources();
+            }
         }
         public List<Material> GetByType(string DvId,int Type)
         {
@@ -79,6 +134,31 @@ namespace MaterialsManagement.Repository
                 sqlCommand = new SqlCommand(QUERY_BY_TYPE_AND_DVID, GetSqlConnection());
                 sqlCommand.Parameters.AddWithValue("@Type", Type);
                 sqlCommand.Parameters.AddWithValue("@DvId", DvId);
+                sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                connection.Open();
+                if (ReturnDataTable)
+                {
+                    dataTable = new DataTable();
+                    sqlDataAdapter.Fill(dataTable);
+                }
+                sqlDataReader = sqlCommand.ExecuteReader();
+                List<Material> rs = ReadValueFromReader();
+                return rs;
+            }
+            finally
+            {
+                CloseResources();
+            }
+        }
+        public List<Material> SearchByType(string DvId, int Type, string searchValue)
+        {
+            try
+            {
+                sqlCommand = new SqlCommand(QUERY_SEARCH_BY_TYPE_AND_DVID, GetSqlConnection());
+                sqlCommand.Parameters.AddWithValue("@Type", Type);
+                sqlCommand.Parameters.AddWithValue("@DvId", DvId.Trim());
+                sqlCommand.Parameters.AddWithValue("@Id", searchValue.Trim());
+                sqlCommand.Parameters.AddWithValue("@Model", "%" + searchValue.Trim() + "%");
                 sqlDataAdapter = new SqlDataAdapter(sqlCommand);
                 connection.Open();
                 if (ReturnDataTable)

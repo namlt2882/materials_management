@@ -24,5 +24,13 @@ namespace MaterialsManagement.Service
         {
             return new DvRepository().Get(DvId);
         }
+        public Dv Add(Dv dv)
+        {
+            return new DvRepository().Insert(dv);
+        }
+        public void Update(Dv dv)
+        {
+            new DvRepository().Update(dv);
+        }
     }
 }

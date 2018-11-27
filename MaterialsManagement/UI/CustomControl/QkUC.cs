@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialsManagement.Model;
 using MaterialsManagement.Service;
+using System.Threading;
 
 namespace MaterialsManagement.UI.CustomControl
 {
@@ -56,6 +57,11 @@ namespace MaterialsManagement.UI.CustomControl
                     AutoSize = false
                 };
                 btn.Click += new EventHandler(btn_Click);
+                ContextMenuStrip cms = new ContextMenuStrip();
+                cms.Items.Add("Xuất Dữ Liệu " + qk.Name, null, new EventHandler(btn_export));
+                cms.Items.Add("Xuất Báo Cáo " + qk.Name, null, new EventHandler(btn_report));
+
+                btn.ContextMenuStrip = cms;
                 gridComponents.Add(btn);
                 tableLayoutQkList.Controls.Add(btn);
             }
@@ -68,7 +74,99 @@ namespace MaterialsManagement.UI.CustomControl
                     onButtonClick(btn.obj);
                 }
             }
+            void btn_export(Object sender, EventArgs e)
+            {
+                ToolStripMenuItem item = (sender as ToolStripMenuItem);
+                ContextMenuStrip contextMenuStrip = (item.Owner as ContextMenuStrip);
+                CustomButton<Qk> customButton = contextMenuStrip.SourceControl as CustomButton<Qk>;
+                Report report = new Report();
+                QkService qkService = new QkService();
+                DvService dvService = new DvService();
+                MaterialService materialService = new MaterialService();
+                report.qks.Add(qkService.Get(customButton.obj.Id));
+                report.dvs.AddRange(dvService.GetByQkId(report.qks[0].Id));
+                foreach (Dv dv in report.dvs)
+                {
+                    report.materials.AddRange(materialService.GetAllByDv(dv.Id));
+                }
+                string selectedPath;
+                var t = new Thread((ThreadStart)(() => {
+                    using (var folderDialog = new FolderBrowserDialog())
+                    {
+                        if (folderDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            selectedPath = folderDialog.SelectedPath;
+                            System.IO.File.WriteAllText(selectedPath + "\\" + report.qks[0].Name + "_" + report.qks[0].Id + " " + DateTime.Today.ToString("ddMMyyyy") + ".json", Newtonsoft.Json.JsonConvert.SerializeObject(report));
+                            MessageBox.Show("Tải Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information,
+         MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                        }
+                    }
 
-        }
+                }));
+                t.SetApartmentState(ApartmentState.STA);
+                t.Start();
+                t.Join();
+            }
+            void btn_report(Object sender, EventArgs e)
+            {
+                string selectedPath;
+                //       var t = new Thread((ThreadStart)(() => {
+                //           using (var folderDialog = new FolderBrowserDialog())
+                //           {
+                //               if (folderDialog.ShowDialog() == DialogResult.OK)
+                //               {
+                //                   selectedPath = folderDialog.SelectedPath;
+                //                   System.IO.File.WriteAllText(selectedPath + "\\" + report.qks[0].Name + "_" + report.qks[0].Id + " " + DateTime.Today.ToString("ddMMyyyy") + ".json", Newtonsoft.Json.JsonConvert.SerializeObject(report));
+                //                   MessageBox.Show("Tải Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information,
+                //MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                //               }
+                //           }
+
+                //       }));
+                Microsoft.Office.Interop.Excel.Application oXL;
+                Microsoft.Office.Interop.Excel._Workbook oWB;
+                Microsoft.Office.Interop.Excel._Worksheet oSheet;
+                Microsoft.Office.Interop.Excel.Range oRng;
+                object misvalue = System.Reflection.Missing.Value;
+                try
+                {
+                    //Start Excel and get Application object.
+
+                    ToolStripMenuItem item = (sender as ToolStripMenuItem);
+                    ContextMenuStrip contextMenuStrip = (item.Owner as ContextMenuStrip);
+                    CustomButton<Qk> customButton = contextMenuStrip.SourceControl as CustomButton<Qk>;
+                    Report report = new Report();
+                    QkService qkService = new QkService();
+                    DvService dvService = new DvService();
+                    MaterialService materialService = new MaterialService();
+                    report.qks.Add(qkService.Get(customButton.obj.Id));
+                    report.dvs.AddRange(dvService.GetByQkId(report.qks[0].Id));
+                    ReportExcel reportExcel = new ReportExcel(true);
+                    reportExcel.GenerateTitle("Báo cáo số chất lượng trang bị xe - máy theo số đăng ký");
+                    reportExcel.GenerateTable("QK 3 DV 3", null);
+
+                    for (int i = 0; i < report.dvs.Count; i++)
+                    {
+                        Dv dv = report.dvs[i];
+
+                        List<Material> list = materialService.GetAllByDv(dv.Id);
+                        report.materials.AddRange(list);
+                        if (list.Count == 0) continue;
+                        reportExcel.GenerateTable(dv.Name, list);
+                    }
+                    //"Báo cáo số chất lượng trang bị xe - máy theo số đăng ký"
+                    reportExcel.DownLoad(null);
+
+
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+            }
+
+    }
     }
 }

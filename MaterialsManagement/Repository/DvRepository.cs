@@ -15,6 +15,12 @@ namespace MaterialsManagement.Repository
         private static readonly string QUERY_BY_QK_ID = "SELECT Id,Name,QkId,Priority FROM Dv WHERE QkId=@QkId " +
             "ORDER BY Priority ASC";
         private static readonly string QUERY_BY_ID = "SELECT Id,Name,QkId,Priority FROM Dv WHERE Id=@Id";
+        private static readonly string INSERT_QUERY = "INSERT INTO " +
+        "Dv(Id, Name, QkId , Priority) " +
+        "VALUES(@Id, @Name ,@QkId,@Priority)";
+        private static readonly string UPDATE_QUERY = "UPDATE Dv " +
+          "SET Name=@Name , QkId=@QkId , Priority=@Priority " +
+          "WHERE Id=@Id";
         public DvRepository()
         {
         }
@@ -74,7 +80,28 @@ namespace MaterialsManagement.Repository
 
         public override Dv Insert(Dv t)
         {
-            throw new NotImplementedException();
+            try
+            {
+                sqlCommand = new SqlCommand(INSERT_QUERY, GetSqlConnection());
+                sqlCommand.Parameters.AddWithValue("@Id", t.Id.Trim());
+                sqlCommand.Parameters.AddWithValue("@Name", t.Name.Trim());
+                sqlCommand.Parameters.AddWithValue("@QkId", t.QkId.Trim());
+                sqlCommand.Parameters.AddWithValue("@Priority", t.Priority);
+                connection.Open();
+                int status = sqlCommand.ExecuteNonQuery();
+                if (status <= 0)
+                {
+                    throw new Exception("Fail to insert Dv with id=" + t.Id);
+                }
+                else
+                {
+                    return t;
+                }
+            }
+            finally
+            {
+                CloseResources();
+            }
         }
 
         public override List<Dv> ReadValueFromReader()
@@ -97,7 +124,24 @@ namespace MaterialsManagement.Repository
 
         public override void Update(Dv t)
         {
-            throw new NotImplementedException();
+            try
+            {
+                sqlCommand = new SqlCommand(UPDATE_QUERY, GetSqlConnection());
+                sqlCommand.Parameters.AddWithValue("@Name", t.Name.Trim());
+                sqlCommand.Parameters.AddWithValue("@QkId", t.QkId.Trim());
+                sqlCommand.Parameters.AddWithValue("@Id", t.Id);
+                sqlCommand.Parameters.AddWithValue("@Priority", t.Priority);
+                connection.Open();
+                int status = sqlCommand.ExecuteNonQuery();
+                if (status <= 0)
+                {
+                    throw new Exception("Fail to update Dv with id=" + t.Id);
+                }
+            }
+            finally
+            {
+                CloseResources();
+            }
         }
     }
 }

@@ -29,6 +29,59 @@ namespace MaterialsManagement.UI.CustomControl
         {
             InitializeComponent();
             ResetMaterialButtonColor(btnSail);
+            InitContentScriptMenu();
+        }
+        void btn_export(Object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (sender as ToolStripMenuItem);
+            CustomContextMenuStrip<int> contextMenuStrip = (item.Owner as CustomContextMenuStrip<int>);
+
+            Report report = new Report();
+            QkService qkService = new QkService();
+            DvService dvService = new DvService();
+            MaterialService materialService = new MaterialService();
+
+            report.dvs.Add(dvService.Get(dv.Id));
+            report.qks.Add(qkService.Get(report.dvs[0].QkId));
+            report.materials.AddRange(materialService.GetByType(dv.Id, contextMenuStrip.obj));
+            string selectedPath;
+            var t = new Thread((ThreadStart)(() => {
+                using (var folderDialog = new FolderBrowserDialog())
+                {
+                    if (folderDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        selectedPath = folderDialog.SelectedPath;
+                        System.IO.File.WriteAllText(selectedPath + "\\" + report.qks[0].Id + "_" + report.dvs[0].Id + "_" + contextMenuStrip.obj + DateTime.Today.ToString("ddMMyyyy") + ".json", Newtonsoft.Json.JsonConvert.SerializeObject(report));
+                        MessageBox.Show("Tải Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information,
+            MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                    }
+                }
+
+            }));
+            t.SetApartmentState(ApartmentState.STA);
+            t.Start();
+            t.Join();
+
+
+        }
+        void btn_report(Object sender, EventArgs e)
+        {
+
+
+        }
+        public void InitContentScriptMenu()
+        {
+            CustomContextMenuStrip<int> cms = new CustomContextMenuStrip<int>();
+            cms.Items.Add("Xuất Dữ Liệu " + MaterialEnum.Sail.GetDisplayName(), null, new EventHandler(btn_export));
+            cms.Items.Add("Xuất Báo Cáo " + MaterialEnum.Sail.GetDisplayName(), null, new EventHandler(btn_report));
+            cms.obj = (int)MaterialEnum.Sail;
+            btnSail.ContextMenuStrip = cms;
+
+            cms = new CustomContextMenuStrip<int>();
+            cms.Items.Add("Xuất Dữ Liệu " + "Card", null, new EventHandler(btn_export));
+            cms.Items.Add("Xuất Báo Cáo " + "Card", null, new EventHandler(btn_report));
+            cms.obj = (int)MaterialEnum.Car;
+            btnCar.ContextMenuStrip = cms;
         }
 
         private void ResetMaterialButtonColor(Button component)
@@ -166,6 +219,19 @@ namespace MaterialsManagement.UI.CustomControl
                 }
                 gridData.CurrentCell = gridData.Rows[e.RowIndex].Cells[e.ColumnIndex];
                 e.ContextMenuStrip = this.cms;
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dataTable = new MaterialService().SearchByTypeAsDataTable(dv.Id, CurrentMaterialType, tbSearch.Text);
+                SetDataTable(dataTable);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Đã xảy ra lỗi, không thể tải dữ liệu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
