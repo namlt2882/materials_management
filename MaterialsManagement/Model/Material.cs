@@ -25,19 +25,33 @@ namespace MaterialsManagement.Model
         public Dv dv { get; set; }
         public Qk qk { get; set; }
         public string Controller { get; set; }
+        //Thời gian đăng kí 
         public DateTime RegisterYear { get; set; }
+        //Nhãn xe chuyên dùng 
         public int Label { get; set; }
+        //Số khung
         public string FrameNumber { get; set; }
+        //Số máy - EIN (Engine dentification number)
         public string EIN { get; set; }
+        //Nguồn gốc
         public string OriginalExplanation { get; set; }
+        //Năm bắt đầu sử dụng
         public DateTime StartUsingYear { get; set; }
+        //Phân cấp CL
         public int ClLevel { get; set; }
+        //Đã qua SCL lần
         public int SclTime{ get; set; }
+        //Năm SCL gần nhất
         public DateTime RecentSclYear { get; set; }
+        //Nhóm xe
         public int GroupLabel { get; set; }
+        //Trạng thái sử dụng
         public int UseStatus { get; set; }
+        //Số GCNĐK
         public int GndkNumber { get; set; }
+        //Số quyết định
         public string AcceptCode { get; set; }
+        //Loại xe
         public string TypeDescription { get; set; }
         public Material()
         {
