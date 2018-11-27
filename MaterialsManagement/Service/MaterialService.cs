@@ -22,7 +22,7 @@ namespace MaterialsManagement.Service
                 DateTime.Now.Ticks + "-" + 
                 random.Next(0, 9999).ToString("D4");
             material.Id = newId;
-            material.Status = (int)MaterialStatus.ACTIVE;
+            material.Status = (int)MaterialStatusEnum.ACTIVE;
             DateTime now = DateTime.Now;
             material.InsertDate = now;
             material.LastUpdate = now;

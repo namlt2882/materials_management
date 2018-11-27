@@ -18,5 +18,11 @@ namespace MaterialsManagement.Common
                             .GetCustomAttribute<DisplayAttribute>()
                             .GetName();
         }
+
+        public static IEnumerable<T> GetEnumList<T>(Type EnumType)
+        {
+            IEnumerable<T> enums = Enum.GetValues(EnumType).Cast<T>();
+            return enums;
+        }
     }
 }

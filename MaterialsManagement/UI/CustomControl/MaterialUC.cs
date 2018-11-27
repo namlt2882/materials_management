@@ -16,12 +16,12 @@ namespace MaterialsManagement.UI.CustomControl
     public partial class MaterialUC : UserControl
     {
         public Dv dv { get; set; }
-        public int CurrentMaterialType = (int)MaterialEnum.Sail;
+        public int CurrentMaterialType = (int)MaterialTypeEnum.Sail;
         private DataTable dataTable;
         public MaterialUC(Dv dv) : this()
         {
             this.dv = dv;
-            InitGridView((int)MaterialEnum.Sail);
+            InitGridView((int)MaterialTypeEnum.Sail);
             var topLeftHeaderCell = gridData.TopLeftHeaderCell;
         }
 
@@ -45,14 +45,14 @@ namespace MaterialsManagement.UI.CustomControl
         private void btnSail_Click(object sender, EventArgs e)
         {
             ResetMaterialButtonColor((Button)sender);
-            CurrentMaterialType = (int)MaterialEnum.Sail;
+            CurrentMaterialType = (int)MaterialTypeEnum.Sail;
             InitGridView(CurrentMaterialType);
         }
 
         private void btnCar_Click(object sender, EventArgs e)
         {
             ResetMaterialButtonColor((Button)sender);
-            CurrentMaterialType = (int)MaterialEnum.Car;
+            CurrentMaterialType = (int)MaterialTypeEnum.Car;
             InitGridView(CurrentMaterialType);
         }
 

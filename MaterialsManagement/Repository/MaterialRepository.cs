@@ -16,10 +16,16 @@ namespace MaterialsManagement.Repository
         private static readonly string INSERT_QUERY = "INSERT INTO " +
             "Material(Id, Type, RegisterCode, Model, Origin," +
             "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
-            "DvId, InsertDate, Controller, LastUpdate, LastChangeOil) " +
+            "DvId, InsertDate, Controller, LastUpdate, LastChangeOil," +
+            "RegisterYear, Label, FrameNumber, EIN, OriginalExplanation," +
+            "StartUsingYear, ClLevel, SclTime, RecentSclYear, GroupLabel," +
+            "UseStatus, GndkNumber, AcceptCode, TypeDescription) " +
             "VALUES(@Id, @Type, @RegisterCode, @Model, @Origin," +
             "@ManufacturingDate, @CurrentKm, @OilWarning, @Notes, @Status," +
-            "@DvId, @InsertDate, @Controller, @LastUpdate, @LastChangeOil)";
+            "@DvId, @InsertDate, @Controller, @LastUpdate, @LastChangeOil," +
+            "@RegisterYear, @Label, @FrameNumber, @EIN, @OriginalExplanation," +
+            "@StartUsingYear, @ClLevel, @SclTime, @RecentSclYear, @GroupLabel," +
+            "@UseStatus, @GndkNumber, @AcceptCode, @TypeDescription)";
         private static readonly string UPDATE_QUERY = "UPDATE Material " +
             "SET Type=@Type, RegisterCode=@RegisterCode, Model=@Model," +
             "Origin=@Origin, ManufacturingDate=@ManufacturingDate," +
@@ -31,7 +37,7 @@ namespace MaterialsManagement.Repository
             "Id, Type, RegisterCode, Model, Origin," +
             "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
             "DvId, InsertDate, Controller, LastUpdate, LastChangeOil " +
-            "FROM Material WHERE Type=@Type AND DvId=@DvId AND Status=" + (int)MaterialStatus.ACTIVE+
+            "FROM Material WHERE Type=@Type AND DvId=@DvId AND Status=" + (int)MaterialStatusEnum.ACTIVE+
             " ORDER BY InsertDate DESC";
         private static readonly string QUERY_BY_ID = "SELECT " +
             "Id, Type, RegisterCode, Model, Origin," +
@@ -115,6 +121,21 @@ namespace MaterialsManagement.Repository
                 sqlCommand.Parameters.AddWithValue("@DvId", t.DvId);
                 sqlCommand.Parameters.AddWithValue("@InsertDate", t.InsertDate);
                 sqlCommand.Parameters.AddWithValue("@LastUpdate", t.LastUpdate);
+
+                sqlCommand.Parameters.AddWithValue("@RegisterYear", t.RegisterYear);
+                sqlCommand.Parameters.AddWithValue("@Label", t.Label);
+                sqlCommand.Parameters.AddWithValue("@FrameNumber", t.FrameNumber);
+                sqlCommand.Parameters.AddWithValue("@EIN", t.EIN);
+                sqlCommand.Parameters.AddWithValue("@OriginalExplanation", t.OriginalExplanation);
+                sqlCommand.Parameters.AddWithValue("@StartUsingYear", t.StartUsingYear);
+                sqlCommand.Parameters.AddWithValue("@ClLevel", t.ClLevel);
+                sqlCommand.Parameters.AddWithValue("@SclTime", t.SclTime);
+                sqlCommand.Parameters.AddWithValue("@RecentSclYear", t.RecentSclYear);
+                sqlCommand.Parameters.AddWithValue("@GroupLabel", t.GroupLabel);
+                sqlCommand.Parameters.AddWithValue("@UseStatus", t.UseStatus);
+                sqlCommand.Parameters.AddWithValue("@GndkNumber", t.GndkNumber);
+                sqlCommand.Parameters.AddWithValue("@AcceptCode", t.AcceptCode);
+                sqlCommand.Parameters.AddWithValue("@TypeDescription", t.TypeDescription);
                 connection.Open();
                 int status = sqlCommand.ExecuteNonQuery();
                 if (status <= 0)

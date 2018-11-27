@@ -47,9 +47,9 @@ namespace MaterialsManagement.UI
                 lbDv.Text = "Đơn vị: " + dv.Name.Trim() + " (" + dv.Id.Trim() + ")";
             }
             //set type text box
-            IEnumerable<MaterialEnum> enums = Enum.GetValues(typeof(MaterialEnum))
-                .Cast<MaterialEnum>();
-            foreach (MaterialEnum e in enums)
+            IEnumerable<MaterialTypeEnum> enums = Enum.GetValues(typeof(MaterialTypeEnum))
+                .Cast<MaterialTypeEnum>();
+            foreach (MaterialTypeEnum e in enums)
             {
                 if (material.Type == (int)e)
                 {

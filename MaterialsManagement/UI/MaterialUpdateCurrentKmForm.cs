@@ -33,9 +33,9 @@ namespace MaterialsManagement.UI
         private void InitFixedInfo()
         {
             //set type text box
-            IEnumerable<MaterialEnum> enums = Enum.GetValues(typeof(MaterialEnum))
-                .Cast<MaterialEnum>();
-            foreach (MaterialEnum e in enums)
+            IEnumerable<MaterialTypeEnum> enums = Enum.GetValues(typeof(MaterialTypeEnum))
+                .Cast<MaterialTypeEnum>();
+            foreach (MaterialTypeEnum e in enums)
             {
                 if (material.Type == (int)e)
                 {

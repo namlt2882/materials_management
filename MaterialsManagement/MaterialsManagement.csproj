@@ -52,10 +52,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiModel\MaterialUseStatus.cs" />
+    <Compile Include="Common\SingletonModelProvider.cs" />
     <Compile Include="Common\Enum.cs" />
     <Compile Include="Common\EnumExtensions.cs" />
     <Compile Include="Model\Dv.cs" />
     <Compile Include="Model\Material.cs" />
+    <Compile Include="ApiModel\MaterialGroupLabel.cs" />
+    <Compile Include="ApiModel\MaterialLabel.cs" />
     <Compile Include="Model\MaterialType.cs" />
     <Compile Include="Model\Qk.cs" />
     <Compile Include="Repository\BaseRepository.cs" />
@@ -151,13 +155,10 @@
     <EmbeddedResource Include="UI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-
     <None Include="packages.config" />
-
     <EmbeddedResource Include="UI\MaterialUpdateCurrentKmForm.resx">
       <DependentUpon>MaterialUpdateCurrentKmForm.cs</DependentUpon>
     </EmbeddedResource>
-
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

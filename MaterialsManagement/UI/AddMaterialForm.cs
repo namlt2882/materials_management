@@ -1,4 +1,5 @@
-﻿using MaterialsManagement.Common;
+﻿using MaterialsManagement.ApiModel;
+using MaterialsManagement.Common;
 using MaterialsManagement.Model;
 using MaterialsManagement.Service;
 using System;
@@ -46,8 +47,8 @@ namespace MaterialsManagement.UI
 
         private void InitTypeCombobox()
         {
-            IEnumerable<MaterialEnum> enums = Enum.GetValues(typeof(MaterialEnum))
-                .Cast<MaterialEnum>();
+            IEnumerable<MaterialTypeEnum> enums = Enum.GetValues(typeof(MaterialTypeEnum))
+                .Cast<MaterialTypeEnum>();
             MaterialType materialType;
             foreach (var enumItem in enums)
             {
@@ -59,6 +60,25 @@ namespace MaterialsManagement.UI
                 cbType.Items.Add(materialType);
             }
             cbType.SelectedIndex = 0;
+
+            var list1 = SingletonModelProvider.GetMaterialGroupLabelModels();
+            foreach (var i in list1)
+            {
+                cbGroupLabel.Items.Add(i);
+            }
+            cbGroupLabel.SelectedIndex = 0;
+            var list2 = SingletonModelProvider.GetMaterialLabelModels();
+            foreach (var i in list2)
+            {
+                cbLabel.Items.Add(i);
+            }
+            cbLabel.SelectedIndex = 0;
+            var list3 = SingletonModelProvider.GetMaterialUseStatusModels();
+            foreach (var i in list3)
+            {
+                cbUseStatus.Items.Add(i);
+            }
+            cbUseStatus.SelectedIndex = 0;
         }
 
         private void SetSelectedMaterialType(int SelectedType)
@@ -97,7 +117,22 @@ namespace MaterialsManagement.UI
                 Notes = tbNote.Text,
                 DvId = dv.Id,
                 qk = this.qk,
-                dv = this.dv
+                dv = this.dv,
+
+                RegisterYear = dtpRegisterYear.Value.Date,
+                Label = (cbLabel.SelectedItem as MaterialLabel).Id,
+                FrameNumber = tbFrameNumber.Text,
+                EIN = tbEIN.Text,
+                OriginalExplanation = tbOriginExplanation.Text,
+                StartUsingYear = dtpStartUsingYear.Value.Date,
+                ClLevel = Convert.ToInt32(nbClLevel.Value),
+                SclTime = Convert.ToInt32(nbSclTime.Value),
+                RecentSclYear = dtpRecentSclYear.Value.Date,
+                GroupLabel = (cbGroupLabel.SelectedItem as MaterialGroupLabel).Id,
+                UseStatus = (cbUseStatus.SelectedItem as MaterialUseStatus).Id,
+                GndkNumber = Convert.ToInt32(nbGndkNumber.Value),
+                AcceptCode = tbAcceptCode.Text,
+                TypeDescription = tbTypeDescription.Text
             };
             try
             {
@@ -107,7 +142,8 @@ namespace MaterialsManagement.UI
                     afterAddCallBack(rs);
                 }
                 this.Close();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Tác vụ không thành công, hãy thử lại sau!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
