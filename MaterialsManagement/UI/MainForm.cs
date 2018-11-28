@@ -193,12 +193,14 @@ namespace MaterialsManagement
             report.materials.AddRange(materialService.GetAll());
             string selectedPath;
             var t = new Thread((ThreadStart)(() => {
-                using (var folderDialog = new FolderBrowserDialog())
+                using (var folderDialog = new OpenFileDialog())
                 {
+                    folderDialog.CheckFileExists = false;
+                    folderDialog.FileName = String.Format("Dữ Liệu {0}.{1}", DateTime.Today.ToString("ddMMyyyy"), "json");
                     if (folderDialog.ShowDialog() == DialogResult.OK)
                     {
-                        selectedPath = folderDialog.SelectedPath;
-                        System.IO.File.WriteAllText(selectedPath + "\\Toàn Bộ Các Quân Khu " + DateTime.Today.ToString("ddMMyyyy") + ".json", Newtonsoft.Json.JsonConvert.SerializeObject(report));
+                        selectedPath = folderDialog.FileName;
+                        System.IO.File.WriteAllText(selectedPath, Newtonsoft.Json.JsonConvert.SerializeObject(report));
                         MessageBox.Show("Tải Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information,
             MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
@@ -222,6 +224,48 @@ namespace MaterialsManagement
          MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                 Application.Restart();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Report report = new Report();
+            QkService qkService = new QkService();
+            DvService dvService = new DvService();
+            MaterialService materialService = new MaterialService();
+            ReportExcelService reportExcel = new ReportExcelService(false);
+            report.qks.AddRange(qkService.GetAll());
+            reportExcel.GenerateTitle("Báo cáo số chất lượng trang bị xe - máy và tàu - thuyền theo số đăng ký");
+            foreach (Qk qk in report.qks)
+            {
+                List<Dv> list = dvService.GetByQkId(qk.Id);
+                for (int i = 0; i < list.Count; i++)
+                {
+                    Dv dv = list[i];
+                    List<Material> data = materialService.GetAllByDv(dv.Id);
+                    if (data.Count == 0) continue;
+                    reportExcel.GenerateTable(String.Format("Đơn Vị {0} Thuộc Quân Khu {1}", qk.Name, dv.Name), data);
+                }
+            }
+            string selectedPath;
+            var t = new Thread((ThreadStart)(() => {
+                using (var folderDialog = new OpenFileDialog())
+                {
+                    folderDialog.CheckFileExists = false;
+                    folderDialog.FileName = String.Format("Báo cáo {0}.{1}", DateTime.Today.ToString("ddMMyyyy"), "xls");
+                    if (folderDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        selectedPath = folderDialog.FileName;
+                        reportExcel.DownLoad(selectedPath);
+                        MessageBox.Show("Tải Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information,
+ MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                    }
+                }
+
+            }));
+            t.SetApartmentState(ApartmentState.STA);
+            t.Start();
+            t.Join();
+
         }
     }
 }

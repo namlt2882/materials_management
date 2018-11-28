@@ -9,7 +9,7 @@ using System.Drawing;
 
 namespace MaterialsManagement.Service
 {
-    class ReportExcel
+    class ReportExcelService
     {
         private int COLUMN_NUMBER = 22;
         private String[] co = { "", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
@@ -19,7 +19,7 @@ namespace MaterialsManagement.Service
         private _Workbook oWB;
         private _Worksheet oSheet;
         private Range oRng;
-        public ReportExcel(Boolean isOpenExcel)
+        public ReportExcelService(Boolean isOpenExcel)
         {
             oXL = new Application();
             oXL.Visible = isOpenExcel;
@@ -40,7 +40,8 @@ namespace MaterialsManagement.Service
         }
         public void GenerateTable(String captain, List<Material> data)
         {
-            if (data == null) return;
+            if (data == null || data.Count == 0) return;
+
             //Captain[->--FontSize:16 Bold--<--]
             oSheet.Cells[row, 1] = captain;
             oSheet.Range[co[1] + row, co[1] + row].Font.Size = 16;
@@ -283,7 +284,7 @@ namespace MaterialsManagement.Service
         }
         public void DownLoad(String path)
         {
-            oWB.SaveAs("D:\\test505.xls", Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing,
+            oWB.SaveAs(path, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing,
                         false, false, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange,
                         Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
 

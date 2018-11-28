@@ -94,14 +94,16 @@ namespace MaterialsManagement.UI.CustomControl
                 report.materials.AddRange(materialService.GetAllByDv(report.dvs[0].Id));
                 string selectedPath;
                 var t = new Thread((ThreadStart)(() => {
-                    using (var folderDialog = new FolderBrowserDialog())
+                    using (var folderDialog = new OpenFileDialog())
                     {
+                        folderDialog.CheckFileExists = false;
+                        folderDialog.FileName = String.Format("Dữ Liệu{0}.{1}", DateTime.Today.ToString("ddMMyyyy"), "json");
                         if (folderDialog.ShowDialog() == DialogResult.OK)
                         {
-                            selectedPath = folderDialog.SelectedPath;
-                            System.IO.File.WriteAllText(selectedPath + "\\" + report.dvs[0].Name + "_" + report.dvs[0].Id + "_" + DateTime.Today.ToString("ddMMyyyy") + ".json", Newtonsoft.Json.JsonConvert.SerializeObject(report));
+                            selectedPath = folderDialog.FileName;
+                            System.IO.File.WriteAllText(selectedPath, Newtonsoft.Json.JsonConvert.SerializeObject(report));
                             MessageBox.Show("Tải Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information,
-               MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+         MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                         }
                     }
 
@@ -114,7 +116,38 @@ namespace MaterialsManagement.UI.CustomControl
             }
             void btn_report(Object sender, EventArgs e)
             {
+                ToolStripMenuItem item = (sender as ToolStripMenuItem);
+                ContextMenuStrip contextMenuStrip = (item.Owner as ContextMenuStrip);
+                CustomButton<Dv> customButton = contextMenuStrip.SourceControl as CustomButton<Dv>;
+                Report report = new Report();
+                QkService qkService = new QkService();
+                DvService dvService = new DvService();
+                MaterialService materialService = new MaterialService();
+                ReportExcelService reportExcel = new ReportExcelService(false);
+                report.qks.Add(qkService.Get(qk.Id));
+                report.dvs.Add(dvService.Get(customButton.obj.Id));
+                reportExcel.GenerateTitle("Báo cáo số chất lượng trang bị xe - máy và tàu - thuyền theo số đăng ký");
+                    if (report.dvs.Count != 0) 
+                    reportExcel.GenerateTable(String.Format("Đơn Vị {0} Thuộc Quân Khu {1}", report.qks[0].Name, report.dvs[0].Name), materialService.GetAllByDv(report.dvs[0].Id));
+                string selectedPath;
+                var t = new Thread((ThreadStart)(() => {
+                    using (var folderDialog = new OpenFileDialog())
+                    {
+                        folderDialog.CheckFileExists = false;
+                        folderDialog.FileName = String.Format("Báo cáo {0}.{1}", DateTime.Today.ToString("ddMMyyyy"), "xls");
+                        if (folderDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            selectedPath = folderDialog.FileName;
+                            reportExcel.DownLoad(selectedPath);
+                            MessageBox.Show("Tải Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information,
+     MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                        }
+                    }
 
+                }));
+                t.SetApartmentState(ApartmentState.STA);
+                t.Start();
+                t.Join();
 
             }
             void btn_Click(object sender, EventArgs e)

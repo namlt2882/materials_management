@@ -74,7 +74,7 @@
     <Compile Include="Service\MaterialService.cs" />
     <Compile Include="Service\DvService.cs" />
     <Compile Include="Service\QkService.cs" />
-    <Compile Include="Service\ReportExcel.cs" />
+    <Compile Include="Service\ReportExcelService.cs" />
     <Compile Include="UI\AddMaterialForm.cs">
       <SubType>Form</SubType>
     </Compile>

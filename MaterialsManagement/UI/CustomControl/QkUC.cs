@@ -91,12 +91,14 @@ namespace MaterialsManagement.UI.CustomControl
                 }
                 string selectedPath;
                 var t = new Thread((ThreadStart)(() => {
-                    using (var folderDialog = new FolderBrowserDialog())
+                    using (var folderDialog = new OpenFileDialog())
                     {
+                        folderDialog.CheckFileExists = false;
+                        folderDialog.FileName = String.Format("Dữ Liệu {0}.{1}", DateTime.Today.ToString("ddMMyyyy"), "json");
                         if (folderDialog.ShowDialog() == DialogResult.OK)
                         {
-                            selectedPath = folderDialog.SelectedPath;
-                            System.IO.File.WriteAllText(selectedPath + "\\" + report.qks[0].Name + "_" + report.qks[0].Id + " " + DateTime.Today.ToString("ddMMyyyy") + ".json", Newtonsoft.Json.JsonConvert.SerializeObject(report));
+                            selectedPath = folderDialog.FileName;
+                            System.IO.File.WriteAllText(selectedPath, Newtonsoft.Json.JsonConvert.SerializeObject(report));
                             MessageBox.Show("Tải Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information,
          MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                         }
@@ -109,29 +111,8 @@ namespace MaterialsManagement.UI.CustomControl
             }
             void btn_report(Object sender, EventArgs e)
             {
-                string selectedPath;
-                //       var t = new Thread((ThreadStart)(() => {
-                //           using (var folderDialog = new FolderBrowserDialog())
-                //           {
-                //               if (folderDialog.ShowDialog() == DialogResult.OK)
-                //               {
-                //                   selectedPath = folderDialog.SelectedPath;
-                //                   System.IO.File.WriteAllText(selectedPath + "\\" + report.qks[0].Name + "_" + report.qks[0].Id + " " + DateTime.Today.ToString("ddMMyyyy") + ".json", Newtonsoft.Json.JsonConvert.SerializeObject(report));
-                //                   MessageBox.Show("Tải Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information,
-                //MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-                //               }
-                //           }
-
-                //       }));
-                Microsoft.Office.Interop.Excel.Application oXL;
-                Microsoft.Office.Interop.Excel._Workbook oWB;
-                Microsoft.Office.Interop.Excel._Worksheet oSheet;
-                Microsoft.Office.Interop.Excel.Range oRng;
-                object misvalue = System.Reflection.Missing.Value;
                 try
                 {
-                    //Start Excel and get Application object.
-
                     ToolStripMenuItem item = (sender as ToolStripMenuItem);
                     ContextMenuStrip contextMenuStrip = (item.Owner as ContextMenuStrip);
                     CustomButton<Qk> customButton = contextMenuStrip.SourceControl as CustomButton<Qk>;
@@ -139,26 +120,37 @@ namespace MaterialsManagement.UI.CustomControl
                     QkService qkService = new QkService();
                     DvService dvService = new DvService();
                     MaterialService materialService = new MaterialService();
+                    ReportExcelService reportExcel = new ReportExcelService(false);
                     report.qks.Add(qkService.Get(customButton.obj.Id));
                     report.dvs.AddRange(dvService.GetByQkId(report.qks[0].Id));
-                    ReportExcel reportExcel = new ReportExcel(true);
-                    reportExcel.GenerateTitle("Báo cáo số chất lượng trang bị xe - máy theo số đăng ký");
-                    reportExcel.GenerateTable("QK 3 DV 3", null);
-
+                    reportExcel.GenerateTitle("Báo cáo số chất lượng trang bị xe - máy và tàu - thuyền theo số đăng ký");
                     for (int i = 0; i < report.dvs.Count; i++)
                     {
                         Dv dv = report.dvs[i];
 
                         List<Material> list = materialService.GetAllByDv(dv.Id);
-                        report.materials.AddRange(list);
                         if (list.Count == 0) continue;
-                        reportExcel.GenerateTable(dv.Name, list);
+                        reportExcel.GenerateTable(String.Format("Đơn Vị {0} Thuộc Quân Khu {1}",report.qks[0].Name,dv.Name), list);
                     }
-                    //"Báo cáo số chất lượng trang bị xe - máy theo số đăng ký"
-                    reportExcel.DownLoad(null);
+                    string selectedPath;
+                    var t = new Thread((ThreadStart)(() => {
+                        using (var folderDialog = new OpenFileDialog())
+                        {
+                            folderDialog.CheckFileExists = false;
+                            folderDialog.FileName = String.Format("Báo cáo {0}.{1}", DateTime.Today.ToString("ddMMyyyy"),"xls");
+                            if (folderDialog.ShowDialog() == DialogResult.OK)
+                            {
+                                selectedPath = folderDialog.FileName;
+                                reportExcel.DownLoad(selectedPath);
+                                MessageBox.Show("Tải Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information,
+         MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                            }
+                        }
 
-
-
+                    }));
+                    t.SetApartmentState(ApartmentState.STA);
+                    t.Start();
+                    t.Join();
                 }
                 catch (Exception ex)
                 {
