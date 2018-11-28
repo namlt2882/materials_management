@@ -72,7 +72,7 @@ namespace MaterialsManagement.UI.CustomControl
                         break;
                 }
                 btn.Click += new EventHandler(btn_Click);
-                cms = new ContextMenuStrip();
+                ContextMenuStrip cms = new ContextMenuStrip();
                 cms.Items.Add("Xuất Dữ Liệu " + dv.Name, null, new EventHandler(btn_export));
                 cms.Items.Add("Xuất Báo Cáo " + dv.Name, null, new EventHandler(btn_report));
                 btn.ContextMenuStrip = cms;
