@@ -207,36 +207,36 @@ namespace MaterialsManagement.Repository
             try
             {
                 sqlCommand = new SqlCommand(INSERT_QUERY, GetSqlConnection());
-                sqlCommand.Parameters.AddWithValue("@Id", t.Id);
-                sqlCommand.Parameters.AddWithValue("@Type", t.Type);
-                sqlCommand.Parameters.AddWithValue("@RegisterCode", t.RegisterCode);
-                sqlCommand.Parameters.AddWithValue("@Model", t.Model);
-                sqlCommand.Parameters.AddWithValue("@Origin", t.Origin);
-                sqlCommand.Parameters.AddWithValue("@Controller", t.Controller);
-                sqlCommand.Parameters.AddWithValue("@ManufacturingDate", t.ManufacturingDate);
-                sqlCommand.Parameters.AddWithValue("@CurrentKm", t.CurrentKm);
-                sqlCommand.Parameters.AddWithValue("@LastChangeOil", t.LastChangeOil);
-                sqlCommand.Parameters.AddWithValue("@OilWarning", t.OilWarning);
-                sqlCommand.Parameters.AddWithValue("@Notes", t.Notes);
-                sqlCommand.Parameters.AddWithValue("@Status", t.Status);
-                sqlCommand.Parameters.AddWithValue("@DvId", t.DvId);
-                sqlCommand.Parameters.AddWithValue("@InsertDate", t.InsertDate);
-                sqlCommand.Parameters.AddWithValue("@LastUpdate", t.LastUpdate);
+                AddWithValue("@Id", t.Id);
+                AddWithValue("@Type", t.Type);
+                AddWithValue("@RegisterCode", t.RegisterCode);
+                AddWithValue("@Model", t.Model);
+                AddWithValue("@Origin", t.Origin);
+                AddWithValue("@Controller", t.Controller);
+                AddWithValue("@ManufacturingDate", t.ManufacturingDate);
+                AddWithValue("@CurrentKm", t.CurrentKm);
+                AddWithValue("@LastChangeOil", t.LastChangeOil);
+                AddWithValue("@OilWarning", t.OilWarning);
+                AddWithValue("@Notes", t.Notes);
+                AddWithValue("@Status", t.Status);
+                AddWithValue("@DvId", t.DvId);
+                AddWithValue("@InsertDate", t.InsertDate);
+                AddWithValue("@LastUpdate", t.LastUpdate);
 
-                sqlCommand.Parameters.AddWithValue("@RegisterYear", t.RegisterYear);
-                sqlCommand.Parameters.AddWithValue("@Label", t.Label);
-                sqlCommand.Parameters.AddWithValue("@FrameNumber", t.FrameNumber);
-                sqlCommand.Parameters.AddWithValue("@EIN", t.EIN);
-                sqlCommand.Parameters.AddWithValue("@OriginalExplanation", t.OriginalExplanation);
-                sqlCommand.Parameters.AddWithValue("@StartUsingYear", t.StartUsingYear);
-                sqlCommand.Parameters.AddWithValue("@ClLevel", t.ClLevel);
-                sqlCommand.Parameters.AddWithValue("@SclTime", t.SclTime);
-                sqlCommand.Parameters.AddWithValue("@RecentSclYear", t.RecentSclYear);
-                sqlCommand.Parameters.AddWithValue("@GroupLabel", t.GroupLabel);
-                sqlCommand.Parameters.AddWithValue("@UseStatus", t.UseStatus);
-                sqlCommand.Parameters.AddWithValue("@GndkNumber", t.GndkNumber);
-                sqlCommand.Parameters.AddWithValue("@AcceptCode", t.AcceptCode);
-                sqlCommand.Parameters.AddWithValue("@TypeDescription", t.TypeDescription);
+                AddWithValue("@RegisterYear", t.RegisterYear);
+                AddWithValue("@Label", t.Label);
+                AddWithValue("@FrameNumber", t.FrameNumber);
+                AddWithValue("@EIN", t.EIN);
+                AddWithValue("@OriginalExplanation", t.OriginalExplanation);
+                AddWithValue("@StartUsingYear", t.StartUsingYear);
+                AddWithValue("@ClLevel", t.ClLevel);
+                AddWithValue("@SclTime", t.SclTime);
+                AddWithValue("@RecentSclYear", t.RecentSclYear);
+                AddWithValue("@GroupLabel", t.GroupLabel);
+                AddWithValue("@UseStatus", t.UseStatus);
+                AddWithValue("@GndkNumber", t.GndkNumber);
+                AddWithValue("@AcceptCode", t.AcceptCode);
+                AddWithValue("@TypeDescription", t.TypeDescription);
                 connection.Open();
                 int status = sqlCommand.ExecuteNonQuery();
                 if (status <= 0)
@@ -314,41 +314,52 @@ namespace MaterialsManagement.Repository
             }
             return rs;
         }
-
+        void AddWithValue(string ColumnName, object o)
+        {
+            if (o != null)
+            {
+                sqlCommand.Parameters.AddWithValue(ColumnName, o);
+            }
+            else
+            {
+                sqlCommand.Parameters.AddWithValue(ColumnName, DBNull.Value);
+            }
+        }
         public override void Update(Material t)
         {
             try
             {
                 sqlCommand = new SqlCommand(UPDATE_QUERY, GetSqlConnection());
-                sqlCommand.Parameters.AddWithValue("@Id", t.Id);
-                sqlCommand.Parameters.AddWithValue("@Type", t.Type);
-                sqlCommand.Parameters.AddWithValue("@RegisterCode", t.RegisterCode);
-                sqlCommand.Parameters.AddWithValue("@Model", t.Model);
-                sqlCommand.Parameters.AddWithValue("@Origin", t.Origin);
-                sqlCommand.Parameters.AddWithValue("@Controller", t.Controller);
-                sqlCommand.Parameters.AddWithValue("@ManufacturingDate", t.ManufacturingDate);
-                sqlCommand.Parameters.AddWithValue("@CurrentKm", t.CurrentKm);
-                sqlCommand.Parameters.AddWithValue("@LastChangeOil", t.LastChangeOil);
-                sqlCommand.Parameters.AddWithValue("@OilWarning", t.OilWarning);
-                sqlCommand.Parameters.AddWithValue("@Notes", t.Notes);
-                sqlCommand.Parameters.AddWithValue("@Status", t.Status);
-                sqlCommand.Parameters.AddWithValue("@DvId", t.DvId);
-                sqlCommand.Parameters.AddWithValue("@LastUpdate", t.LastUpdate);
+                AddWithValue("@Id", t.Id);
+                AddWithValue("@Type", t.Type);
+                AddWithValue("@RegisterCode", t.RegisterCode);
+                AddWithValue("@Model", t.Model);
+                
+                AddWithValue("@Origin", t.Origin);
+                AddWithValue("@Controller", t.Controller);
+                AddWithValue("@ManufacturingDate", t.ManufacturingDate);
+                AddWithValue("@CurrentKm", t.CurrentKm);
+                AddWithValue("@LastChangeOil", t.LastChangeOil);
+                AddWithValue("@OilWarning", t.OilWarning);
+                AddWithValue("@Notes", t.Notes);
+                AddWithValue("@Status", t.Status);
+                AddWithValue("@DvId", t.DvId);
+                AddWithValue("@LastUpdate", t.LastUpdate);
 
-                sqlCommand.Parameters.AddWithValue("@RegisterYear", t.RegisterYear);
-                sqlCommand.Parameters.AddWithValue("@Label", t.Label);
-                sqlCommand.Parameters.AddWithValue("@FrameNumber", t.FrameNumber);
-                sqlCommand.Parameters.AddWithValue("@EIN", t.EIN);
-                sqlCommand.Parameters.AddWithValue("@OriginalExplanation", t.OriginalExplanation);
-                sqlCommand.Parameters.AddWithValue("@StartUsingYear", t.StartUsingYear);
-                sqlCommand.Parameters.AddWithValue("@ClLevel", t.ClLevel);
-                sqlCommand.Parameters.AddWithValue("@SclTime", t.SclTime);
-                sqlCommand.Parameters.AddWithValue("@RecentSclYear", t.RecentSclYear);
-                sqlCommand.Parameters.AddWithValue("@GroupLabel", t.GroupLabel);
-                sqlCommand.Parameters.AddWithValue("@UseStatus", t.UseStatus);
-                sqlCommand.Parameters.AddWithValue("@GndkNumber", t.GndkNumber);
-                sqlCommand.Parameters.AddWithValue("@AcceptCode", t.AcceptCode);
-                sqlCommand.Parameters.AddWithValue("@TypeDescription", t.TypeDescription);
+                AddWithValue("@RegisterYear", t.RegisterYear);
+                AddWithValue("@Label", t.Label);
+                AddWithValue("@FrameNumber", t.FrameNumber);
+                AddWithValue("@EIN", t.EIN);
+                AddWithValue("@OriginalExplanation", t.OriginalExplanation);
+                AddWithValue("@StartUsingYear", t.StartUsingYear);
+                AddWithValue("@ClLevel", t.ClLevel);
+                AddWithValue("@SclTime", t.SclTime);
+                AddWithValue("@RecentSclYear", t.RecentSclYear);
+                AddWithValue("@GroupLabel", t.GroupLabel);
+                AddWithValue("@UseStatus", t.UseStatus);
+                AddWithValue("@GndkNumber", t.GndkNumber);
+                AddWithValue("@AcceptCode", t.AcceptCode);
+                AddWithValue("@TypeDescription", t.TypeDescription);
                 connection.Open();
                 int status = sqlCommand.ExecuteNonQuery();
                 if (status <= 0)
