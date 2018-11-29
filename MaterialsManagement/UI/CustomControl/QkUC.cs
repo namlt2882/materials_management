@@ -65,6 +65,7 @@ namespace MaterialsManagement.UI.CustomControl
                 gridComponents.Add(btn);
                 tableLayoutQkList.Controls.Add(btn);
             }
+        }
 
             void btn_Click(object sender, EventArgs e)
             {
@@ -159,6 +160,5 @@ namespace MaterialsManagement.UI.CustomControl
 
             }
 
-    }
     }
 }
