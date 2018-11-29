@@ -175,5 +175,37 @@ namespace MaterialsManagement.UI
             cbLabel.Enabled = true;
             cbUseStatus.Enabled = true;
         }
+
+        private void btnGetQrCode_Click(object sender, EventArgs e)
+        {
+            //Huy QRCode: 11/20/2018 Add Start
+            string selectedPath;
+            var t = new Thread((ThreadStart)(() => {
+                using (var folderDialog = new FolderBrowserDialog())
+                {
+                    if (folderDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        selectedPath = folderDialog.SelectedPath;
+                         QRCodeService qr = new QRCodeService();
+                        if (qr != null)
+                        {
+                            qr.GenerateQRCode(material.ToString(),10,300,300).Save(selectedPath+"\\"+ StringUtility.TrimIfPresent(material.Id)+"-"+ DateTime.Today.ToString("ddMMyyyy")+".png");
+                            MessageBox.Show("Tải QRCode Thành Công","Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information,
+     MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không Thể Tải QRCode","Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error,
+     MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                        }
+                    }
+                }
+
+            }));
+            t.SetApartmentState(ApartmentState.STA);
+            t.Start();
+            t.Join();
+            
+        }
     }
 }

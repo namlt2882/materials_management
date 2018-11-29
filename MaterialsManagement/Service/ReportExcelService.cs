@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.Office.Interop.Excel;
 using MaterialsManagement.Model;
 using System.Drawing;
+using MaterialsManagement.ApiModel;
+using MaterialsManagement.Utility;
 
 namespace MaterialsManagement.Service
 {
@@ -251,33 +253,35 @@ namespace MaterialsManagement.Service
             //Boder header [->--Thin--<--]
             col = 0;
             row += 1;
+
+            DvService dvService = new DvService();
             for (int i = 0; i < data.Count; i++)
             {
                 row++;
                 col++;
                 Material material = data[i];
                 oSheet.Cells[row, col++] = i + 1;//TT
-                oSheet.Cells[row, col++] = material.Id;//Số đăng ký
-                oSheet.Cells[row, col++] = i + 1;//Thời gian đăng ký
-                oSheet.Cells[row, col++] = i + 1;//Nhãn xe cơ sở
-                oSheet.Cells[row, col++] = i + 1;//Nhãn xe ch/dùng
-                oSheet.Cells[row, col++] = i + 1;//Loại xe
-                oSheet.Cells[row, col++] = i + 1;//Số Khung
-                oSheet.Cells[row, col++] = i + 1;//Số máy
-                oSheet.Cells[row, col++] = i + 1;//Năm s/xuất
-                oSheet.Cells[row, col++] = i + 1;//Nguồn gốc
-                oSheet.Cells[row, col++] = i + 1;//Biên chế ở
-                oSheet.Cells[row, col++] = i + 1;//Khối đơn vị
-                oSheet.Cells[row, col++] = i + 1;//Năm b/đầu sản xuất
-                oSheet.Cells[row, col++] = i + 1;//Phân cấp CL
-                oSheet.Cells[row, col++] = i + 1;//Đã qua SCL lần
-                oSheet.Cells[row, col++] = i + 1;//Năm SCL gần nhất
-                oSheet.Cells[row, col++] = i + 1;//Nhóm xe
-                oSheet.Cells[row, col++] = i + 1;//Trạng thái SD
-                oSheet.Cells[row, col++] = i + 1;//Số GCNĐK
-                oSheet.Cells[row, col++] = i + 1;//Loại đơn vị
-                oSheet.Cells[row, col++] = i + 1;//Số QĐ, thời gian đưa vào biên chế
-                oSheet.Cells[row, col++] = i + 1;//Ghi chú
+                oSheet.Cells[row, col++] = material.RegisterCode;//Số đăng ký
+                oSheet.Cells[row, col++] = material.RecentSclYear.Year;//Thời gian đăng ký
+                oSheet.Cells[row, col++] = material.Model;//Nhãn xe cơ sở
+                oSheet.Cells[row, col++] = SingletonModelProvider.GetMaterialLabelModel(material.Label).Name;//Nhãn xe ch/dùng
+                oSheet.Cells[row, col++] = SingletonModelProvider.GetMaterialTypeModel( material.Type).Name;//Loại xe
+                oSheet.Cells[row, col++] = StringUtility.TrimIfPresent(material.FrameNumber);//Số Khung
+                oSheet.Cells[row, col++] = StringUtility.TrimIfPresent(material.EIN);//Số máy
+                oSheet.Cells[row, col++] = material.ManufacturingDate.Year;//Năm s/xuất
+                oSheet.Cells[row, col++] = material.Origin;//Nguồn gốc
+                oSheet.Cells[row, col++] = dvService.Get(material.DvId).Id;//Biên chế ở
+                oSheet.Cells[row, col++] = "";//Khối đơn vị
+                oSheet.Cells[row, col++] = material.StartUsingYear.Year;//Năm b/đầu sản xuất
+                oSheet.Cells[row, col++] = material.ClLevel;//Phân cấp CL
+                oSheet.Cells[row, col++] = material.SclTime;//Đã qua SCL lần
+                oSheet.Cells[row, col++] = material.RecentSclYear.Year;//Năm SCL gần nhất
+                oSheet.Cells[row, col++] = SingletonModelProvider.GetMaterialGroupLabelModel(material.GroupLabel).Name;//Nhóm xe
+                oSheet.Cells[row, col++] = SingletonModelProvider.GetMaterialUseStatusModel(material.UseStatus).Name;//Trạng thái SD
+                oSheet.Cells[row, col++] = material.GndkNumber;//Số GCNĐK
+                oSheet.Cells[row, col++] = SingletonModelProvider.GetMaterialTypeModel(material.Type).Name;//Loại đơn vị
+                oSheet.Cells[row, col++] = material.AcceptCode;//Số QĐ, thời gian đưa vào biên chế
+                oSheet.Cells[row, col++] = material.Notes;//Ghi chú
                 col = 0;
             }
             row++;

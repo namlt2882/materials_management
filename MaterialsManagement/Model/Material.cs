@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MaterialsManagement.ApiModel;
+using MaterialsManagement.Utility;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,7 +42,7 @@ namespace MaterialsManagement.Model
         //Phân cấp CL
         public int ClLevel { get; set; }
         //Đã qua SCL lần
-        public int SclTime{ get; set; }
+        public int SclTime { get; set; }
         //Năm SCL gần nhất
         public DateTime RecentSclYear { get; set; }
         //Nhóm xe
@@ -60,13 +62,18 @@ namespace MaterialsManagement.Model
         public override string ToString()
         {
             StringBuilder data = new StringBuilder();
-            data.AppendFormat("ID: {0}{1}",Id, Environment.NewLine);
-            data.AppendFormat("Type: {0}{1}", Type, Environment.NewLine);
-            data.AppendFormat("RegisterCode: {0}{1}", RegisterCode, Environment.NewLine);
-            data.AppendFormat("Model: {0}{1}", Model, Environment.NewLine);
-            data.AppendFormat("Origin: {0}{1}", Origin, Environment.NewLine);
-            data.AppendFormat("CurrentKm: {0}{1}", CurrentKm, Environment.NewLine);
-            data.AppendFormat("LastChangeOil: {0}{1}", LastChangeOil, Environment.NewLine);
+            data.AppendFormat("ID: {0}{1}", Id, Environment.NewLine);
+            data.AppendFormat("Loại trang bị: {0}{1}", Type, Environment.NewLine);
+            data.AppendFormat("Số đăng ký / Năm đăng ký: {0} / {1}{2}", StringUtility.TrimIfPresent(RegisterCode), RegisterYear.Year, Environment.NewLine);
+            data.AppendFormat("Năm sản xuất / Năm bắt đầu sử dụng: {0} / {1}{2}", ManufacturingDate.Year, StartUsingYear.Year, Environment.NewLine);
+            data.AppendFormat("Số khung / Số máy: {0} / {1}{2}", StringUtility.TrimIfPresent(FrameNumber), EIN, Environment.NewLine);
+            data.AppendFormat("Số GNĐK: {0}{1}", GndkNumber, Environment.NewLine);
+            data.AppendFormat("Nhóm xe: {0}{1}", SingletonModelProvider.GetMaterialGroupLabelModel(GroupLabel), Environment.NewLine);
+            data.AppendFormat("Model / Nơi sản xuất: {0} / {1}{2}", Model, Origin, Environment.NewLine);
+            data.AppendFormat("Phan cấp chất lượng: {0}{1}", ClLevel, Environment.NewLine);
+            data.AppendFormat("Số lần scl: {0}{1}", SclTime, Environment.NewLine);
+            data.AppendFormat("Năm scl gần nhất: {0}{1}", RecentSclYear.Year, Environment.NewLine);
+            data.AppendFormat("Người điều khiển: {0}{1}", Controller, Environment.NewLine);
             return data.ToString();
         }
         //Huy QRCode: 11/20/2018 Add End

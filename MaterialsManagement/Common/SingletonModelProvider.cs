@@ -13,6 +13,19 @@ namespace MaterialsManagement.ApiModel
         private static List<MaterialGroupLabel> materialGroupList;
         private static List<MaterialLabel> materialLabelList;
         private static List<MaterialUseStatus> materialUseStatusList;
+        private static List<MaterialType> materialTypeList;
+        public static MaterialGroupLabel GetMaterialGroupLabelModel(int value)
+        {
+            List<MaterialGroupLabel> l = GetMaterialGroupLabelModels();
+            foreach(var i in l)
+            {
+                if (i.Id == value)
+                {
+                    return i;
+                }
+            }
+            return null;
+        }
         public static List<MaterialGroupLabel> GetMaterialGroupLabelModels()
         {
             if (materialGroupList != null)
@@ -34,7 +47,18 @@ namespace MaterialsManagement.ApiModel
             }
             return materialGroupList;
         }
-
+        public static MaterialLabel GetMaterialLabelModel(int value)
+        {
+            List<MaterialLabel> l = GetMaterialLabelModels();
+            foreach (var i in l)
+            {
+                if (i.Id == value)
+                {
+                    return i;
+                }
+            }
+            return null;
+        }
         public static List<MaterialLabel> GetMaterialLabelModels()
         {
             if (materialLabelList != null)
@@ -56,7 +80,18 @@ namespace MaterialsManagement.ApiModel
             }
             return materialLabelList;
         }
-
+        public static MaterialUseStatus GetMaterialUseStatusModel(int value)
+        {
+            List<MaterialUseStatus> l = GetMaterialUseStatusModels();
+            foreach (var i in l)
+            {
+                if (i.Id == value)
+                {
+                    return i;
+                }
+            }
+            return null;
+        }
         public static List<MaterialUseStatus> GetMaterialUseStatusModels()
         {
             if (materialUseStatusList != null)
@@ -77,6 +112,39 @@ namespace MaterialsManagement.ApiModel
                 materialUseStatusList.Add(tmp);
             }
             return materialUseStatusList;
+        }
+        public static MaterialType GetMaterialTypeModel(int value)
+        {
+            List<MaterialType> l = GetMaterialTypeModels();
+            foreach (var i in l)
+            {
+                if (i.Id == value)
+                {
+                    return i;
+                }
+            }
+            return null;
+        }
+        public static List<MaterialType> GetMaterialTypeModels()
+        {
+            if (materialTypeList != null)
+            {
+                return materialTypeList;
+            }
+            IEnumerable<MaterialTypeEnum> enums = EnumExtensions
+                .GetEnumList<MaterialTypeEnum>(typeof(MaterialTypeEnum));
+            MaterialType tmp;
+            materialTypeList = new List<MaterialType>();
+            foreach (var e in enums)
+            {
+                tmp = new MaterialType
+                {
+                    Id = (int)e,
+                    Name = EnumExtensions.GetDisplayName(e)
+                };
+                materialTypeList.Add(tmp);
+            }
+            return materialTypeList;
         }
     }
 }
