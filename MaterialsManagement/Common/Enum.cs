@@ -46,7 +46,7 @@ namespace MaterialsManagement.Common
         BAO_DAM = 1,
         [Display(Name = "Tác chiến")]
         TAC_CHIEN = 2,
-        [Display(Name = "Thường")]
+        [Display(Name = "Thường xuyên")]
         THUONG_XUYEN = 3
     }
     public enum MaterialUseStatusEnum
@@ -55,7 +55,7 @@ namespace MaterialsManagement.Common
         BAO_DAM = 1,
         [Display(Name = "Tác chiến")]
         TAC_CHIEN = 2,
-        [Display(Name = "Thường")]
+        [Display(Name = "Thường xuyên")]
         THUONG_XUYEN = 3
     }
     public enum DvPriority
