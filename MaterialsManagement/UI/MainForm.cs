@@ -177,9 +177,15 @@ namespace MaterialsManagement
                 }
 
             }));
-            t.SetApartmentState(ApartmentState.STA);
-            t.Start();
-            t.Join();
+            try
+            {
+                t.SetApartmentState(ApartmentState.STA);
+                t.Start();
+                t.Join();
+            } catch (Exception ex)
+            {
+                MessageBox.Show("Sai tên đăng nhập và mật khẩu", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -207,9 +213,16 @@ namespace MaterialsManagement
                 }
 
             }));
-            t.SetApartmentState(ApartmentState.STA);
-            t.Start();
-            t.Join();
+            try
+            {
+                t.SetApartmentState(ApartmentState.STA);
+                t.Start();
+                t.Join();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sai tên đăng nhập và mật khẩu", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -262,10 +275,16 @@ namespace MaterialsManagement
                 }
 
             }));
-            t.SetApartmentState(ApartmentState.STA);
-            t.Start();
-            t.Join();
-
+            try
+            {
+                t.SetApartmentState(ApartmentState.STA);
+                t.Start();
+                t.Join();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sai tên đăng nhập và mật khẩu", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
