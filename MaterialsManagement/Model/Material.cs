@@ -63,7 +63,7 @@ namespace MaterialsManagement.Model
         {
             StringBuilder data = new StringBuilder();
             data.AppendFormat("ID: {0}{1}", Id, Environment.NewLine);
-            data.AppendFormat("Loại trang bị: {0}{1}", Type, Environment.NewLine);
+            data.AppendFormat("Loại trang bị: {0}{1}", SingletonModelProvider.GetMaterialTypeModel(Type).Name, Environment.NewLine);
             data.AppendFormat("Số đăng ký / Năm đăng ký: {0} / {1}{2}", StringUtility.TrimIfPresent(RegisterCode), RegisterYear.Year, Environment.NewLine);
             data.AppendFormat("Năm sản xuất / Năm bắt đầu sử dụng: {0} / {1}{2}", ManufacturingDate.Year, StartUsingYear.Year, Environment.NewLine);
             data.AppendFormat("Số khung / Số máy: {0} / {1}{2}", StringUtility.TrimIfPresent(FrameNumber), EIN, Environment.NewLine);

@@ -247,7 +247,7 @@ namespace MaterialsManagement
             MaterialService materialService = new MaterialService();
             ReportExcelService reportExcel = new ReportExcelService(false);
             report.qks.AddRange(qkService.GetAll());
-            reportExcel.GenerateTitle("Báo cáo số chất lượng trang bị xe - máy và tàu - thuyền theo số đăng ký");
+            reportExcel.GenerateTitle("Báo cáo số chất lượng trang bị theo số đăng ký");
             foreach (Qk qk in report.qks)
             {
                 List<Dv> list = dvService.GetByQkId(qk.Id);
@@ -256,7 +256,7 @@ namespace MaterialsManagement
                     Dv dv = list[i];
                     List<Material> data = materialService.GetAllByDv(dv.Id);
                     if (data.Count == 0) continue;
-                    reportExcel.GenerateTable(String.Format("Đơn Vị {0} Thuộc Quân Khu {1}", qk.Name, dv.Name), data);
+                    reportExcel.GenerateTable(String.Format("Đơn Vị {1} Thuộc Quân Khu {0}", qk.Name, dv.Name), data);
                 }
             }
             string selectedPath;

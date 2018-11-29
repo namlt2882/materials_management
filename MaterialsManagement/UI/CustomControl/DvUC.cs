@@ -127,9 +127,9 @@ namespace MaterialsManagement.UI.CustomControl
                 ReportExcelService reportExcel = new ReportExcelService(false);
                 report.qks.Add(qkService.Get(qk.Id));
                 report.dvs.Add(dvService.Get(customButton.obj.Id));
-                reportExcel.GenerateTitle("Báo cáo số chất lượng trang bị xe - máy và tàu - thuyền theo số đăng ký");
+                reportExcel.GenerateTitle("Báo cáo số chất lượng trang bị theo số đăng ký");
                     if (report.dvs.Count != 0) 
-                    reportExcel.GenerateTable(String.Format("Đơn Vị {0} Thuộc Quân Khu {1}", report.qks[0].Name, report.dvs[0].Name), materialService.GetAllByDv(report.dvs[0].Id));
+                    reportExcel.GenerateTable(String.Format("Đơn Vị {1} Thuộc Quân Khu {0}", report.qks[0].Name, report.dvs[0].Name), materialService.GetAllByDv(report.dvs[0].Id));
                 string selectedPath;
                 var t = new Thread((ThreadStart)(() => {
                     using (var folderDialog = new OpenFileDialog())

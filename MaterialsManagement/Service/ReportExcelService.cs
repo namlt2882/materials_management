@@ -262,14 +262,14 @@ namespace MaterialsManagement.Service
                 Material material = data[i];
                 oSheet.Cells[row, col++] = i + 1;//TT
                 oSheet.Cells[row, col++] = material.RegisterCode;//Số đăng ký
-                oSheet.Cells[row, col++] = material.RecentSclYear.Year;//Thời gian đăng ký
+                oSheet.Cells[row, col++] = material.RegisterYear.Year;//Thời gian đăng ký
                 oSheet.Cells[row, col++] = material.Model;//Nhãn xe cơ sở
                 oSheet.Cells[row, col++] = SingletonModelProvider.GetMaterialLabelModel(material.Label).Name;//Nhãn xe ch/dùng
                 oSheet.Cells[row, col++] = SingletonModelProvider.GetMaterialTypeModel( material.Type).Name;//Loại xe
                 oSheet.Cells[row, col++] = StringUtility.TrimIfPresent(material.FrameNumber);//Số Khung
                 oSheet.Cells[row, col++] = StringUtility.TrimIfPresent(material.EIN);//Số máy
                 oSheet.Cells[row, col++] = material.ManufacturingDate.Year;//Năm s/xuất
-                oSheet.Cells[row, col++] = material.Origin;//Nguồn gốc
+                oSheet.Cells[row, col++] = material.OriginalExplanation;//Nguồn gốc
                 oSheet.Cells[row, col++] = dvService.Get(material.DvId).Id;//Biên chế ở
                 oSheet.Cells[row, col++] = "";//Khối đơn vị
                 oSheet.Cells[row, col++] = material.StartUsingYear.Year;//Năm b/đầu sản xuất

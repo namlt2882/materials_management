@@ -124,14 +124,14 @@ namespace MaterialsManagement.UI.CustomControl
                     ReportExcelService reportExcel = new ReportExcelService(false);
                     report.qks.Add(qkService.Get(customButton.obj.Id));
                     report.dvs.AddRange(dvService.GetByQkId(report.qks[0].Id));
-                    reportExcel.GenerateTitle("Báo cáo số chất lượng trang bị xe - máy và tàu - thuyền theo số đăng ký");
+                    reportExcel.GenerateTitle("Báo cáo số chất lượng trang bị theo số đăng ký");
                     for (int i = 0; i < report.dvs.Count; i++)
                     {
                         Dv dv = report.dvs[i];
 
                         List<Material> list = materialService.GetAllByDv(dv.Id);
                         if (list.Count == 0) continue;
-                        reportExcel.GenerateTable(String.Format("Đơn Vị {0} Thuộc Quân Khu {1}",report.qks[0].Name,dv.Name), list);
+                        reportExcel.GenerateTable(String.Format("Đơn Vị {1} Thuộc Quân Khu {0}",report.qks[0].Name,dv.Name), list);
                     }
                     string selectedPath;
                     var t = new Thread((ThreadStart)(() => {
