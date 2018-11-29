@@ -38,7 +38,6 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.btnReport = new System.Windows.Forms.Button();
             this.gridData = new System.Windows.Forms.DataGridView();
             this.MyToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.parentPanel.SuspendLayout();
@@ -55,7 +54,7 @@
             this.parentPanel.Controls.Add(this.rightPanel);
             this.parentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.parentPanel.Location = new System.Drawing.Point(0, 0);
-            this.parentPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.parentPanel.Margin = new System.Windows.Forms.Padding(2);
             this.parentPanel.Name = "parentPanel";
             this.parentPanel.Size = new System.Drawing.Size(834, 487);
             this.parentPanel.TabIndex = 0;
@@ -67,7 +66,7 @@
             this.leftPanel.Controls.Add(this.btnCar);
             this.leftPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.leftPanel.Location = new System.Drawing.Point(2, 2);
-            this.leftPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.leftPanel.Margin = new System.Windows.Forms.Padding(2);
             this.leftPanel.Name = "leftPanel";
             this.leftPanel.Padding = new System.Windows.Forms.Padding(8, 32, 8, 8);
             this.leftPanel.Size = new System.Drawing.Size(134, 452);
@@ -80,7 +79,7 @@
             this.btnSail.BackgroundImage = global::MaterialsManagement.Properties.Resources.sail_50;
             this.btnSail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnSail.Location = new System.Drawing.Point(10, 34);
-            this.btnSail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSail.Margin = new System.Windows.Forms.Padding(2);
             this.btnSail.Name = "btnSail";
             this.btnSail.Size = new System.Drawing.Size(110, 55);
             this.btnSail.TabIndex = 0;
@@ -95,7 +94,7 @@
             this.btnCar.BackgroundImage = global::MaterialsManagement.Properties.Resources.car_50;
             this.btnCar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnCar.Location = new System.Drawing.Point(10, 93);
-            this.btnCar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCar.Name = "btnCar";
             this.btnCar.Size = new System.Drawing.Size(110, 55);
             this.btnCar.TabIndex = 1;
@@ -109,7 +108,7 @@
             this.rightPanel.Controls.Add(this.gridData);
             this.rightPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.rightPanel.Location = new System.Drawing.Point(140, 2);
-            this.rightPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rightPanel.Margin = new System.Windows.Forms.Padding(2);
             this.rightPanel.Name = "rightPanel";
             this.rightPanel.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.rightPanel.Size = new System.Drawing.Size(692, 451);
@@ -120,10 +119,9 @@
             this.actionPanel.Controls.Add(this.btnAdd);
             this.actionPanel.Controls.Add(this.tbSearch);
             this.actionPanel.Controls.Add(this.btnSearch);
-            this.actionPanel.Controls.Add(this.btnReport);
             this.actionPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.actionPanel.Location = new System.Drawing.Point(22, 2);
-            this.actionPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.actionPanel.Margin = new System.Windows.Forms.Padding(2);
             this.actionPanel.Name = "actionPanel";
             this.actionPanel.Size = new System.Drawing.Size(670, 65);
             this.actionPanel.TabIndex = 0;
@@ -165,19 +163,6 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // btnReport
-            // 
-            this.btnReport.BackgroundImage = global::MaterialsManagement.Properties.Resources.report_26;
-            this.btnReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnReport.Location = new System.Drawing.Point(583, 19);
-            this.btnReport.Margin = new System.Windows.Forms.Padding(80, 19, 2, 2);
-            this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(33, 30);
-            this.btnReport.TabIndex = 3;
-            this.MyToolTip.SetToolTip(this.btnReport, "Xuất báo cáo");
-            this.btnReport.UseVisualStyleBackColor = true;
-            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
-            // 
             // gridData
             // 
             this.gridData.AllowUserToAddRows = false;
@@ -187,7 +172,7 @@
             this.gridData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridData.Dock = System.Windows.Forms.DockStyle.Top;
             this.gridData.Location = new System.Drawing.Point(22, 71);
-            this.gridData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gridData.Margin = new System.Windows.Forms.Padding(2);
             this.gridData.MultiSelect = false;
             this.gridData.Name = "gridData";
             this.gridData.ReadOnly = true;
@@ -203,7 +188,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.Controls.Add(this.parentPanel);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MaterialUC";
             this.Size = new System.Drawing.Size(834, 487);
             this.parentPanel.ResumeLayout(false);
@@ -231,6 +216,5 @@
         private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.DataGridView gridData;
-        private System.Windows.Forms.Button btnReport;
     }
 }
