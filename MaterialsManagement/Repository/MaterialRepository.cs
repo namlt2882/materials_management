@@ -48,7 +48,7 @@ namespace MaterialsManagement.Repository
         "Id, Type, RegisterCode, Model, Origin," +
         "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
         "DvId, InsertDate, Controller, LastUpdate, LastChangeOil " +
-        "FROM Material WHERE DvId=@DvId AND Status=" + (int)MaterialStatus.ACTIVE;
+        "FROM Material WHERE DvId=@DvId AND Status=" + (int)MaterialStatusEnum.ACTIVE;
         private static readonly string QUERY_GET_ALL = "SELECT " +
           "Id, Type, RegisterCode, Model, Origin," +
           "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
@@ -58,7 +58,7 @@ namespace MaterialsManagement.Repository
           "Id, Type, RegisterCode, Model, Origin," +
           "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
           "DvId, InsertDate, Controller, LastUpdate, LastChangeOil " +
-          "FROM Material WHERE Type=@Type AND DvId=@DvId AND (Id=@Id OR Model like @Model) AND Status=" + (int)MaterialStatus.ACTIVE +
+          "FROM Material WHERE Type=@Type AND DvId=@DvId AND (Id=@Id OR Model like @Model) AND Status=" + (int)MaterialStatusEnum.ACTIVE +
           " ORDER BY InsertDate DESC";
         public MaterialRepository(bool ReturnDataTable) : this()
         {

@@ -107,15 +107,15 @@ namespace MaterialsManagement.UI.CustomControl
         public void InitContentScriptMenu()
         {
             CustomContextMenuStrip<int> cms = new CustomContextMenuStrip<int>();
-            cms.Items.Add("Xuất Dữ Liệu " + MaterialEnum.Sail.GetDisplayName(), null, new EventHandler(btn_export));
-            cms.Items.Add("Xuất Báo Cáo " + MaterialEnum.Sail.GetDisplayName(), null, new EventHandler(btn_report));
-            cms.obj = (int)MaterialEnum.Sail;
+            cms.Items.Add("Xuất Dữ Liệu " + MaterialTypeEnum.Sail.GetDisplayName(), null, new EventHandler(btn_export));
+            cms.Items.Add("Xuất Báo Cáo " + MaterialTypeEnum.Sail.GetDisplayName(), null, new EventHandler(btn_report));
+            cms.obj = (int)MaterialTypeEnum.Sail;
             btnSail.ContextMenuStrip = cms;
 
             cms = new CustomContextMenuStrip<int>();
             cms.Items.Add("Xuất Dữ Liệu " + "Card", null, new EventHandler(btn_export));
             cms.Items.Add("Xuất Báo Cáo " + "Card", null, new EventHandler(btn_report));
-            cms.obj = (int)MaterialEnum.Car;
+            cms.obj = (int)MaterialTypeEnum.Car;
             btnCar.ContextMenuStrip = cms;
         }
 
