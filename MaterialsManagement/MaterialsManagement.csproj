@@ -32,6 +32,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="QRCoder, Version=1.3.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\QRCoder.1.3.4\lib\net40\QRCoder.dll</HintPath>
     </Reference>
@@ -62,6 +69,7 @@
     <Compile Include="ApiModel\MaterialLabel.cs" />
     <Compile Include="Model\MaterialType.cs" />
     <Compile Include="Model\Qk.cs" />
+    <Compile Include="Model\Report.cs" />
     <Compile Include="Repository\BaseRepository.cs" />
     <Compile Include="Repository\MaterialRepository.cs" />
     <Compile Include="Repository\DvRepository.cs" />
@@ -70,11 +78,15 @@
     <Compile Include="Service\MaterialService.cs" />
     <Compile Include="Service\DvService.cs" />
     <Compile Include="Service\QkService.cs" />
+    <Compile Include="Service\ReportExcelService.cs" />
     <Compile Include="UI\AddMaterialForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\AddMaterialForm.Designer.cs">
       <DependentUpon>AddMaterialForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CustomControl\CustomContextMenuStrip.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="UI\CustomControl\CustomButton.cs">
       <SubType>Component</SubType>
@@ -215,6 +227,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\empty-container %281%29.png" />
+    <None Include="Resources\documents.png" />
     <Content Include="resource\icon\error.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

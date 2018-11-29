@@ -18,5 +18,22 @@ namespace MaterialsManagement.Service
         {
             return new QkRepository().Get(Id);
         }
+        public Qk Add(Qk qk)
+        {
+
+            return new QkRepository().Insert(qk);
+        }
+        public void Update(Qk qk)
+        {
+            new QkRepository().Update(qk);
+        }
+        public void Clear()
+        {
+            QkRepository qkRepository = new QkRepository();
+            qkRepository.TurnOffContaint();
+            qkRepository.Clear();
+            qkRepository.TurnOnContaint();
+
+        }
     }
 }

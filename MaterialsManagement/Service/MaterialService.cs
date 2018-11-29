@@ -39,7 +39,17 @@ namespace MaterialsManagement.Service
             origin.LastUpdate = DateTime.Now;
             repository.Update(origin);
         }
+        public Material AddFromOthers(Material material)
+        {
+            Material rs = new MaterialRepository().Insert(material);
+            return rs;
+        }
 
+        public void UpdateFromOthers(Material material)
+        {
+            MaterialRepository repository = new MaterialRepository();
+            repository.Update(material);
+        }
         public void UpdateCurrentKm(Material material)
         {
             MaterialRepository repository = new MaterialRepository();
@@ -71,6 +81,27 @@ namespace MaterialsManagement.Service
         public Material Get(string Id)
         {
             return new MaterialRepository().Get(Id);
+        }
+        public DataTable SearchByTypeAsDataTable(string DvId, int Type, String searchValue)
+        {
+            MaterialRepository repository = new MaterialRepository(true);
+            repository.SearchByType(DvId, Type, searchValue);
+            DataTable rs = repository.dataTable;
+            return rs;
+        }
+        public List<Material> GetByType(string DvId, int Type)
+        {
+            MaterialRepository repository = new MaterialRepository(true);
+            return repository.GetByType(DvId, Type);
+        }
+        
+        public List<Material> GetAllByDv(String dv)
+        {
+            return new MaterialRepository().GetAllByQkDv(dv);
+        }
+        public List<Material> GetAll()
+        {
+            return new MaterialRepository().GetAll();
         }
     }
 }

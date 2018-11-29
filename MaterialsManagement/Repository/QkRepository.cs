@@ -13,6 +13,12 @@ namespace MaterialsManagement.Repository
     {
         private static readonly string QUERY_GET_ALL = "SELECT Id,Name FROM Qk";
         private static readonly string QUERY_BY_ID = "SELECT Id,Name FROM Qk WHERE Id=@Id";
+        private static readonly string INSERT_QUERY = "INSERT INTO " +
+       "Qk(Id, Name) " +
+       "VALUES(@Id, @Name)";
+        private static readonly string UPDATE_QUERY = "UPDATE Qk " +
+          "SET Name=@Name " +
+          "WHERE Id=@Id";
         public QkRepository()
         {
         }
@@ -54,7 +60,26 @@ namespace MaterialsManagement.Repository
 
         public override Qk Insert(Qk t)
         {
-            throw new NotImplementedException();
+            try
+            {
+                sqlCommand = new SqlCommand(INSERT_QUERY, GetSqlConnection());
+                sqlCommand.Parameters.AddWithValue("@Id", t.Id.Trim());
+                sqlCommand.Parameters.AddWithValue("@Name", t.Name.Trim());
+                connection.Open();
+                int status = sqlCommand.ExecuteNonQuery();
+                if (status <= 0)
+                {
+                    throw new Exception("Fail to insert Qk with id=" + t.Id);
+                }
+                else
+                {
+                    return t;
+                }
+            }
+            finally
+            {
+                CloseResources();
+            }
         }
 
         public override List<Qk> ReadValueFromReader()
@@ -75,7 +100,22 @@ namespace MaterialsManagement.Repository
 
         public override void Update(Qk t)
         {
-            throw new NotImplementedException();
+            try
+            {
+                sqlCommand = new SqlCommand(UPDATE_QUERY, GetSqlConnection());
+                sqlCommand.Parameters.AddWithValue("@Name", t.Name.Trim());
+                sqlCommand.Parameters.AddWithValue("@Id", t.Id);
+                connection.Open();
+                int status = sqlCommand.ExecuteNonQuery();
+                if (status <= 0)
+                {
+                    throw new Exception("Fail to update Qk with id=" + t.Id);
+                }
+            }
+            finally
+            {
+                CloseResources();
+            }
         }
     }
 }
