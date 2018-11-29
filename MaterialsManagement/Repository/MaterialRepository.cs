@@ -253,7 +253,24 @@ namespace MaterialsManagement.Repository
                 CloseResources();
             }
         }
+        string GetString(string columnName)
+        {
+            object o = sqlDataReader[columnName];
+            if (o == DBNull.Value)
+            {
+                return null;
+            }
+            return (string)o;
+        }
+        public int GetInt32(int ordinal)
+        {
+            return (sqlDataReader.IsDBNull(ordinal) ? 0 : sqlDataReader.GetInt32(ordinal));
+        }
 
+        public DateTime GetDateTime(int ordinal)
+        {
+            return (sqlDataReader.IsDBNull(ordinal) ? DateTime.Now : sqlDataReader.GetDateTime(ordinal));
+        }
         public override List<Material> ReadValueFromReader()
         {
             List<Material> rs = new List<Material>();
@@ -262,36 +279,36 @@ namespace MaterialsManagement.Repository
             {
                 material = new Material
                 {
-                    Id = sqlDataReader["Id"].ToString(),
-                    Type = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("Type")),
-                    RegisterCode = sqlDataReader["RegisterCode"].ToString(),
-                    Model = sqlDataReader["Model"].ToString(),
-                    Origin = sqlDataReader["Origin"].ToString(),
-                    Controller = sqlDataReader["Controller"].ToString(),
-                    ManufacturingDate = sqlDataReader.GetDateTime(sqlDataReader.GetOrdinal("ManufacturingDate")),
-                    CurrentKm = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("CurrentKm")),
-                    LastChangeOil = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("LastChangeOil")),
-                    OilWarning = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("OilWarning")),
-                    Notes = sqlDataReader["Notes"].ToString(),
-                    Status = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("Status")),
-                    DvId = sqlDataReader["DvId"].ToString(),
-                    InsertDate = sqlDataReader.GetDateTime(sqlDataReader.GetOrdinal("InsertDate")),
-                    LastUpdate = sqlDataReader.GetDateTime(sqlDataReader.GetOrdinal("LastUpdate")),
+                    Id = GetString("Id"),
+                    Type = GetInt32(sqlDataReader.GetOrdinal("Type")),
+                    RegisterCode = GetString("RegisterCode"),
+                    Model = GetString("Model"),
+                    Origin = GetString("Origin"),
+                    Controller = GetString("Controller"),
+                    ManufacturingDate = GetDateTime(sqlDataReader.GetOrdinal("ManufacturingDate")),
+                    CurrentKm = GetInt32(sqlDataReader.GetOrdinal("CurrentKm")),
+                    LastChangeOil = GetInt32(sqlDataReader.GetOrdinal("LastChangeOil")),
+                    OilWarning = GetInt32(sqlDataReader.GetOrdinal("OilWarning")),
+                    Notes = GetString("Notes"),
+                    Status = GetInt32(sqlDataReader.GetOrdinal("Status")),
+                    DvId = GetString("DvId"),
+                    InsertDate = GetDateTime(sqlDataReader.GetOrdinal("InsertDate")),
+                    LastUpdate = GetDateTime(sqlDataReader.GetOrdinal("LastUpdate")),
 
-                    RegisterYear = sqlDataReader.GetDateTime(sqlDataReader.GetOrdinal("RegisterYear")),
-                    Label = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("Label")),
-                    FrameNumber = sqlDataReader["FrameNumber"].ToString(),
-                    EIN = sqlDataReader["EIN"].ToString(),
-                    OriginalExplanation = sqlDataReader["OriginalExplanation"].ToString(),
-                    StartUsingYear = sqlDataReader.GetDateTime(sqlDataReader.GetOrdinal("StartUsingYear")),
-                    ClLevel = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("ClLevel")),
-                    SclTime = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("SclTime")),
-                    RecentSclYear = sqlDataReader.GetDateTime(sqlDataReader.GetOrdinal("RecentSclYear")),
-                    GroupLabel = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("GroupLabel")),
-                    UseStatus = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("UseStatus")),
-                    GndkNumber = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("GndkNumber")),
-                    AcceptCode = sqlDataReader["AcceptCode"].ToString(),
-                    TypeDescription = sqlDataReader["TypeDescription"].ToString()
+                    RegisterYear = GetDateTime(sqlDataReader.GetOrdinal("RegisterYear")),
+                    Label = GetInt32(sqlDataReader.GetOrdinal("Label")),
+                    FrameNumber = GetString("FrameNumber"),
+                    EIN = GetString("EIN"),
+                    OriginalExplanation = GetString("OriginalExplanation"),
+                    StartUsingYear = GetDateTime(sqlDataReader.GetOrdinal("StartUsingYear")),
+                    ClLevel = GetInt32(sqlDataReader.GetOrdinal("ClLevel")),
+                    SclTime = GetInt32(sqlDataReader.GetOrdinal("SclTime")),
+                    RecentSclYear = GetDateTime(sqlDataReader.GetOrdinal("RecentSclYear")),
+                    GroupLabel = GetInt32(sqlDataReader.GetOrdinal("GroupLabel")),
+                    UseStatus = GetInt32(sqlDataReader.GetOrdinal("UseStatus")),
+                    GndkNumber = GetInt32(sqlDataReader.GetOrdinal("GndkNumber")),
+                    AcceptCode = GetString("AcceptCode"),
+                    TypeDescription = GetString("TypeDescription")
                 };
                 rs.Add(material);
             }
