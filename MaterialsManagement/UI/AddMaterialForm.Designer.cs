@@ -422,9 +422,9 @@
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.Location = new System.Drawing.Point(3, 250);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(94, 22);
+            this.label21.Size = new System.Drawing.Size(107, 22);
             this.label21.TabIndex = 24;
-            this.label21.Text = "Số GNĐK:";
+            this.label21.Text = "Số GCNĐK:";
             // 
             // label22
             // 
@@ -539,6 +539,11 @@
             // 
             this.nbCurrentKm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nbCurrentKm.Location = new System.Drawing.Point(168, 323);
+            this.nbCurrentKm.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.nbCurrentKm.Name = "nbCurrentKm";
             this.nbCurrentKm.Size = new System.Drawing.Size(152, 28);
             this.nbCurrentKm.TabIndex = 5;
@@ -633,6 +638,11 @@
             // 
             this.nbOilWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nbOilWarning.Location = new System.Drawing.Point(168, 393);
+            this.nbOilWarning.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.nbOilWarning.Name = "nbOilWarning";
             this.nbOilWarning.Size = new System.Drawing.Size(152, 28);
             this.nbOilWarning.TabIndex = 6;

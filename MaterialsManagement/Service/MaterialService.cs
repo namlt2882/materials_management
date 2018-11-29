@@ -69,6 +69,21 @@ namespace MaterialsManagement.Service
             des.ManufacturingDate = origin.ManufacturingDate;
             des.OilWarning = origin.OilWarning;
             des.Notes = origin.Notes;
+
+            des.RegisterYear = origin.RegisterYear;
+            des.Label = origin.Label;
+            des.FrameNumber = origin.FrameNumber;
+            des.EIN = origin.EIN;
+            des.OriginalExplanation = origin.OriginalExplanation;
+            des.StartUsingYear = origin.StartUsingYear;
+            des.ClLevel = origin.ClLevel;
+            des.SclTime = origin.SclTime;
+            des.RecentSclYear = origin.RecentSclYear;
+            des.GroupLabel = origin.GroupLabel;
+            des.UseStatus = origin.UseStatus;
+            des.GndkNumber = origin.GndkNumber;
+            des.AcceptCode = origin.AcceptCode;
+            des.TypeDescription = origin.TypeDescription;
         }
 
         public DataTable GetByTypeAsDataTable(string DvId, int Type)

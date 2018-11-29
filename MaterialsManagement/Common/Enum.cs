@@ -43,12 +43,20 @@ namespace MaterialsManagement.Common
     public enum MaterialGroupLabelEnum
     {
         [Display(Name = "Bảo đảm")]
-        BAO_DAM = 1
+        BAO_DAM = 1,
+        [Display(Name = "Tác chiến")]
+        TAC_CHIEN = 2,
+        [Display(Name = "Thường")]
+        THUONG_XUYEN = 3
     }
     public enum MaterialUseStatusEnum
     {
-        [Display(Name = "Thường xuyên")]
-        THUONG_XUYEN =1
+        [Display(Name = "Bảo đảm")]
+        BAO_DAM = 1,
+        [Display(Name = "Tác chiến")]
+        TAC_CHIEN = 2,
+        [Display(Name = "Thường")]
+        THUONG_XUYEN = 3
     }
     public enum DvPriority
     {

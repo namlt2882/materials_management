@@ -69,8 +69,9 @@ namespace MaterialsManagement.UI
             lbLastChangeOil.Text = material.LastChangeOil + " Km";
             //Huy QRCode: 11/19/2018 Add Start
             QRCodeService qr = new QRCodeService();
-            if(qr != null) {
-                Bitmap img = qr.GenerateQRCode(material.ToString(),10, pbQRCode.Height, pbQRCode.Width);
+            if (qr != null)
+            {
+                Bitmap img = qr.GenerateQRCode(material.ToString(), 10, pbQRCode.Height, pbQRCode.Width);
                 pbQRCode.Image = img;
             }
             //Huy QRCode: 11/19/2018 Add End
@@ -88,10 +89,10 @@ namespace MaterialsManagement.UI
             tbOriginExplanation.Text = StringUtility.TrimIfPresent(material.OriginalExplanation);
             var list1 = SingletonModelProvider.GetMaterialGroupLabelModels();
             int index = 0;
-            for (int i = 0;i < list1.Count;i++)
+            for (int i = 0; i < list1.Count; i++)
             {
                 var item = list1[i];
-                if(item.Id == material.GroupLabel)
+                if (item.Id == material.GroupLabel)
                 {
                     index = i;
                 }
@@ -132,6 +133,21 @@ namespace MaterialsManagement.UI
             material.ManufacturingDate = dtpManufactureDate.Value;
             material.OilWarning = Convert.ToInt32(nbOilWarning.Value);
             material.Notes = tbNote.Text;
+
+            material.RegisterYear = dtpRegisterYear.Value;
+            material.Label = (cbLabel.SelectedItem as MaterialLabel).Id;
+            material.FrameNumber = tbFrameNumber.Text;
+            material.EIN = tbEIN.Text;
+            material.OriginalExplanation = tbOriginExplanation.Text;
+            material.StartUsingYear = dtpStartUsingYear.Value;
+            material.ClLevel = Convert.ToInt32(nbClLevel.Value);
+            material.SclTime = Convert.ToInt32(nbSclTime.Value);
+            material.RecentSclYear = dtpRecentSclYear.Value;
+            material.GroupLabel = (cbGroupLabel.SelectedItem as MaterialGroupLabel).Id;
+            material.UseStatus = (cbUseStatus.SelectedItem as MaterialUseStatus).Id;
+            material.GndkNumber = Convert.ToInt32(nbGndkNumber.Value);
+            material.AcceptCode = tbAcceptCode.Text;
+            material.TypeDescription = tbTypeDescription.Text;
             try
             {
                 new MaterialService().Update(material);
@@ -160,7 +176,7 @@ namespace MaterialsManagement.UI
             btnUpdate.Visible = true;
             btnUpdateEnable.Visible = false;
 
-            dtpRegisterYear.Enabled=true;
+            dtpRegisterYear.Enabled = true;
             tbFrameNumber.ReadOnly = false;
             tbEIN.ReadOnly = false;
             nbGndkNumber.ReadOnly = false;
@@ -180,22 +196,23 @@ namespace MaterialsManagement.UI
         {
             //Huy QRCode: 11/20/2018 Add Start
             string selectedPath;
-            var t = new Thread((ThreadStart)(() => {
+            var t = new Thread((ThreadStart)(() =>
+            {
                 using (var folderDialog = new FolderBrowserDialog())
                 {
                     if (folderDialog.ShowDialog() == DialogResult.OK)
                     {
                         selectedPath = folderDialog.SelectedPath;
-                         QRCodeService qr = new QRCodeService();
+                        QRCodeService qr = new QRCodeService();
                         if (qr != null)
                         {
-                            qr.GenerateQRCode(material.ToString(),10,300,300).Save(selectedPath+"\\"+ StringUtility.TrimIfPresent(material.Id)+"-"+ DateTime.Today.ToString("ddMMyyyy")+".png");
-                            MessageBox.Show("Tải QRCode Thành Công","Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information,
+                            qr.GenerateQRCode(material.ToString(), 10, 300, 300).Save(selectedPath + "\\" + StringUtility.TrimIfPresent(material.Id) + "-" + DateTime.Today.ToString("ddMMyyyy") + ".png");
+                            MessageBox.Show("Tải QRCode Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information,
      MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                         }
                         else
                         {
-                            MessageBox.Show("Không Thể Tải QRCode","Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error,
+                            MessageBox.Show("Không Thể Tải QRCode", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error,
      MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                         }
                     }
@@ -205,7 +222,23 @@ namespace MaterialsManagement.UI
             t.SetApartmentState(ApartmentState.STA);
             t.Start();
             t.Join();
-            
+
+        }
+
+        private void btnChangeCurrentKm_Click(object sender, EventArgs e)
+        {
+            MaterialUpdateCurrentKmForm form = new MaterialUpdateCurrentKmForm(material)
+            {
+                afterEditedCallBack = AfterUpdateCurrentKmAction
+            };
+            form.Show();
+        }
+
+        private void AfterUpdateCurrentKmAction(Material material)
+        {
+            lbCurrentKm.Text = material.CurrentKm + " Km";
+            lbLastChangeOil.Text = material.LastChangeOil + " Km";
+            MessageBox.Show("Cập nhật thành công công-tơ-mét trang bị!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
