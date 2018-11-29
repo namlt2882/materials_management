@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
-
+using MaterialsManagement.ApiModel;
 
 namespace MaterialsManagement.UI
 {
@@ -73,8 +73,55 @@ namespace MaterialsManagement.UI
                 Bitmap img = qr.GenerateQRCode(material.ToString(),10, pbQRCode.Height, pbQRCode.Width);
                 pbQRCode.Image = img;
             }
-
             //Huy QRCode: 11/19/2018 Add End
+            dtpRegisterYear.Value = material.RegisterYear;
+            tbFrameNumber.Text = StringUtility.TrimIfPresent(material.FrameNumber);
+            tbEIN.Text = StringUtility.TrimIfPresent(material.EIN);
+            nbGndkNumber.Value = material.GndkNumber;
+            tbTypeDescription.Text = StringUtility.TrimIfPresent(material.TypeDescription);
+            tbAcceptCode.Text = StringUtility.TrimIfPresent(material.AcceptCode);
+            nbClLevel.Value = material.ClLevel;
+            nbSclTime.Value = material.SclTime;
+            dtpRecentSclYear.Value = material.RecentSclYear;
+            dtpStartUsingYear.Value = material.StartUsingYear;
+            lbCurrentKm.Text = material.CurrentKm + " Km";
+            tbOriginExplanation.Text = StringUtility.TrimIfPresent(material.OriginalExplanation);
+            var list1 = SingletonModelProvider.GetMaterialGroupLabelModels();
+            int index = 0;
+            for (int i = 0;i < list1.Count;i++)
+            {
+                var item = list1[i];
+                if(item.Id == material.GroupLabel)
+                {
+                    index = i;
+                }
+                cbGroupLabel.Items.Add(item);
+            }
+            cbGroupLabel.SelectedIndex = index;
+            var list2 = SingletonModelProvider.GetMaterialLabelModels();
+            index = 0;
+            for (int i = 0; i < list2.Count; i++)
+            {
+                var item = list2[i];
+                if (item.Id == material.Label)
+                {
+                    index = i;
+                }
+                cbLabel.Items.Add(item);
+            }
+            cbLabel.SelectedIndex = index;
+            var list3 = SingletonModelProvider.GetMaterialUseStatusModels();
+            index = 0;
+            for (int i = 0; i < list3.Count; i++)
+            {
+                var item = list3[i];
+                if (item.Id == material.UseStatus)
+                {
+                    index = i;
+                }
+                cbUseStatus.Items.Add(item);
+            }
+            cbUseStatus.SelectedIndex = index;
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -113,38 +160,20 @@ namespace MaterialsManagement.UI
             btnUpdate.Visible = true;
             btnUpdateEnable.Visible = false;
 
-        }
-
-        private void btnGetQrCode_Click(object sender, EventArgs e)
-        {
-            //Huy QRCode: 11/20/2018 Add Start
-            string selectedPath;
-            var t = new Thread((ThreadStart)(() => {
-                using (var folderDialog = new FolderBrowserDialog())
-                {
-                    if (folderDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        selectedPath = folderDialog.SelectedPath;
-                         QRCodeService qr = new QRCodeService();
-                        if (qr != null)
-                        {
-                            qr.GenerateQRCode(material.ToString(),10,300,300).Save(selectedPath+"\\"+ StringUtility.TrimIfPresent(material.Id)+"-"+ DateTime.Today.ToString("ddMMyyyy")+".png");
-                            MessageBox.Show("Tải QRCode Thành Công","Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information,
-     MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Không Thể Tải QRCode","Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error,
-     MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-                        }
-                    }
-                }
-
-            }));
-            t.SetApartmentState(ApartmentState.STA);
-            t.Start();
-            t.Join();
-            //Huy QRCode: 11/20/2018 Add End
+            dtpRegisterYear.Enabled=true;
+            tbFrameNumber.ReadOnly = false;
+            tbEIN.ReadOnly = false;
+            nbGndkNumber.ReadOnly = false;
+            tbTypeDescription.ReadOnly = false;
+            tbAcceptCode.ReadOnly = false;
+            nbClLevel.ReadOnly = false;
+            nbSclTime.ReadOnly = false;
+            dtpRecentSclYear.Enabled = true;
+            dtpStartUsingYear.Enabled = true;
+            tbOriginExplanation.ReadOnly = false;
+            cbGroupLabel.Enabled = true;
+            cbLabel.Enabled = true;
+            cbUseStatus.Enabled = true;
         }
     }
 }

@@ -32,6 +32,11 @@ namespace MaterialsManagement.UI
         {
             InitializeComponent();
             InitTypeCombobox();
+            DateTime currentTime = DateTime.Now;
+            dtpManufactureDate.Value = currentTime;
+            dtpRecentSclYear.Value = currentTime;
+            dtpRegisterYear.Value = currentTime;
+            dtpStartUsingYear.Value = currentTime;
         }
         private void InitFixedInfoPanel()
         {

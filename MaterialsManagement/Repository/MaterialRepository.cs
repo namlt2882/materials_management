@@ -31,33 +31,54 @@ namespace MaterialsManagement.Repository
             "Origin=@Origin, ManufacturingDate=@ManufacturingDate," +
             "CurrentKm=@CurrentKm, OilWarning=@OilWarning, Notes=@Notes," +
             "Status=@Status, DvId=@DvId, Controller=@Controller ," +
-            "LastUpdate=@LastUpdate, LastChangeOil=@LastChangeOil " +
+            "LastUpdate=@LastUpdate, LastChangeOil=@LastChangeOil, " +
+            "RegisterYear=@RegisterYear, Label=@Label, FrameNumber=@FrameNumber, " +
+            "EIN=@EIN, OriginalExplanation=@OriginalExplanation," +
+            "StartUsingYear=@StartUsingYear, ClLevel=@ClLevel, " +
+            "SclTime=@SclTime, RecentSclYear=@RecentSclYear, GroupLabel=@GroupLabel," +
+            "UseStatus=@UseStatus, GndkNumber=@GndkNumber, " +
+            "AcceptCode=@AcceptCode, TypeDescription=@TypeDescription " +
             "WHERE Id=@Id";
         private static readonly string QUERY_BY_TYPE_AND_DVID = "SELECT " +
             "Id, Type, RegisterCode, Model, Origin," +
             "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
-            "DvId, InsertDate, Controller, LastUpdate, LastChangeOil " +
-            "FROM Material WHERE Type=@Type AND DvId=@DvId AND Status=" + (int)MaterialStatusEnum.ACTIVE+
+            "DvId, InsertDate, Controller, LastUpdate, LastChangeOil, " +
+            "RegisterYear, Label, FrameNumber, EIN, OriginalExplanation," +
+            "StartUsingYear, ClLevel, SclTime, RecentSclYear, GroupLabel," +
+            "UseStatus, GndkNumber, AcceptCode, TypeDescription " +
+            "FROM Material WHERE Type=@Type AND DvId=@DvId AND Status=" + (int)MaterialStatusEnum.ACTIVE +
             " ORDER BY InsertDate DESC";
         private static readonly string QUERY_BY_ID = "SELECT " +
             "Id, Type, RegisterCode, Model, Origin," +
             "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
-            "DvId, InsertDate, Controller, LastUpdate, LastChangeOil " +
+            "DvId, InsertDate, Controller, LastUpdate, LastChangeOil, " +
+            "RegisterYear, Label, FrameNumber, EIN, OriginalExplanation," +
+            "StartUsingYear, ClLevel, SclTime, RecentSclYear, GroupLabel," +
+            "UseStatus, GndkNumber, AcceptCode, TypeDescription " +
             "FROM Material WHERE Id=@Id";
         private static readonly string QUERY_GET_ALL_BY_DV = "SELECT " +
         "Id, Type, RegisterCode, Model, Origin," +
         "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
-        "DvId, InsertDate, Controller, LastUpdate, LastChangeOil " +
+        "DvId, InsertDate, Controller, LastUpdate, LastChangeOil, " +
+            "RegisterYear, Label, FrameNumber, EIN, OriginalExplanation," +
+            "StartUsingYear, ClLevel, SclTime, RecentSclYear, GroupLabel," +
+            "UseStatus, GndkNumber, AcceptCode, TypeDescription " +
         "FROM Material WHERE DvId=@DvId AND Status=" + (int)MaterialStatusEnum.ACTIVE;
         private static readonly string QUERY_GET_ALL = "SELECT " +
           "Id, Type, RegisterCode, Model, Origin," +
           "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
-          "DvId, InsertDate, Controller, LastUpdate, LastChangeOil " +
+          "DvId, InsertDate, Controller, LastUpdate, LastChangeOil, " +
+            "RegisterYear, Label, FrameNumber, EIN, OriginalExplanation," +
+            "StartUsingYear, ClLevel, SclTime, RecentSclYear, GroupLabel," +
+            "UseStatus, GndkNumber, AcceptCode, TypeDescription " +
           "FROM Material";
         private static readonly string QUERY_SEARCH_BY_TYPE_AND_DVID = "SELECT " +
           "Id, Type, RegisterCode, Model, Origin," +
           "ManufacturingDate, CurrentKm, OilWarning, Notes, Status," +
-          "DvId, InsertDate, Controller, LastUpdate, LastChangeOil " +
+          "DvId, InsertDate, Controller, LastUpdate, LastChangeOil, " +
+            "RegisterYear, Label, FrameNumber, EIN, OriginalExplanation," +
+            "StartUsingYear, ClLevel, SclTime, RecentSclYear, GroupLabel," +
+            "UseStatus, GndkNumber, AcceptCode, TypeDescription " +
           "FROM Material WHERE Type=@Type AND DvId=@DvId AND (Id=@Id OR Model like @Model) AND Status=" + (int)MaterialStatusEnum.ACTIVE +
           " ORDER BY InsertDate DESC";
         public MaterialRepository(bool ReturnDataTable) : this()
@@ -133,7 +154,7 @@ namespace MaterialsManagement.Repository
                 CloseResources();
             }
         }
-        public List<Material> GetByType(string DvId,int Type)
+        public List<Material> GetByType(string DvId, int Type)
         {
             try
             {
@@ -256,6 +277,21 @@ namespace MaterialsManagement.Repository
                     DvId = sqlDataReader["DvId"].ToString(),
                     InsertDate = sqlDataReader.GetDateTime(sqlDataReader.GetOrdinal("InsertDate")),
                     LastUpdate = sqlDataReader.GetDateTime(sqlDataReader.GetOrdinal("LastUpdate")),
+
+                    RegisterYear = sqlDataReader.GetDateTime(sqlDataReader.GetOrdinal("RegisterYear")),
+                    Label = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("Label")),
+                    FrameNumber = sqlDataReader["FrameNumber"].ToString(),
+                    EIN = sqlDataReader["EIN"].ToString(),
+                    OriginalExplanation = sqlDataReader["OriginalExplanation"].ToString(),
+                    StartUsingYear = sqlDataReader.GetDateTime(sqlDataReader.GetOrdinal("StartUsingYear")),
+                    ClLevel = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("ClLevel")),
+                    SclTime = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("SclTime")),
+                    RecentSclYear = sqlDataReader.GetDateTime(sqlDataReader.GetOrdinal("RecentSclYear")),
+                    GroupLabel = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("GroupLabel")),
+                    UseStatus = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("UseStatus")),
+                    GndkNumber = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("GndkNumber")),
+                    AcceptCode = sqlDataReader["AcceptCode"].ToString(),
+                    TypeDescription = sqlDataReader["TypeDescription"].ToString()
                 };
                 rs.Add(material);
             }
@@ -281,6 +317,21 @@ namespace MaterialsManagement.Repository
                 sqlCommand.Parameters.AddWithValue("@Status", t.Status);
                 sqlCommand.Parameters.AddWithValue("@DvId", t.DvId);
                 sqlCommand.Parameters.AddWithValue("@LastUpdate", t.LastUpdate);
+
+                sqlCommand.Parameters.AddWithValue("@RegisterYear", t.RegisterYear);
+                sqlCommand.Parameters.AddWithValue("@Label", t.Label);
+                sqlCommand.Parameters.AddWithValue("@FrameNumber", t.FrameNumber);
+                sqlCommand.Parameters.AddWithValue("@EIN", t.EIN);
+                sqlCommand.Parameters.AddWithValue("@OriginalExplanation", t.OriginalExplanation);
+                sqlCommand.Parameters.AddWithValue("@StartUsingYear", t.StartUsingYear);
+                sqlCommand.Parameters.AddWithValue("@ClLevel", t.ClLevel);
+                sqlCommand.Parameters.AddWithValue("@SclTime", t.SclTime);
+                sqlCommand.Parameters.AddWithValue("@RecentSclYear", t.RecentSclYear);
+                sqlCommand.Parameters.AddWithValue("@GroupLabel", t.GroupLabel);
+                sqlCommand.Parameters.AddWithValue("@UseStatus", t.UseStatus);
+                sqlCommand.Parameters.AddWithValue("@GndkNumber", t.GndkNumber);
+                sqlCommand.Parameters.AddWithValue("@AcceptCode", t.AcceptCode);
+                sqlCommand.Parameters.AddWithValue("@TypeDescription", t.TypeDescription);
                 connection.Open();
                 int status = sqlCommand.ExecuteNonQuery();
                 if (status <= 0)

@@ -11,6 +11,7 @@ using MaterialsManagement.Model;
 using MaterialsManagement.Common;
 using MaterialsManagement.Service;
 using System.Threading;
+using MaterialsManagement.Utility;
 
 namespace MaterialsManagement.UI.CustomControl
 {
@@ -104,17 +105,62 @@ namespace MaterialsManagement.UI.CustomControl
             t.Join();
 
         }
+        public void DownQR(Object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (sender as ToolStripMenuItem);
+            CustomContextMenuStrip<int> contextMenuStrip = (item.Owner as CustomContextMenuStrip<int>);
+
+            Report report = new Report();
+            QkService qkService = new QkService();
+            DvService dvService = new DvService();
+            MaterialService materialService = new MaterialService();
+
+            report.dvs.Add(dvService.Get(dv.Id));
+            report.qks.Add(qkService.Get(report.dvs[0].QkId));
+            report.materials.AddRange(materialService.GetByType(dv.Id, contextMenuStrip.obj));
+            string selectedPath;
+            var t = new Thread((ThreadStart)(() => {
+                using (var folderDialog = new FolderBrowserDialog())
+                {
+                    if (folderDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        selectedPath = folderDialog.SelectedPath;
+                        QRCodeService qr = new QRCodeService();
+                        if (qr != null)
+                        {
+                            foreach (Material material in report.materials)
+                            {
+                                qr.GenerateQRCode(material.ToString(), 10, 300, 300).Save(selectedPath + "\\" + StringUtility.TrimIfPresent(material.Id) + "-" + DateTime.Today.ToString("ddMMyyyy") + ".png");
+                            }
+                            MessageBox.Show("Tải QRCode Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information,
+     MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không Thể Tải QRCode", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error,
+     MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                        }
+                    }
+                }
+
+            }));
+            t.SetApartmentState(ApartmentState.STA);
+            t.Start();
+            t.Join();
+        }
         public void InitContentScriptMenu()
         {
             CustomContextMenuStrip<int> cms = new CustomContextMenuStrip<int>();
             cms.Items.Add("Xuất Dữ Liệu " + MaterialTypeEnum.Sail.GetDisplayName(), null, new EventHandler(btn_export));
             cms.Items.Add("Xuất Báo Cáo " + MaterialTypeEnum.Sail.GetDisplayName(), null, new EventHandler(btn_report));
+            cms.Items.Add("Xuất QR " + MaterialTypeEnum.Sail.GetDisplayName(), null, new EventHandler(DownQR));
             cms.obj = (int)MaterialTypeEnum.Sail;
             btnSail.ContextMenuStrip = cms;
 
             cms = new CustomContextMenuStrip<int>();
             cms.Items.Add("Xuất Dữ Liệu " + "Card", null, new EventHandler(btn_export));
             cms.Items.Add("Xuất Báo Cáo " + "Card", null, new EventHandler(btn_report));
+            cms.Items.Add("Xuất QR " + "Card", null, new EventHandler(DownQR));
             cms.obj = (int)MaterialTypeEnum.Car;
             btnCar.ContextMenuStrip = cms;
         }
@@ -180,6 +226,21 @@ namespace MaterialsManagement.UI.CustomControl
             dataTable.Columns.Remove("DvId");
             dataTable.Columns.Remove("InsertDate");
             dataTable.Columns.Remove("LastUpdate");
+
+            dataTable.Columns.Remove("RegisterYear");
+            dataTable.Columns.Remove("Label");
+            dataTable.Columns.Remove("FrameNumber");
+            dataTable.Columns.Remove("EIN");
+            dataTable.Columns.Remove("OriginalExplanation");
+            dataTable.Columns.Remove("StartUsingYear");
+            dataTable.Columns.Remove("ClLevel");
+            dataTable.Columns.Remove("SclTime");
+            dataTable.Columns.Remove("RecentSclYear");
+            dataTable.Columns.Remove("GroupLabel");
+            dataTable.Columns.Remove("UseStatus");
+            dataTable.Columns.Remove("GndkNumber");
+            dataTable.Columns.Remove("AcceptCode");
+            dataTable.Columns.Remove("TypeDescription");
             gridData.DataSource = dataTable;
             gridData.Columns[1].HeaderText = "SĐK";
             gridData.Columns[2].HeaderText = "Model";
