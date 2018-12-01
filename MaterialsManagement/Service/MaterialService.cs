@@ -118,5 +118,18 @@ namespace MaterialsManagement.Service
         {
             return new MaterialRepository().GetAll();
         }
+
+        public void Delete(string id)
+        {
+            if (id== null)
+                {
+                throw new Exception("Null Id");
+                }
+            MaterialRepository repository = new MaterialRepository();
+            Material origin = repository.Get(id.Trim());
+            origin.Status = (int)MaterialStatusEnum.DISABLE;
+            repository.Update(origin);
+        }
+
     }
 }

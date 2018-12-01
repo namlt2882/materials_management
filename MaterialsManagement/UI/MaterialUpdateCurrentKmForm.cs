@@ -1,6 +1,7 @@
 ﻿using MaterialsManagement.Common;
 using MaterialsManagement.Model;
 using MaterialsManagement.Service;
+using MaterialsManagement.Utility;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,22 +33,10 @@ namespace MaterialsManagement.UI
 
         private void InitFixedInfo()
         {
-            //set type text box
-            IEnumerable<MaterialTypeEnum> enums = Enum.GetValues(typeof(MaterialTypeEnum))
-                .Cast<MaterialTypeEnum>();
-            foreach (MaterialTypeEnum e in enums)
-            {
-                if (material.Type == (int)e)
-                {
-                    tbType.Text = EnumExtensions.GetDisplayName(e);
-                    break;
-                }
-            }
             //set other attributes
-            tbId.Text = material.Id;
-            tbCurrentKm.Text = material.CurrentKm + " Km";
-            tbOilWarning.Text = material.OilWarning + " Km";
-            tbLastChangeOil.Text = material.LastChangeOil + " Km";
+            tbId.Text = StringUtility.TrimIfPresent(material.Id);
+            lbCurrentKm.Text = material.CurrentKm + " Km";
+            lbLastChangeOil.Text = material.LastChangeOil + " Km";
             nbNewKm.Minimum = material.CurrentKm;
         }
 
