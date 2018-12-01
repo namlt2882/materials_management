@@ -35,6 +35,14 @@ namespace MaterialsManagement.UI
         {
             InitializeComponent();
             btnUpdate.Visible = false;
+            nbClLevel.ReadOnly = true;
+            nbGndkNumber.ReadOnly = true;
+            nbOilWarning.ReadOnly = true;
+            nbSclTime.ReadOnly = true;
+            nbClLevel.Increment = 0;
+            nbGndkNumber.Increment = 0;
+            nbOilWarning.Increment = 0;
+            nbSclTime.Increment = 0;
         }
         private void InitOriginInfo()
         {
@@ -47,18 +55,17 @@ namespace MaterialsManagement.UI
                 lbDv.Text = "Đơn vị: " + dv.Name.Trim() + " (" + dv.Id.Trim() + ")";
             }
             //set type text box
-            IEnumerable<MaterialTypeEnum> enums = Enum.GetValues(typeof(MaterialTypeEnum))
-                .Cast<MaterialTypeEnum>();
-            foreach (MaterialTypeEnum e in enums)
+            List<MaterialType> types = SingletonModelProvider.GetMaterialTypeModels();
+            foreach (MaterialType type in types)
             {
-                if (material.Type == (int)e)
+                if (material.Type == type.Id)
                 {
-                    tbType.Text = EnumExtensions.GetDisplayName(e);
+                    lbType.Text = type.Name;
                     break;
                 }
             }
             //material attribute
-            tbId.Text = material.Id;
+            lbId.Text = material.Id;
             tbRegisterCode.Text = StringUtility.TrimIfPresent(material.RegisterCode);
             tbModel.Text = StringUtility.TrimIfPresent(material.Model);
             tbOrigin.Text = StringUtility.TrimIfPresent(material.Origin);
@@ -171,25 +178,30 @@ namespace MaterialsManagement.UI
             tbController.ReadOnly = false;
             tbOrigin.ReadOnly = false;
             dtpManufactureDate.Enabled = true;
-            nbOilWarning.ReadOnly = false;
             tbNote.ReadOnly = false;
             btnUpdate.Visible = true;
             btnUpdateEnable.Visible = false;
-
             dtpRegisterYear.Enabled = true;
             tbFrameNumber.ReadOnly = false;
             tbEIN.ReadOnly = false;
-            nbGndkNumber.ReadOnly = false;
+            
             tbTypeDescription.ReadOnly = false;
             tbAcceptCode.ReadOnly = false;
-            nbClLevel.ReadOnly = false;
-            nbSclTime.ReadOnly = false;
             dtpRecentSclYear.Enabled = true;
             dtpStartUsingYear.Enabled = true;
             tbOriginExplanation.ReadOnly = false;
             cbGroupLabel.Enabled = true;
             cbLabel.Enabled = true;
             cbUseStatus.Enabled = true;
+
+            nbOilWarning.ReadOnly = false;
+            nbGndkNumber.ReadOnly = false;
+            nbClLevel.ReadOnly = false;
+            nbSclTime.ReadOnly = false;
+            nbClLevel.Increment = 1;
+            nbGndkNumber.Increment = 1;
+            nbOilWarning.Increment = 1;
+            nbSclTime.Increment = 1;
         }
 
         private void btnGetQrCode_Click(object sender, EventArgs e)
@@ -222,7 +234,6 @@ namespace MaterialsManagement.UI
             t.SetApartmentState(ApartmentState.STA);
             t.Start();
             t.Join();
-
         }
 
         private void btnChangeCurrentKm_Click(object sender, EventArgs e)
