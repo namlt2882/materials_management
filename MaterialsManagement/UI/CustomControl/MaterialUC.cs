@@ -47,7 +47,8 @@ namespace MaterialsManagement.UI.CustomControl
             report.qks.Add(qkService.Get(report.dvs[0].QkId));
             report.materials.AddRange(materialService.GetByType(dv.Id, contextMenuStrip.obj));
             string selectedPath;
-            var t = new Thread((ThreadStart)(() => {
+            var t = new Thread((ThreadStart)(() =>
+            {
                 using (var folderDialog = new OpenFileDialog())
                 {
                     folderDialog.CheckFileExists = false;
@@ -85,7 +86,8 @@ namespace MaterialsManagement.UI.CustomControl
             if (report.dvs.Count != 0)
                 reportExcel.GenerateTable(String.Format("Đơn Vị {0} Thuộc Quân Khu {1}", report.qks[0].Name, report.dvs[0].Name), materialService.GetByType(dv.Id, contextMenuStrip.obj));
             string selectedPath;
-            var t = new Thread((ThreadStart)(() => {
+            var t = new Thread((ThreadStart)(() =>
+            {
                 using (var folderDialog = new OpenFileDialog())
                 {
                     folderDialog.CheckFileExists = false;
@@ -119,7 +121,8 @@ namespace MaterialsManagement.UI.CustomControl
             report.qks.Add(qkService.Get(report.dvs[0].QkId));
             report.materials.AddRange(materialService.GetByType(dv.Id, contextMenuStrip.obj));
             string selectedPath;
-            var t = new Thread((ThreadStart)(() => {
+            var t = new Thread((ThreadStart)(() =>
+            {
                 using (var folderDialog = new FolderBrowserDialog())
                 {
                     if (folderDialog.ShowDialog() == DialogResult.OK)
@@ -273,7 +276,7 @@ namespace MaterialsManagement.UI.CustomControl
                 };
                 form.Show();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Đã xảy ra lỗi. Thao tác thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -312,6 +315,7 @@ namespace MaterialsManagement.UI.CustomControl
                     cms = new ContextMenuStrip();
                     cms.Items.Add("Xem chi tiết", null, new EventHandler(ViewDetail_Click));
                     cms.Items.Add("Cập nhật công-tơ-mét", null, new EventHandler(UpdateCurrentKm_Click));
+                    cms.Items.Add("Xóa", null, new EventHandler(DeleteMaterial_Click));
                 }
                 gridData.CurrentCell = gridData.Rows[e.RowIndex].Cells[e.ColumnIndex];
                 e.ContextMenuStrip = this.cms;
@@ -329,6 +333,31 @@ namespace MaterialsManagement.UI.CustomControl
             {
                 MessageBox.Show("Đã xảy ra lỗi, không thể tải dữ liệu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void DeleteMaterial_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Phương tiện sẽ được xóa, bạn chắc chứ?",
+                                         "Cảnh báo",
+                                         MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.No)
+            {
+                return;
+            }
+            //get current id
+            DataGridViewRow row = gridData.SelectedRows[0];
+            string materialId = row.Cells["Id"].Value.ToString();
+            try
+            {
+                MaterialService service = new MaterialService();
+                service.Delete(materialId);
+                gridData.Rows.Remove(row);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Đã xảy ra lỗi. Thao tác thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }
