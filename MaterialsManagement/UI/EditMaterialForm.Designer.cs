@@ -67,6 +67,8 @@
             this.btnGetQrCode = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.lbType = new System.Windows.Forms.Label();
+            this.tbID = new System.Windows.Forms.TextBox();
             this.detailPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -96,8 +98,6 @@
             this.rightActionPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.MyToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.lbId = new System.Windows.Forms.Label();
-            this.lbType = new System.Windows.Forms.Label();
             this.fixedInfoPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
             this.scrollPanel.SuspendLayout();
@@ -209,8 +209,8 @@
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 15);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 15);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lbId, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lbType, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tbID, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 151);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 16;
@@ -260,7 +260,7 @@
             this.tbRegisterCode.MaxLength = 20;
             this.tbRegisterCode.Name = "tbRegisterCode";
             this.tbRegisterCode.ReadOnly = true;
-            this.tbRegisterCode.Size = new System.Drawing.Size(223, 28);
+            this.tbRegisterCode.Size = new System.Drawing.Size(253, 28);
             this.tbRegisterCode.TabIndex = 3;
             // 
             // tbModel
@@ -270,7 +270,7 @@
             this.tbModel.MaxLength = 50;
             this.tbModel.Name = "tbModel";
             this.tbModel.ReadOnly = true;
-            this.tbModel.Size = new System.Drawing.Size(223, 28);
+            this.tbModel.Size = new System.Drawing.Size(253, 28);
             this.tbModel.TabIndex = 4;
             // 
             // label16
@@ -319,7 +319,7 @@
             this.tbFrameNumber.MaxLength = 20;
             this.tbFrameNumber.Name = "tbFrameNumber";
             this.tbFrameNumber.ReadOnly = true;
-            this.tbFrameNumber.Size = new System.Drawing.Size(223, 28);
+            this.tbFrameNumber.Size = new System.Drawing.Size(253, 28);
             this.tbFrameNumber.TabIndex = 12;
             // 
             // label18
@@ -349,7 +349,7 @@
             this.tbEIN.MaxLength = 20;
             this.tbEIN.Name = "tbEIN";
             this.tbEIN.ReadOnly = true;
-            this.tbEIN.Size = new System.Drawing.Size(223, 28);
+            this.tbEIN.Size = new System.Drawing.Size(253, 28);
             this.tbEIN.TabIndex = 15;
             // 
             // label21
@@ -471,7 +471,7 @@
             this.tbAcceptCode.MaxLength = 20;
             this.tbAcceptCode.Name = "tbAcceptCode";
             this.tbAcceptCode.ReadOnly = true;
-            this.tbAcceptCode.Size = new System.Drawing.Size(223, 28);
+            this.tbAcceptCode.Size = new System.Drawing.Size(253, 28);
             this.tbAcceptCode.TabIndex = 27;
             // 
             // label27
@@ -501,7 +501,7 @@
             this.tbTypeDescription.MaxLength = 50;
             this.tbTypeDescription.Name = "tbTypeDescription";
             this.tbTypeDescription.ReadOnly = true;
-            this.tbTypeDescription.Size = new System.Drawing.Size(223, 28);
+            this.tbTypeDescription.Size = new System.Drawing.Size(253, 28);
             this.tbTypeDescription.TabIndex = 29;
             // 
             // nbGndkNumber
@@ -574,6 +574,25 @@
             this.label2.TabIndex = 33;
             this.label2.Text = "ID:";
             // 
+            // lbType
+            // 
+            this.lbType.AutoSize = true;
+            this.lbType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbType.Location = new System.Drawing.Point(207, 49);
+            this.lbType.Name = "lbType";
+            this.lbType.Size = new System.Drawing.Size(42, 22);
+            this.lbType.TabIndex = 35;
+            this.lbType.Text = "Tàu";
+            // 
+            // tbID
+            // 
+            this.tbID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbID.Location = new System.Drawing.Point(207, 3);
+            this.tbID.Name = "tbID";
+            this.tbID.ReadOnly = true;
+            this.tbID.Size = new System.Drawing.Size(253, 28);
+            this.tbID.TabIndex = 36;
+            // 
             // detailPanel
             // 
             this.detailPanel.ColumnCount = 2;
@@ -631,9 +650,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(3, 314);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(126, 22);
+            this.label5.Size = new System.Drawing.Size(131, 22);
             this.label5.TabIndex = 5;
-            this.label5.Text = "Số Km hiện tại";
+            this.label5.Text = "Số Km hiện tại:";
             // 
             // label6
             // 
@@ -652,7 +671,7 @@
             this.tbOrigin.MaxLength = 100;
             this.tbOrigin.Name = "tbOrigin";
             this.tbOrigin.ReadOnly = true;
-            this.tbOrigin.Size = new System.Drawing.Size(228, 28);
+            this.tbOrigin.Size = new System.Drawing.Size(261, 28);
             this.tbOrigin.TabIndex = 3;
             // 
             // dtpManufactureDate
@@ -681,7 +700,7 @@
             this.tbController.MaxLength = 100;
             this.tbController.Name = "tbController";
             this.tbController.ReadOnly = true;
-            this.tbController.Size = new System.Drawing.Size(223, 28);
+            this.tbController.Size = new System.Drawing.Size(256, 28);
             this.tbController.TabIndex = 7;
             // 
             // tbNote
@@ -726,7 +745,7 @@
             this.tbOriginExplanation.MaxLength = 100;
             this.tbOriginExplanation.Name = "tbOriginExplanation";
             this.tbOriginExplanation.ReadOnly = true;
-            this.tbOriginExplanation.Size = new System.Drawing.Size(228, 28);
+            this.tbOriginExplanation.Size = new System.Drawing.Size(261, 28);
             this.tbOriginExplanation.TabIndex = 9;
             // 
             // label14
@@ -890,26 +909,6 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // lbId
-            // 
-            this.lbId.AutoSize = true;
-            this.lbId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbId.Location = new System.Drawing.Point(207, 0);
-            this.lbId.Name = "lbId";
-            this.lbId.Size = new System.Drawing.Size(75, 22);
-            this.lbId.TabIndex = 34;
-            this.lbId.Text = "abc-456";
-            // 
-            // lbType
-            // 
-            this.lbType.AutoSize = true;
-            this.lbType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbType.Location = new System.Drawing.Point(207, 49);
-            this.lbType.Name = "lbType";
-            this.lbType.Size = new System.Drawing.Size(42, 22);
-            this.lbType.TabIndex = 35;
-            this.lbType.Text = "Tàu";
-            // 
             // EditMaterialForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -1013,7 +1012,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label lbCurrentKm;
         private System.Windows.Forms.Button btnChangeCurrentKm;
-        private System.Windows.Forms.Label lbId;
         private System.Windows.Forms.Label lbType;
+        private System.Windows.Forms.TextBox tbID;
     }
 }

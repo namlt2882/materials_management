@@ -65,7 +65,7 @@ namespace MaterialsManagement.UI
                 }
             }
             //material attribute
-            lbId.Text = material.Id;
+            tbID.Text = StringUtility.TrimIfPresent(material.Id);
             tbRegisterCode.Text = StringUtility.TrimIfPresent(material.RegisterCode);
             tbModel.Text = StringUtility.TrimIfPresent(material.Model);
             tbOrigin.Text = StringUtility.TrimIfPresent(material.Origin);

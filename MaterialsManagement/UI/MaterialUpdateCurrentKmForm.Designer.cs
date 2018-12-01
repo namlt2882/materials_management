@@ -37,11 +37,11 @@
             this.cbIsChangeOil = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.actionPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.lbId = new System.Windows.Forms.Label();
             this.lbCurrentKm = new System.Windows.Forms.Label();
             this.lbLastChangeOil = new System.Windows.Forms.Label();
+            this.actionPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.tbId = new System.Windows.Forms.TextBox();
             this.mainPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -70,9 +70,9 @@
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label6, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.lbId, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lbCurrentKm, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.lbLastChangeOil, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tbId, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(43, 43);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
@@ -157,6 +157,26 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "Lần cuối thay nhớt:";
             // 
+            // lbCurrentKm
+            // 
+            this.lbCurrentKm.AutoSize = true;
+            this.lbCurrentKm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCurrentKm.Location = new System.Drawing.Point(196, 50);
+            this.lbCurrentKm.Name = "lbCurrentKm";
+            this.lbCurrentKm.Size = new System.Drawing.Size(71, 22);
+            this.lbCurrentKm.TabIndex = 13;
+            this.lbCurrentKm.Text = "100 Km";
+            // 
+            // lbLastChangeOil
+            // 
+            this.lbLastChangeOil.AutoSize = true;
+            this.lbLastChangeOil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLastChangeOil.Location = new System.Drawing.Point(196, 100);
+            this.lbLastChangeOil.Name = "lbLastChangeOil";
+            this.lbLastChangeOil.Size = new System.Drawing.Size(51, 22);
+            this.lbLastChangeOil.TabIndex = 14;
+            this.lbLastChangeOil.Text = "5 Km";
+            // 
             // actionPanel
             // 
             this.actionPanel.Controls.Add(this.btnUpdate);
@@ -177,35 +197,14 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // lbId
+            // tbId
             // 
-            this.lbId.AutoSize = true;
-            this.lbId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbId.Location = new System.Drawing.Point(196, 0);
-            this.lbId.Name = "lbId";
-            this.lbId.Size = new System.Drawing.Size(75, 22);
-            this.lbId.TabIndex = 12;
-            this.lbId.Text = "abc-456";
-            // 
-            // lbCurrentKm
-            // 
-            this.lbCurrentKm.AutoSize = true;
-            this.lbCurrentKm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCurrentKm.Location = new System.Drawing.Point(196, 50);
-            this.lbCurrentKm.Name = "lbCurrentKm";
-            this.lbCurrentKm.Size = new System.Drawing.Size(71, 22);
-            this.lbCurrentKm.TabIndex = 13;
-            this.lbCurrentKm.Text = "100 Km";
-            // 
-            // lbLastChangeOil
-            // 
-            this.lbLastChangeOil.AutoSize = true;
-            this.lbLastChangeOil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLastChangeOil.Location = new System.Drawing.Point(196, 100);
-            this.lbLastChangeOil.Name = "lbLastChangeOil";
-            this.lbLastChangeOil.Size = new System.Drawing.Size(51, 22);
-            this.lbLastChangeOil.TabIndex = 14;
-            this.lbLastChangeOil.Text = "5 Km";
+            this.tbId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbId.Location = new System.Drawing.Point(196, 3);
+            this.tbId.Name = "tbId";
+            this.tbId.ReadOnly = true;
+            this.tbId.Size = new System.Drawing.Size(283, 28);
+            this.tbId.TabIndex = 15;
             // 
             // MaterialUpdateCurrentKmForm
             // 
@@ -240,8 +239,8 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label lbId;
         private System.Windows.Forms.Label lbCurrentKm;
         private System.Windows.Forms.Label lbLastChangeOil;
+        private System.Windows.Forms.TextBox tbId;
     }
 }

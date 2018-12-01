@@ -1,6 +1,7 @@
 ﻿using MaterialsManagement.Common;
 using MaterialsManagement.Model;
 using MaterialsManagement.Service;
+using MaterialsManagement.Utility;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,7 +34,7 @@ namespace MaterialsManagement.UI
         private void InitFixedInfo()
         {
             //set other attributes
-            lbId.Text = material.Id;
+            tbId.Text = StringUtility.TrimIfPresent(material.Id);
             lbCurrentKm.Text = material.CurrentKm + " Km";
             lbLastChangeOil.Text = material.LastChangeOil + " Km";
             nbNewKm.Minimum = material.CurrentKm;
