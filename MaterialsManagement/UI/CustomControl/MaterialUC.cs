@@ -20,6 +20,7 @@ namespace MaterialsManagement.UI.CustomControl
         public Dv dv { get; set; }
         public int CurrentMaterialType = (int)MaterialTypeEnum.Sail;
         private DataTable dataTable;
+        private String searchValue = "";
         public MaterialUC(Dv dv) : this()
         {
             this.dv = dv;
@@ -52,7 +53,7 @@ namespace MaterialsManagement.UI.CustomControl
                 using (var folderDialog = new OpenFileDialog())
                 {
                     folderDialog.CheckFileExists = false;
-                    folderDialog.FileName = String.Format("Dữ Liệu{0}.{1}", DateTime.Today.ToString("ddMMyyyy"), "json");
+                    folderDialog.FileName = String.Format("Dữ Liệu {0}.{1}", DateTime.Today.ToString("ddMMyyyy"), "json");
                     if (folderDialog.ShowDialog() == DialogResult.OK)
                     {
                         selectedPath = folderDialog.FileName;
@@ -181,6 +182,8 @@ namespace MaterialsManagement.UI.CustomControl
 
         private void btnSail_Click(object sender, EventArgs e)
         {
+            tbSearch.Text = "";
+            searchValue = "";
             ResetMaterialButtonColor((Button)sender);
             CurrentMaterialType = (int)MaterialTypeEnum.Sail;
             InitGridView(CurrentMaterialType);
@@ -188,6 +191,8 @@ namespace MaterialsManagement.UI.CustomControl
 
         private void btnCar_Click(object sender, EventArgs e)
         {
+            tbSearch.Text = "";
+            searchValue = "";
             ResetMaterialButtonColor((Button)sender);
             CurrentMaterialType = (int)MaterialTypeEnum.Car;
             InitGridView(CurrentMaterialType);
@@ -205,6 +210,8 @@ namespace MaterialsManagement.UI.CustomControl
             EditMaterialForm form = new EditMaterialForm(material);
             form.afterEditedCallBack = AfterEditedAction;
             form.Show();
+            dataTable = new MaterialService().SearchByTypeAsDataTable(dv.Id, CurrentMaterialType, searchValue);
+            SetDataTable(dataTable);
         }
 
         private void InitGridView(int type)
@@ -256,6 +263,8 @@ namespace MaterialsManagement.UI.CustomControl
         private void AfterEditedAction(Material material)
         {
             MessageBox.Show("Cập nhật thành công chi tiết trang bị!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            dataTable = new MaterialService().SearchByTypeAsDataTable(dv.Id, CurrentMaterialType,searchValue);
+            SetDataTable(dataTable);
         }
 
         private void btnReport_Click(object sender, EventArgs e)
@@ -303,6 +312,8 @@ namespace MaterialsManagement.UI.CustomControl
         private void AfterUpdateCurrentKmAction(Material material)
         {
             MessageBox.Show("Cập nhật thành công công-tơ-mét trang bị!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            dataTable = new MaterialService().SearchByTypeAsDataTable(dv.Id, CurrentMaterialType, searchValue);
+            SetDataTable(dataTable);
         }
 
         private ContextMenuStrip cms;
@@ -326,8 +337,9 @@ namespace MaterialsManagement.UI.CustomControl
         {
             try
             {
-                dataTable = new MaterialService().SearchByTypeAsDataTable(dv.Id, CurrentMaterialType, tbSearch.Text);
+                dataTable = new MaterialService().SearchByTypeAsDataTable(dv.Id, CurrentMaterialType, tbSearch.Text.Trim());
                 SetDataTable(dataTable);
+                searchValue = tbSearch.Text.Trim();
             }
             catch (Exception ex)
             {
