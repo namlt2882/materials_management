@@ -251,13 +251,15 @@ namespace MaterialsManagement.UI.CustomControl
             dataTable.Columns.Remove("GndkNumber");
             dataTable.Columns.Remove("AcceptCode");
             dataTable.Columns.Remove("TypeDescription");
+            dataTable.Columns.Remove("Origin");
+            dataTable.Columns.Remove("LastChangeOil");
+
             gridData.DataSource = dataTable;
             gridData.Columns[1].HeaderText = "SĐK";
             gridData.Columns[2].HeaderText = "Model";
-            gridData.Columns[3].HeaderText = "Xuất xứ";
-            gridData.Columns[4].HeaderText = "Ngày sản xuất";
-            gridData.Columns[5].HeaderText = "Người điều khiển";
-            gridData.Columns[6].HeaderText = "Lần cuối thay nhớt (km)";
+            gridData.Columns[3].HeaderText = "Ngày sản xuất";
+            gridData.Columns[4].HeaderText = "Người điều khiển";
+            gridData.Columns[5].HeaderText = "Biên chế ở";
         }
 
         private void AfterEditedAction(Material material)
@@ -312,8 +314,6 @@ namespace MaterialsManagement.UI.CustomControl
         private void AfterUpdateCurrentKmAction(Material material)
         {
             MessageBox.Show("Cập nhật thành công công-tơ-mét trang bị!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            dataTable = new MaterialService().SearchByTypeAsDataTable(dv.Id, CurrentMaterialType, searchValue);
-            SetDataTable(dataTable);
         }
 
         private ContextMenuStrip cms;
