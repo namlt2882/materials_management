@@ -130,6 +130,7 @@ namespace MaterialsManagement.UI
                 cbUseStatus.Items.Add(item);
             }
             cbUseStatus.SelectedIndex = index;
+            tbOwnedBy.Text = StringUtility.TrimIfPresent(material.OwnedBy);
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -155,6 +156,7 @@ namespace MaterialsManagement.UI
             material.GndkNumber = Convert.ToInt32(nbGndkNumber.Value);
             material.AcceptCode = tbAcceptCode.Text;
             material.TypeDescription = tbTypeDescription.Text;
+            material.OwnedBy = tbOwnedBy.Text;
             try
             {
                 new MaterialService().Update(material);
@@ -202,6 +204,8 @@ namespace MaterialsManagement.UI
             nbGndkNumber.Increment = 1;
             nbOilWarning.Increment = 1;
             nbSclTime.Increment = 1;
+
+            tbOwnedBy.ReadOnly = false;
         }
 
         private void btnGetQrCode_Click(object sender, EventArgs e)

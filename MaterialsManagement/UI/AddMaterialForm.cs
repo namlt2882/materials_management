@@ -137,7 +137,8 @@ namespace MaterialsManagement.UI
                 UseStatus = (cbUseStatus.SelectedItem as MaterialUseStatus).Id,
                 GndkNumber = Convert.ToInt32(nbGndkNumber.Value),
                 AcceptCode = tbAcceptCode.Text,
-                TypeDescription = tbTypeDescription.Text
+                TypeDescription = tbTypeDescription.Text,
+                OwnedBy = tbOwnedBy.Text
             };
             try
             {

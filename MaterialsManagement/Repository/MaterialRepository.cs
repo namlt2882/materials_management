@@ -19,13 +19,13 @@ namespace MaterialsManagement.Repository
             "DvId, InsertDate, Controller, LastUpdate, LastChangeOil," +
             "RegisterYear, Label, FrameNumber, EIN, OriginalExplanation," +
             "StartUsingYear, ClLevel, SclTime, RecentSclYear, GroupLabel," +
-            "UseStatus, GndkNumber, AcceptCode, TypeDescription) " +
+            "UseStatus, GndkNumber, AcceptCode, TypeDescription, OwnedBy) " +
             "VALUES(@Id, @Type, @RegisterCode, @Model, @Origin," +
             "@ManufacturingDate, @CurrentKm, @OilWarning, @Notes, @Status," +
             "@DvId, @InsertDate, @Controller, @LastUpdate, @LastChangeOil," +
             "@RegisterYear, @Label, @FrameNumber, @EIN, @OriginalExplanation," +
             "@StartUsingYear, @ClLevel, @SclTime, @RecentSclYear, @GroupLabel," +
-            "@UseStatus, @GndkNumber, @AcceptCode, @TypeDescription)";
+            "@UseStatus, @GndkNumber, @AcceptCode, @TypeDescription, @OwnedBy)";
         private static readonly string UPDATE_QUERY = "UPDATE Material " +
             "SET Type=@Type, RegisterCode=@RegisterCode, Model=@Model," +
             "Origin=@Origin, ManufacturingDate=@ManufacturingDate," +
@@ -37,7 +37,8 @@ namespace MaterialsManagement.Repository
             "StartUsingYear=@StartUsingYear, ClLevel=@ClLevel, " +
             "SclTime=@SclTime, RecentSclYear=@RecentSclYear, GroupLabel=@GroupLabel," +
             "UseStatus=@UseStatus, GndkNumber=@GndkNumber, " +
-            "AcceptCode=@AcceptCode, TypeDescription=@TypeDescription " +
+            "AcceptCode=@AcceptCode, TypeDescription=@TypeDescription, " +
+            "OwnedBy=@OwnedBy " +
             "WHERE Id=@Id";
         private static readonly string QUERY_BY_TYPE_AND_DVID = "SELECT " +
             "Id, Type, RegisterCode, Model, Origin," +
@@ -45,7 +46,7 @@ namespace MaterialsManagement.Repository
             "DvId, InsertDate, Controller, LastUpdate, LastChangeOil, " +
             "RegisterYear, Label, FrameNumber, EIN, OriginalExplanation," +
             "StartUsingYear, ClLevel, SclTime, RecentSclYear, GroupLabel," +
-            "UseStatus, GndkNumber, AcceptCode, TypeDescription " +
+            "UseStatus, GndkNumber, AcceptCode, TypeDescription, OwnedBy " +
             "FROM Material WHERE Type=@Type AND DvId=@DvId AND Status=" + (int)MaterialStatusEnum.ACTIVE +
             " ORDER BY InsertDate DESC";
         private static readonly string QUERY_BY_ID = "SELECT " +
@@ -54,7 +55,7 @@ namespace MaterialsManagement.Repository
             "DvId, InsertDate, Controller, LastUpdate, LastChangeOil, " +
             "RegisterYear, Label, FrameNumber, EIN, OriginalExplanation," +
             "StartUsingYear, ClLevel, SclTime, RecentSclYear, GroupLabel," +
-            "UseStatus, GndkNumber, AcceptCode, TypeDescription " +
+            "UseStatus, GndkNumber, AcceptCode, TypeDescription, OwnedBy " +
             "FROM Material WHERE Id=@Id";
         private static readonly string QUERY_GET_ALL_BY_DV = "SELECT " +
         "Id, Type, RegisterCode, Model, Origin," +
@@ -62,7 +63,7 @@ namespace MaterialsManagement.Repository
         "DvId, InsertDate, Controller, LastUpdate, LastChangeOil, " +
             "RegisterYear, Label, FrameNumber, EIN, OriginalExplanation," +
             "StartUsingYear, ClLevel, SclTime, RecentSclYear, GroupLabel," +
-            "UseStatus, GndkNumber, AcceptCode, TypeDescription " +
+            "UseStatus, GndkNumber, AcceptCode, TypeDescription, OwnedBy " +
         "FROM Material WHERE DvId=@DvId AND Status=" + (int)MaterialStatusEnum.ACTIVE;
         private static readonly string QUERY_GET_ALL = "SELECT " +
           "Id, Type, RegisterCode, Model, Origin," +
@@ -70,7 +71,7 @@ namespace MaterialsManagement.Repository
           "DvId, InsertDate, Controller, LastUpdate, LastChangeOil, " +
             "RegisterYear, Label, FrameNumber, EIN, OriginalExplanation," +
             "StartUsingYear, ClLevel, SclTime, RecentSclYear, GroupLabel," +
-            "UseStatus, GndkNumber, AcceptCode, TypeDescription " +
+            "UseStatus, GndkNumber, AcceptCode, TypeDescription, OwnedBy " +
           "FROM Material";
         private static readonly string QUERY_SEARCH_BY_TYPE_AND_DVID = "SELECT " +
           "Id, Type, RegisterCode, Model, Origin," +
@@ -78,7 +79,7 @@ namespace MaterialsManagement.Repository
           "DvId, InsertDate, Controller, LastUpdate, LastChangeOil, " +
             "RegisterYear, Label, FrameNumber, EIN, OriginalExplanation," +
             "StartUsingYear, ClLevel, SclTime, RecentSclYear, GroupLabel," +
-            "UseStatus, GndkNumber, AcceptCode, TypeDescription " +
+            "UseStatus, GndkNumber, AcceptCode, TypeDescription, OwnedBy " +
           "FROM Material WHERE Type=@Type AND DvId=@DvId AND (Id=@Id OR Model like @Model) AND Status=" + (int)MaterialStatusEnum.ACTIVE +
           " ORDER BY InsertDate DESC";
         public MaterialRepository(bool ReturnDataTable) : this()
@@ -237,6 +238,8 @@ namespace MaterialsManagement.Repository
                 AddWithValue("@GndkNumber", t.GndkNumber);
                 AddWithValue("@AcceptCode", t.AcceptCode);
                 AddWithValue("@TypeDescription", t.TypeDescription);
+
+                AddWithValue("@OwnedBy", t.OwnedBy);
                 connection.Open();
                 int status = sqlCommand.ExecuteNonQuery();
                 if (status <= 0)
@@ -308,7 +311,8 @@ namespace MaterialsManagement.Repository
                     UseStatus = GetInt32(sqlDataReader.GetOrdinal("UseStatus")),
                     GndkNumber = GetInt32(sqlDataReader.GetOrdinal("GndkNumber")),
                     AcceptCode = GetString("AcceptCode"),
-                    TypeDescription = GetString("TypeDescription")
+                    TypeDescription = GetString("TypeDescription"),
+                    OwnedBy = GetString("OwnedBy")
                 };
                 rs.Add(material);
             }
@@ -334,7 +338,7 @@ namespace MaterialsManagement.Repository
                 AddWithValue("@Type", t.Type);
                 AddWithValue("@RegisterCode", t.RegisterCode);
                 AddWithValue("@Model", t.Model);
-                
+
                 AddWithValue("@Origin", t.Origin);
                 AddWithValue("@Controller", t.Controller);
                 AddWithValue("@ManufacturingDate", t.ManufacturingDate);
@@ -360,6 +364,8 @@ namespace MaterialsManagement.Repository
                 AddWithValue("@GndkNumber", t.GndkNumber);
                 AddWithValue("@AcceptCode", t.AcceptCode);
                 AddWithValue("@TypeDescription", t.TypeDescription);
+
+                AddWithValue("@OwnedBy", t.OwnedBy);
                 connection.Open();
                 int status = sqlCommand.ExecuteNonQuery();
                 if (status <= 0)

@@ -84,6 +84,7 @@ namespace MaterialsManagement.Service
             des.GndkNumber = origin.GndkNumber;
             des.AcceptCode = origin.AcceptCode;
             des.TypeDescription = origin.TypeDescription;
+            des.OwnedBy = origin.OwnedBy;
         }
 
         public DataTable GetByTypeAsDataTable(string DvId, int Type)

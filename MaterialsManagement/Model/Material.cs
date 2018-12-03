@@ -55,6 +55,7 @@ namespace MaterialsManagement.Model
         public string AcceptCode { get; set; }
         //Loại xe
         public string TypeDescription { get; set; }
+        public string OwnedBy { get; set; }
         public Material()
         {
         }
