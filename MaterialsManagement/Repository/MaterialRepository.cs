@@ -80,7 +80,7 @@ namespace MaterialsManagement.Repository
             "RegisterYear, Label, FrameNumber, EIN, OriginalExplanation," +
             "StartUsingYear, ClLevel, SclTime, RecentSclYear, GroupLabel," +
             "UseStatus, GndkNumber, AcceptCode, TypeDescription, OwnedBy " +
-          "FROM Material WHERE Type=@Type AND DvId=@DvId AND (Id=@Id OR Model like @Model) AND Status=" + (int)MaterialStatusEnum.ACTIVE +
+          "FROM Material WHERE Type=@Type AND DvId=@DvId AND (Id like @Id OR Model like @Model) AND Status=" + (int)MaterialStatusEnum.ACTIVE +
           " ORDER BY InsertDate DESC";
         public MaterialRepository(bool ReturnDataTable) : this()
         {
@@ -185,7 +185,7 @@ namespace MaterialsManagement.Repository
                 sqlCommand = new SqlCommand(QUERY_SEARCH_BY_TYPE_AND_DVID, GetSqlConnection());
                 sqlCommand.Parameters.AddWithValue("@Type", Type);
                 sqlCommand.Parameters.AddWithValue("@DvId", DvId.Trim());
-                sqlCommand.Parameters.AddWithValue("@Id", searchValue.Trim());
+                sqlCommand.Parameters.AddWithValue("@Id", "%" + searchValue.Trim() + "%");
                 sqlCommand.Parameters.AddWithValue("@Model", "%" + searchValue.Trim() + "%");
                 sqlDataAdapter = new SqlDataAdapter(sqlCommand);
                 connection.Open();

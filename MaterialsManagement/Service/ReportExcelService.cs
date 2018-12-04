@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Office.Interop.Excel;
+
 using MaterialsManagement.Model;
 using System.Drawing;
 using MaterialsManagement.ApiModel;
 using MaterialsManagement.Utility;
-
 namespace MaterialsManagement.Service
 {
     class ReportExcelService
@@ -29,7 +29,14 @@ namespace MaterialsManagement.Service
             oSheet = (_Worksheet)oWB.ActiveSheet;
 
         }
-
+        public virtual void ThickBorderAround(Range cells)
+        {
+            Borders border = cells.Borders;
+            border[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlContinuous;
+            border[XlBordersIndex.xlEdgeTop].LineStyle = XlLineStyle.xlContinuous;
+            border[XlBordersIndex.xlEdgeLeft].LineStyle = XlLineStyle.xlContinuous;
+            border[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
+        }
         public void GenerateTitle(String title)
         {
             //[A1->--FontSize:18 Bold TextAlign:Center--<-HEADER]
@@ -54,6 +61,7 @@ namespace MaterialsManagement.Service
             oSheet.Range[co[1] + row, co[COLUMN_NUMBER] + (row + 1)].Font.Bold = true;
             oSheet.Range[co[1] + row, co[COLUMN_NUMBER] + (row + 1)].HorizontalAlignment = XlHAlign.xlHAlignCenter;
             oSheet.Range[co[1] + row, co[COLUMN_NUMBER] + (row + 1)].VerticalAlignment = XlHAlign.xlHAlignCenter;
+
             int col = 1;
             //TT
             oSheet.Cells[row, col] = "TT";
@@ -62,7 +70,8 @@ namespace MaterialsManagement.Service
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.LineStyle = XlLineStyle.xlDot;
             //Boder header [->--Thin--<--]
             oSheet.Range[co[col] + row, co[col] + (row + 1)].Merge();
-
+            ThickBorderAround(oSheet.Range[co[col] + row, co[col] + (row + 1)]);
+            ThickBorderAround(oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)]);
             //Số đăng ký
             col++;
             oSheet.Cells[row, col] = "Số";
@@ -71,6 +80,8 @@ namespace MaterialsManagement.Service
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.Weight = XlBorderWeight.xlThin;
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.LineStyle = XlLineStyle.xlDot;
             //Boder header [->--Thin--<--]
+            ThickBorderAround(oSheet.Range[co[col] + row, co[col] + (row + 1)]);
+            ThickBorderAround(oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)]);
 
             //Thời gian đăng ký
             col++;
@@ -80,6 +91,8 @@ namespace MaterialsManagement.Service
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.Weight = XlBorderWeight.xlThin;
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.LineStyle = XlLineStyle.xlDot;
             //Boder header [->--Thin--<--]
+            ThickBorderAround(oSheet.Range[co[col] + row, co[col] + (row + 1)]);
+            ThickBorderAround(oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)]);
 
             //Nhãn xe cơ sở
             col++;
@@ -89,6 +102,8 @@ namespace MaterialsManagement.Service
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.Weight = XlBorderWeight.xlThin;
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.LineStyle = XlLineStyle.xlDot;
             //Boder header [->--Thin--<--]
+            ThickBorderAround(oSheet.Range[co[col] + row, co[col] + (row + 1)]);
+            ThickBorderAround(oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)]);
 
             //Nhãn xe ch/dùng
             col++;
@@ -98,6 +113,8 @@ namespace MaterialsManagement.Service
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.Weight = XlBorderWeight.xlThin;
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.LineStyle = XlLineStyle.xlDot;
             //Boder header [->--Thin--<--]
+            ThickBorderAround(oSheet.Range[co[col] + row, co[col] + (row + 1)]);
+            ThickBorderAround(oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)]);
 
             //Loại xe
             col++;
@@ -107,6 +124,8 @@ namespace MaterialsManagement.Service
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.Weight = XlBorderWeight.xlThin;
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.LineStyle = XlLineStyle.xlDot;
             //Boder header [->--Thin--<--]
+            ThickBorderAround(oSheet.Range[co[col] + row, co[col] + (row + 1)]);
+            ThickBorderAround(oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)]);
 
             //Số Khung
             col++;
@@ -116,6 +135,8 @@ namespace MaterialsManagement.Service
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.Weight = XlBorderWeight.xlThin;
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.LineStyle = XlLineStyle.xlDot;
             //Boder header [->--Thin--<--]
+            ThickBorderAround(oSheet.Range[co[col] + row, co[col] + (row + 1)]);
+            ThickBorderAround(oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)]);
 
             //Số máy
             col++;
@@ -125,6 +146,8 @@ namespace MaterialsManagement.Service
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.Weight = XlBorderWeight.xlThin;
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.LineStyle = XlLineStyle.xlDot;
             //Boder header [->--Thin--<--]
+            ThickBorderAround(oSheet.Range[co[col] + row, co[col] + (row + 1)]);
+            ThickBorderAround(oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)]);
 
             //Năm s/xuất
             col++;
@@ -134,6 +157,8 @@ namespace MaterialsManagement.Service
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.Weight = XlBorderWeight.xlThin;
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.LineStyle = XlLineStyle.xlDot;
             //Boder header [->--Thin--<--]
+            ThickBorderAround(oSheet.Range[co[col] + row, co[col] + (row + 1)]);
+            ThickBorderAround(oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)]);
 
             //Nguồn gốc
             col++;
@@ -143,6 +168,8 @@ namespace MaterialsManagement.Service
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.Weight = XlBorderWeight.xlThin;
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.LineStyle = XlLineStyle.xlDot;
             //Boder header [->--Thin--<--]
+            ThickBorderAround(oSheet.Range[co[col] + row, co[col] + (row + 1)]);
+            ThickBorderAround(oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)]);
 
             //Biên chế ở
             col++;
@@ -152,6 +179,8 @@ namespace MaterialsManagement.Service
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.LineStyle = XlLineStyle.xlDot;
             //Boder header [->--Thin--<--]
             oSheet.Range[co[col] + row, co[col] + (row + 1)].Merge();
+            ThickBorderAround(oSheet.Range[co[col] + row, co[col] + (row + 1)]);
+            ThickBorderAround(oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)]);
 
             //Khối đơn vị
             col++;
@@ -161,6 +190,8 @@ namespace MaterialsManagement.Service
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.Weight = XlBorderWeight.xlThin;
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.LineStyle = XlLineStyle.xlDot;
             //Boder header [->--Thin--<--]
+            ThickBorderAround(oSheet.Range[co[col] + row, co[col] + (row + 1)]);
+            ThickBorderAround(oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)]);
 
             //Năm b/đầu sản xuất
             col++;
@@ -170,6 +201,8 @@ namespace MaterialsManagement.Service
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.Weight = XlBorderWeight.xlThin;
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.LineStyle = XlLineStyle.xlDot;
             //Boder header [->--Thin--<--]
+            ThickBorderAround(oSheet.Range[co[col] + row, co[col] + (row + 1)]);
+            ThickBorderAround(oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)]);
 
             //Phân cấp CL
             col++;
@@ -179,6 +212,8 @@ namespace MaterialsManagement.Service
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.Weight = XlBorderWeight.xlThin;
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.LineStyle = XlLineStyle.xlDot;
             //Boder header [->--Thin--<--]
+            ThickBorderAround(oSheet.Range[co[col] + row, co[col] + (row + 1)]);
+            ThickBorderAround(oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)]);
 
             //Đã qua SCL lần
             col++;
@@ -188,6 +223,8 @@ namespace MaterialsManagement.Service
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.Weight = XlBorderWeight.xlThin;
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.LineStyle = XlLineStyle.xlDot;
             //Boder header [->--Thin--<--]
+            ThickBorderAround(oSheet.Range[co[col] + row, co[col] + (row + 1)]);
+            ThickBorderAround(oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)]);
 
             //Năm SCL gần nhất
             col++;
@@ -197,6 +234,8 @@ namespace MaterialsManagement.Service
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.Weight = XlBorderWeight.xlThin;
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.LineStyle = XlLineStyle.xlDot;
             //Boder header [->--Thin--<--]
+            ThickBorderAround(oSheet.Range[co[col] + row, co[col] + (row + 1)]);
+            ThickBorderAround(oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)]);
 
             //Nhóm xe
             col++;
@@ -206,6 +245,8 @@ namespace MaterialsManagement.Service
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.Weight = XlBorderWeight.xlThin;
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.LineStyle = XlLineStyle.xlDot;
             //Boder header [->--Thin--<--]
+            ThickBorderAround(oSheet.Range[co[col] + row, co[col] + (row + 1)]);
+            ThickBorderAround(oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)]);
 
             //Trạng thái SD
             col++;
@@ -215,6 +256,8 @@ namespace MaterialsManagement.Service
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.Weight = XlBorderWeight.xlThin;
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.LineStyle = XlLineStyle.xlDot;
             //Boder header [->--Thin--<--]
+            ThickBorderAround(oSheet.Range[co[col] + row, co[col] + (row + 1)]);
+            ThickBorderAround(oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)]);
 
             //Số GCNĐK
             col++;
@@ -224,6 +267,8 @@ namespace MaterialsManagement.Service
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.Weight = XlBorderWeight.xlThin;
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.LineStyle = XlLineStyle.xlDot;
             //Boder header [->--Thin--<--]
+            ThickBorderAround(oSheet.Range[co[col] + row, co[col] + (row + 1)]);
+            ThickBorderAround(oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)]);
 
             //Loại đơn vị
             col++;
@@ -233,6 +278,8 @@ namespace MaterialsManagement.Service
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.Weight = XlBorderWeight.xlThin;
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.LineStyle = XlLineStyle.xlDot;
             //Boder header [->--Thin--<--]
+            ThickBorderAround(oSheet.Range[co[col] + row, co[col] + (row + 1)]);
+            ThickBorderAround(oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)]);
 
             //Số QĐ, thời gian đưa vào biên chế
             col++;
@@ -242,6 +289,8 @@ namespace MaterialsManagement.Service
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.Weight = XlBorderWeight.xlThin;
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.LineStyle = XlLineStyle.xlDot;
             //Boder header [->--Thin--<--]
+            ThickBorderAround(oSheet.Range[co[col] + row, co[col] + (row + 1)]);
+            ThickBorderAround(oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)]);
 
             //Ghi chú
             col++;
@@ -251,8 +300,11 @@ namespace MaterialsManagement.Service
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.Weight = XlBorderWeight.xlThin;
             oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)].Borders.LineStyle = XlLineStyle.xlDot;
             //Boder header [->--Thin--<--]
+            ThickBorderAround(oSheet.Range[co[col] + row, co[col] + (row + 1)]);
+            ThickBorderAround(oSheet.Range[co[col] + (row + 2), co[col] + (row + data.Count + 1)]);
             col = 0;
             row += 1;
+           
 
             DvService dvService = new DvService();
             for (int i = 0; i < data.Count; i++)
@@ -270,10 +322,8 @@ namespace MaterialsManagement.Service
                 oSheet.Cells[row, col++] = StringUtility.TrimIfPresent(material.EIN);//Số máy
                 oSheet.Cells[row, col++] = material.ManufacturingDate.Year;//Năm s/xuất
                 oSheet.Cells[row, col++] = material.OriginalExplanation;//Nguồn gốc
-                //Biên chế ở
-                string OwnedBy = StringUtility.TrimIfPresent(material.OwnedBy);
-                oSheet.Cells[row, col++] = OwnedBy;
-                oSheet.Cells[row, col++] = "";//Khối đơn vị
+                oSheet.Cells[row, col++] = StringUtility.TrimIfPresent(material.OwnedBy);//Biên chế ở
+                oSheet.Cells[row, col++] = StringUtility.TrimIfPresent(material.OwnedBy);//Khối đơn vị
                 oSheet.Cells[row, col++] = material.StartUsingYear.Year;//Năm b/đầu sản xuất
                 oSheet.Cells[row, col++] = material.ClLevel;//Phân cấp CL
                 oSheet.Cells[row, col++] = material.SclTime;//Đã qua SCL lần
@@ -286,7 +336,7 @@ namespace MaterialsManagement.Service
                 oSheet.Cells[row, col++] = material.Notes;//Ghi chú
                 col = 0;
             }
-            row++;
+            row+=2;
         }
         public void DownLoad(String path)
         {
