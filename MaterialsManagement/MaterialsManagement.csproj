@@ -136,6 +136,7 @@
     <Compile Include="UI\MaterialUpdateCurrentKmForm.Designer.cs">
       <DependentUpon>MaterialUpdateCurrentKmForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utility\NumbericConverter.cs" />
     <Compile Include="Utility\StringUtility.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

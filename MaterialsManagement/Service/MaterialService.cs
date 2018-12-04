@@ -1,6 +1,7 @@
 ﻿using MaterialsManagement.Common;
 using MaterialsManagement.Model;
 using MaterialsManagement.Repository;
+using MaterialsManagement.Utility;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,10 +18,10 @@ namespace MaterialsManagement.Service
             Random random = new Random();
             DateTime now = DateTime.Now;
             int secondOfYear = now.DayOfYear * 86400 + now.Hour * 3600 + now.Minute * 60 + now.Second;
+            string seedStr = "" + material.Type + now.Year + secondOfYear + random.Next(0, 9999);
+            long seed = long.Parse(seedStr);
             string newId = material.dv.Id.Trim() + "-" +
-                material.Type +
-                now.Year + secondOfYear + "-" +
-                random.Next(0, 9999).ToString("D4");
+                NumbericConverter.ConvertToBase64Arithmetic(seed);
             material.Id = newId;
             material.Status = (int)MaterialStatusEnum.ACTIVE;
             material.InsertDate = now;
