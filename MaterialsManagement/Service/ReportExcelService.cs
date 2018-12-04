@@ -270,7 +270,9 @@ namespace MaterialsManagement.Service
                 oSheet.Cells[row, col++] = StringUtility.TrimIfPresent(material.EIN);//Số máy
                 oSheet.Cells[row, col++] = material.ManufacturingDate.Year;//Năm s/xuất
                 oSheet.Cells[row, col++] = material.OriginalExplanation;//Nguồn gốc
-                oSheet.Cells[row, col++] = dvService.Get(material.DvId).Id;//Biên chế ở
+                //Biên chế ở
+                string OwnedBy = StringUtility.TrimIfPresent(material.OwnedBy);
+                oSheet.Cells[row, col++] = OwnedBy;
                 oSheet.Cells[row, col++] = "";//Khối đơn vị
                 oSheet.Cells[row, col++] = material.StartUsingYear.Year;//Năm b/đầu sản xuất
                 oSheet.Cells[row, col++] = material.ClLevel;//Phân cấp CL
