@@ -262,9 +262,9 @@
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(3, 490);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(145, 44);
+            this.label11.Size = new System.Drawing.Size(166, 22);
             this.label11.TabIndex = 10;
-            this.label11.Text = "Nhãn xe chuyên dùng:";
+            this.label11.Text = "Nhãn chuyên dùng:";
             // 
             // cbLabel
             // 
@@ -407,9 +407,9 @@
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.Location = new System.Drawing.Point(3, 294);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(86, 22);
+            this.label19.Size = new System.Drawing.Size(62, 22);
             this.label19.TabIndex = 22;
-            this.label19.Text = "Nhóm xe:";
+            this.label19.Text = "Nhóm:";
             // 
             // cbGroupLabel
             // 
@@ -466,9 +466,9 @@
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.Location = new System.Drawing.Point(3, 343);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(73, 22);
+            this.label23.Size = new System.Drawing.Size(49, 22);
             this.label23.TabIndex = 28;
-            this.label23.Text = "Loại xe:";
+            this.label23.Text = "Loại:";
             // 
             // tbTypeDescription
             // 
