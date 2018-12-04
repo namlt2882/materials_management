@@ -21,7 +21,7 @@ namespace MaterialsManagement.Service
             string seedStr = "" + material.Type + now.Year + secondOfYear + random.Next(0, 9999);
             long seed = long.Parse(seedStr);
             string newId = material.dv.Id.Trim() + "-" +
-                NumbericConverter.ConvertToBase64Arithmetic(seed);
+                NumbericConverter.ConvertToBase62Arithmetic(seed);
             material.Id = newId;
             material.Status = (int)MaterialStatusEnum.ACTIVE;
             material.InsertDate = now;
