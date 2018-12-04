@@ -15,15 +15,14 @@ namespace MaterialsManagement.Service
         public Material Add(Material material)
         {
             Random random = new Random();
-            //format of new id: qkId + dvId + type + Current time + random number (0-9999)
-            string newId = material.qk.Id.Trim() + "-" +
-                material.dv.Id.Trim() + "-" + 
-                material.Type + "-" + 
-                DateTime.Now.Ticks + "-" + 
+            DateTime now = DateTime.Now;
+            int secondOfYear = now.DayOfYear * 86400 + now.Hour * 3600 + now.Minute * 60 + now.Second;
+            string newId = material.dv.Id.Trim() + "-" +
+                material.Type +
+                now.Year + secondOfYear + "-" +
                 random.Next(0, 9999).ToString("D4");
             material.Id = newId;
             material.Status = (int)MaterialStatusEnum.ACTIVE;
-            DateTime now = DateTime.Now;
             material.InsertDate = now;
             material.LastUpdate = now;
             material.LastChangeOil = material.CurrentKm;
@@ -110,7 +109,7 @@ namespace MaterialsManagement.Service
             MaterialRepository repository = new MaterialRepository(true);
             return repository.GetByType(DvId, Type);
         }
-        
+
         public List<Material> GetAllByDv(String dv)
         {
             return new MaterialRepository().GetAllByQkDv(dv);
@@ -122,10 +121,10 @@ namespace MaterialsManagement.Service
 
         public void Delete(string id)
         {
-            if (id== null)
-                {
+            if (id == null)
+            {
                 throw new Exception("Null Id");
-                }
+            }
             MaterialRepository repository = new MaterialRepository();
             Material origin = repository.Get(id.Trim());
             origin.Status = (int)MaterialStatusEnum.DISABLE;
