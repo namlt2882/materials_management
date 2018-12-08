@@ -13,8 +13,8 @@ namespace MaterialsManagement.Common
         Sail = 1,
         [Display(Name = "Ô tô")]
         Car = 2,
-        [Display(Name = "Vũ khí")]
-        Weapon = 3
+        //[Display(Name = "Vũ khí")]
+        //Weapon = 3
     }
     public enum MaterialStatusEnum
     {

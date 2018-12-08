@@ -162,9 +162,9 @@ namespace MaterialsManagement.UI.CustomControl
             btnSail.ContextMenuStrip = cms;
 
             cms = new CustomContextMenuStrip<int>();
-            cms.Items.Add("Xuất Dữ Liệu " + "Card", null, new EventHandler(btn_export));
-            cms.Items.Add("Xuất Báo Cáo " + "Card", null, new EventHandler(btn_report));
-            cms.Items.Add("Xuất QR " + "Card", null, new EventHandler(DownQR));
+            cms.Items.Add("Xuất Dữ Liệu " + MaterialTypeEnum.Car.GetDisplayName(), null, new EventHandler(btn_export));
+            cms.Items.Add("Xuất Báo Cáo " + MaterialTypeEnum.Car.GetDisplayName(), null, new EventHandler(btn_report));
+            cms.Items.Add("Xuất QR " + MaterialTypeEnum.Car.GetDisplayName(), null, new EventHandler(DownQR));
             cms.obj = (int)MaterialTypeEnum.Car;
             btnCar.ContextMenuStrip = cms;
         }
