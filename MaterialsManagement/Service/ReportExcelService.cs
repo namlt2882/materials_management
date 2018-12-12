@@ -330,7 +330,8 @@ namespace MaterialsManagement.Service
                 oSheet.Cells[row, col++] = material.RecentSclYear.Year;//Năm SCL gần nhất
                 oSheet.Cells[row, col++] = SingletonModelProvider.GetMaterialGroupLabelModel(material.GroupLabel).Name;//Nhóm xe
                 oSheet.Cells[row, col++] = SingletonModelProvider.GetMaterialUseStatusModel(material.UseStatus).Name;//Trạng thái SD
-                oSheet.Cells[row, col++] = material.GndkNumber;//Số GCNĐK
+                string gcndk = material.GndkNumber >= 1000 ? material.GndkNumber.ToString("D5") : material.GndkNumber.ToString("D4");
+                oSheet.Cells[row, col++] = gcndk;//Số GCNĐK
                 oSheet.Cells[row, col++] = SingletonModelProvider.GetMaterialTypeModel(material.Type).Name;//Loại đơn vị
                 oSheet.Cells[row, col++] = material.AcceptCode;//Số QĐ, thời gian đưa vào biên chế
                 oSheet.Cells[row, col++] = material.Notes;//Ghi chú
