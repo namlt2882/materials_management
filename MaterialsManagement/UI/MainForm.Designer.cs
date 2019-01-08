@@ -275,7 +275,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Hệ thống Quản lý Hồ sơ Kỹ thuật Trang bị";
+            this.Text = "Tem quản lí hồ sơ kỹ thuật trang bị";
             this.headerPanel.ResumeLayout(false);
             this.addressPanel.ResumeLayout(false);
             this.addressPanel.PerformLayout();
