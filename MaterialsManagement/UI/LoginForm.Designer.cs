@@ -88,11 +88,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(199, 51);
+            this.label1.Location = new System.Drawing.Point(82, 48);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(434, 40);
+            this.label1.Size = new System.Drawing.Size(604, 40);
             this.label1.TabIndex = 9;
-            this.label1.Text = "Hệ thống quản lí trang bị";
+            this.label1.Text = "Tem quản lí hồ sơ kỹ thuật trang bị";
             // 
             // label2
             // 
